@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_x="226dp"
         android:layout_y="8dp"
-        android:text="Home Button"
+        android:text="CIAO STRONZO"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="113dp" />
 </LinearLayout>

@@ -1,19 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:orientation="vertical">
 
-
-    <Button
-        android:id="@+id/button"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="223dp"
-        android:layout_y="80dp"
-        android:text="Timer Button"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="113dp" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:id="@+id/textViewMinsValue"
+            style="@style/Digit"
+            android:text="@string/double_zero" />
+
+        <TextView
+            android:id="@+id/textViewSeparator2"
+            style="@style/Separator"
+            android:text="@string/separators" />
+
+        <TextView
+            android:id="@+id/textViewSecsValue"
+            style="@style/Digit"
+            android:text="@string/double_zero" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal">
+
+        <ImageButton
+            android:id="@+id/timer_playButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_timer_play"
+            android:layout_marginRight="15dp"/>
+
+        <ImageButton
+            android:id="@+id/timer_pauseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_timer_pause" />
+
+        <ImageButton
+            android:id="@+id/timer_resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_timer_reset"
+            android:layout_marginLeft="15dp"/>
+
+
+    </LinearLayout>
+
 </LinearLayout>
