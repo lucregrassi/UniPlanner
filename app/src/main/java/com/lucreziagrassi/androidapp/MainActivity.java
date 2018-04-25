@@ -61,18 +61,14 @@ public class MainActivity extends AppCompatActivity
 
         // int containerID = ((ViewGroup)(getView().getParent())).getId();
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_profile) {
             getFragmentManager().beginTransaction().replace(R.id.content, new HomeFragment()).commit();
+        } else if (id == R.id.nav_schedule) {
+
+        } else if (id == R.id.nav_exams) {
+
         } else if (id == R.id.nav_timer) {
             getFragmentManager().beginTransaction().replace(R.id.content, new TimerFragment()).commit();
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

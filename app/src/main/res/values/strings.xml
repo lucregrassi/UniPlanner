@@ -8,6 +8,12 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- strings for menu -->
+    <string name="profile">Profilo</string>
+    <string name="schedule">Orario</string>
+    <string name="exams">Esami</string>
+    <string name="timer">Timer</string>
+
     <!-- strings for fragment_timer.xml -->
     <string name="double_zero">00</string>
     <string name="separators">:</string>
