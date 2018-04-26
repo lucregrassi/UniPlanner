@@ -12,19 +12,10 @@
         android:layout_marginTop="10dp" >
 
         <TextView
-            android:id="@+id/textViewMinsValue"
+            android:id="@+id/textViewTimer"
             style="@style/Digit"
-            android:text="@string/minutes" />
+            android:text="@string/timer_countdown" />
 
-        <TextView
-            android:id="@+id/textViewSeparator2"
-            style="@style/Separator"
-            android:text="@string/separators" />
-
-        <TextView
-            android:id="@+id/textViewSecsValue"
-            style="@style/Digit"
-            android:text="@string/seconds" />
     </LinearLayout>
 
 

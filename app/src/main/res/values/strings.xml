@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UniApp</string>
+    <string name="app_name">iUniversity</string>
     <string name="title_activity_navigation_test">NavigationTestActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -15,10 +15,7 @@
     <string name="timer">Timer</string>
 
     <!-- strings for fragment_timer.xml -->
-    <string name="seconds">00</string>
-    <string name="minutes">25</string>
-    <string name="separators">:</string>
-    <string name="separator_tenths">.</string>
+    <string name="timer_countdown">25:00</string>
     <string name="start">Start</string>
     <string name="pause">Pause</string>
     <string name="reset">Reset</string>
