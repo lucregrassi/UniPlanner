@@ -23,9 +23,9 @@ public class TimerFragment extends Fragment {
 
     private TextView timerTextView;
 
-    private Button playButton;
-    private Button pauseButton;
-    private Button resetButton;
+    private ImageButton playButton;
+    private ImageButton pauseButton;
+    private ImageButton resetButton;
 
     private CountDownTimer timer;
 
@@ -42,9 +42,9 @@ public class TimerFragment extends Fragment {
         // get references to widgets
         timerTextView = view.findViewById(R.id.textViewTimer);
 
-        playButton = (Button) view.findViewById(R.id.timer_playButton);
-        pauseButton = (Button) view.findViewById(R.id.timer_pauseButton);
-        resetButton = (Button) view.findViewById(R.id.timer_resetButton);
+        playButton = view.findViewById(R.id.timer_playButton);
+        pauseButton = view.findViewById(R.id.timer_pauseButton);
+        resetButton = view.findViewById(R.id.timer_resetButton);
 
         // set listeners
         playButton.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +55,7 @@ public class TimerFragment extends Fragment {
                 }
             }
         });
+
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
