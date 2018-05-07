@@ -13,6 +13,9 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private HomeFragment homeFragment = null;
+    private TimerFragment timerFragment = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        getFragmentManager().beginTransaction().replace(R.id.content, new HomeFragment()).commit();
+        if(homeFragment == null)
+            homeFragment = new HomeFragment();
+
+        getFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
     }
 
     @Override
@@ -62,13 +68,21 @@ public class MainActivity extends AppCompatActivity
         // int containerID = ((ViewGroup)(getView().getParent())).getId();
 
         if (id == R.id.nav_profile) {
-            getFragmentManager().beginTransaction().replace(R.id.content, new HomeFragment()).commit();
+
+            if(homeFragment == null)
+                homeFragment = new HomeFragment();
+
+            getFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
         } else if (id == R.id.nav_schedule) {
 
         } else if (id == R.id.nav_exams) {
 
         } else if (id == R.id.nav_timer) {
-            getFragmentManager().beginTransaction().replace(R.id.content, new TimerFragment()).commit();
+
+            if(timerFragment == null)
+                timerFragment = new TimerFragment();
+
+            getFragmentManager().beginTransaction().replace(R.id.content, timerFragment).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
