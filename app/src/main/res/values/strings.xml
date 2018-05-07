@@ -8,13 +8,17 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- strings for home fragment-->
+    <string name="home_fragment_name">Home</string>
+
     <!-- strings for menu -->
-    <string name="profile">Profilo</string>
+    <string name="profile">Home</string>
     <string name="schedule">Orario</string>
     <string name="exams">Esami</string>
     <string name="timer">Timer</string>
 
-    <!-- strings for fragment_timer.xml -->
+    <!-- strings timer_fragment -->
+    <string name="timer_fragment_name">Timer</string>
     <string name="timer_countdown">25:00</string>
     <string name="start">Start</string>
     <string name="pause">Pause</string>

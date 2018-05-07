@@ -12,7 +12,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <!-- Styles for fragment_timer.xml -->
+    <!-- Styles timer_fragment.xml.xml -->
 
     <style name="Digit" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:layout_width">wrap_content</item>

@@ -1,25 +1,20 @@
 package com.lucreziagrassi.androidapp;
 
 import android.app.Fragment;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
 import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class TimerFragment extends Fragment {
 
-    private static final long START_TIME_IN_MILLIS = 600000;
+    private static final long START_TIME_IN_MILLIS = 1500000;
 
     private TextView timerTextView;
 
@@ -36,8 +31,9 @@ public class TimerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+
         // inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_timer, container,false);
+        View view = inflater.inflate(R.layout.timer_fragment, container,false);
 
         // get references to widgets
         timerTextView = view.findViewById(R.id.textViewTimer);
@@ -77,17 +73,17 @@ public class TimerFragment extends Fragment {
         return view;
     }
 
-    //NON SO A CHE CAZZO SERVAAAA
+    //NON SO A CHE CAZZO SERVE
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        getActivity().setTitle(R.string.timer_fragment_name);
         if (savedInstanceState != null) {
             // Restore the fragment's state here
         }
     }
 
-    //NON SO A CHE CAZZO SERVAAAA
+    //NON SO A CHE CAZZO SERVE
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
