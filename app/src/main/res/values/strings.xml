@@ -3,8 +3,8 @@
     <string name="title_activity_navigation_test">NavigationTestActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Lucrezia</string>
+    <string name="nav_header_subtitle">Media: 28</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -14,8 +14,11 @@
     <!-- strings for menu -->
     <string name="profile">Home</string>
     <string name="schedule">Orario</string>
-    <string name="exams">Esami</string>
+    <string name="exams">Prossimi Esami</string>
+    <string name="votes">Libretto</string>
     <string name="timer">Timer</string>
+    <string name="subjects">Materie</string>
+    <string name="settings">Impostazioni</string>
 
     <!-- strings timer_fragment -->
     <string name="timer_fragment_name">Timer</string>
