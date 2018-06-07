@@ -11,6 +11,9 @@
     <!-- strings for home fragment-->
     <string name="home_fragment_name">Home</string>
 
+    <!-- strings for votes fragment-->
+    <string name="votes_fragment_name">Libretto</string>
+
     <!-- strings for menu -->
     <string name="profile">Home</string>
     <string name="schedule">Orario</string>
@@ -26,5 +29,8 @@
     <string name="start">Start</string>
     <string name="pause">Pause</string>
     <string name="reset">Reset</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
