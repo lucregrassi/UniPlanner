@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">iUniversity</string>
+    <string name="app_name">UniPlanner</string>
     <string name="title_activity_navigation_test">NavigationTestActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,12 +7,6 @@
     <string name="nav_header_subtitle">Media: 28</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
-    <!-- strings for home fragment-->
-    <string name="home_fragment_name">Home</string>
-
-    <!-- strings for votes fragment-->
-    <string name="votes_fragment_name">Libretto</string>
 
     <!-- strings for menu -->
     <string name="profile">Home</string>
@@ -22,6 +16,24 @@
     <string name="timer">Timer</string>
     <string name="subjects">Materie</string>
     <string name="settings">Impostazioni</string>
+
+    <!-- strings for intro fragment-->
+    <string name="logo_description">App Logo</string>
+    <string name="user_name">Nome</string>
+    <string name="badge_number">Matricola</string>
+    <string name="degree_course">Corso di Studi</string>
+    <string name="credits">Crediti da acquisire</string>
+    <string name="start_button">Inizia</string>
+
+    <!-- strings for home fragment-->
+    <string name="home_fragment_name">Home</string>
+    <string name="average_grade">Media attuale</string>
+    <string name="passed_exams">Esami sostenuti</string>
+    <string name="expected_degree_vote">Proiezione voto di laurea</string>
+    <string name="acquired_credits">Crediti acquisiti</string>
+
+    <!-- strings for votes fragment-->
+    <string name="votes_fragment_name">Libretto</string>
 
     <!-- strings timer_fragment -->
     <string name="timer_fragment_name">Timer</string>

@@ -1,120 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="fill_parent"
-        android:layout_height="137dp"
-        android:background="@color/gray"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:text="Seleziona la tua facoltà"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="96dp"
-            tools:layout_editor_absoluteY="6dp" />
-
-        <ImageView
-            android:id="@+id/profile_image"
-            android:layout_width="76dp"
-            android:layout_height="76dp"
-            android:src="@mipmap/ic_uni_logo_round"
-            tools:layout_editor_absoluteX="182dp"
-            tools:layout_editor_absoluteY="45dp" />
-    </android.support.constraint.ConstraintLayout>
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="196dp"
-        tools:layout_editor_absoluteY="148dp" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:fontFamily="cursive"
+        android:text="UniPlanner"
+        android:textSize="35dp"
+        android:textStyle="bold|italic" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:contentDescription="@string/logo_description"
+        android:src="@mipmap/ic_uni_logo_round"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="45dp" />
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="200dp"
-        android:layout_height="49dp"
-        android:drawableLeft="@drawable/ic_menu_gallery"
+        android:id="@+id/editText1"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/editText2"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_action_name"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:textAlignment="viewStart"
-        tools:layout_editor_absoluteX="120dp"
-        tools:layout_editor_absoluteY="172dp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Matricola"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="221dp" />
+        android:hint="@string/user_name"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="200dp"
+        android:layout_width="240dp"
         android:layout_height="40dp"
-        android:drawableLeft="@drawable/ic_menu_profile"
+        android:layout_alignStart="@+id/editText3"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_action_badge_number"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="120dp"
-        tools:layout_editor_absoluteY="245dp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Corso di studi"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="298dp" />
+        android:hint="@string/badge_number"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editText3"
-        android:layout_width="200dp"
+        android:layout_width="240dp"
         android:layout_height="40dp"
-        android:drawableLeft="@drawable/ic_menu_exams"
+        android:layout_alignStart="@+id/editText4"
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_action_degree_course"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="115dp"
-        tools:layout_editor_absoluteY="322dp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Crediti da acquisire"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="371dp" />
+        android:hint="@string/degree_course"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editText4"
-        android:layout_width="200dp"
+        android:layout_width="240dp"
         android:layout_height="40dp"
-        android:drawableLeft="@drawable/ic_menu_schedule"
+        android:layout_below="@+id/editText3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_action_credits"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="120dp"
-        tools:layout_editor_absoluteY="395dp" />
+        android:hint="@string/credits"
+        android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Inizia"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="452dp" />
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/editText4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="10dp">
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/start_button"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
