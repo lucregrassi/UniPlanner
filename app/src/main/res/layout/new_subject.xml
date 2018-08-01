@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:id="@+id/layout">
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="Inserisci i dati relativi al nuovo insegnamento che vuoi aggiungere"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/subject_name"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/prof_name"
+        android:layout_below="@+id/textView10"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_action_badge_number"
+        android:drawableTint="@color/lightgray"
+        android:ems="10"
+        android:hint="Nome della materia"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/prof_name"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/subject_name"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_action_name"
+        android:drawableTint="@color/lightgray"
+        android:ems="10"
+        android:hint="Nome del professore"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/select_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/prof_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textSize="20dp"
+        android:text="Seleziona un colore" />
+
+
+</RelativeLayout>

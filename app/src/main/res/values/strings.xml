@@ -35,6 +35,14 @@
     <!-- strings for votes fragment-->
     <string name="votes_fragment_name">Libretto</string>
 
+    <!-- strings for new exam fragment-->
+    <string name="new_exam_fragment_name">Nuovo Esame</string>
+    <string name="add_exam_button">Aggiungi</string>
+    <string name="exam_name">Nome dell\'esame</string>
+    <string name="exam_cfu">CFU</string>
+    <string name="exam_date">Data dell\'esame</string>
+    <string name="exam_vote">Voto</string>
+
     <!-- strings timer_fragment -->
     <string name="timer_fragment_name">Timer</string>
     <string name="timer_countdown">25:00</string>

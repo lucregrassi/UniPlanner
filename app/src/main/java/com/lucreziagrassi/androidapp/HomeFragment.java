@@ -14,7 +14,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.home_fragment, container,false);
+        View view = inflater.inflate(R.layout.home, container,false);
 
         getActivity().setTitle(R.string.home_fragment_name);
 

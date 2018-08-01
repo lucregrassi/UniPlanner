@@ -3,5 +3,6 @@
     <color name="colorPrimary">#ffc107</color>
     <color name="colorPrimaryDark">#e99200</color>
     <color name="lightgray">#a9a9a9</color>
+    <color name="background">#f1f1f1</color>
 
 </resources>
