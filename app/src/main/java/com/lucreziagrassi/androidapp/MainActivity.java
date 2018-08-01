@@ -1,5 +1,6 @@
 package com.lucreziagrassi.androidapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -7,7 +8,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
@@ -68,21 +68,26 @@ public class MainActivity extends AppCompatActivity
         // int containerID = ((ViewGroup)(getView().getParent())).getId();
 
         if (id == R.id.nav_profile) {
-
             if(homeFragment == null)
                 homeFragment = new HomeFragment();
 
             getFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
+
         } else if (id == R.id.nav_schedule) {
 
         } else if (id == R.id.nav_exams) {
+
+        } else if (id == R.id.nav_votes) {
+            Intent intent = new Intent(this, BookletActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_timer) {
 
             if(timerFragment == null)
                 timerFragment = new TimerFragment();
-
             getFragmentManager().beginTransaction().replace(R.id.content, timerFragment).commit();
+        } else if (id == R.id.nav_subjects) {
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
