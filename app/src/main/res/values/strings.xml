@@ -32,8 +32,8 @@
     <string name="expected_degree_vote">Proiezione voto di laurea</string>
     <string name="acquired_credits">Crediti acquisiti</string>
 
-    <!-- strings for votes fragment-->
-    <string name="votes_fragment_name">Libretto</string>
+    <!-- strings for booklet fragment-->
+    <string name="booklet_fragment_name">Libretto</string>
 
     <!-- strings for new exam fragment-->
     <string name="new_exam_fragment_name">Nuovo Esame</string>
@@ -42,6 +42,12 @@
     <string name="exam_cfu">CFU</string>
     <string name="exam_date">Data dell\'esame</string>
     <string name="exam_vote">Voto</string>
+
+    <!-- strings for new lesson fragment-->
+    <string name="new_lesson_fragment_name">Nuova Lezione</string>
+
+    <!-- strings for new subject fragment-->
+    <string name="new_subject_fragment_name">Nuova Materia</string>
 
     <!-- strings timer_fragment -->
     <string name="timer_fragment_name">Timer</string>

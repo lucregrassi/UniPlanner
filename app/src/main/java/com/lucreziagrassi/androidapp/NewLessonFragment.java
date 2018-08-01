@@ -64,7 +64,9 @@ public class NewLessonFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.new_lesson, container, false);
+        View view = inflater.inflate(R.layout.new_lesson, container, false);
+        getActivity().setTitle(R.string.new_lesson_fragment_name);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
