@@ -73,7 +73,6 @@ public class TimerFragment extends Fragment {
         return view;
     }
 
-    //NON SO A CHE CAZZO SERVE
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -83,7 +82,6 @@ public class TimerFragment extends Fragment {
         }
     }
 
-    //NON SO A CHE CAZZO SERVE
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
