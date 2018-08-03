@@ -8,6 +8,15 @@
     android:padding="10dp"
     android:background="@color/background">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:text="Ciao Lucrezia!" />
+
     <LinearLayout
         android:clipToPadding="false"
         android:layout_gravity="center"
@@ -122,6 +131,7 @@
         android:layout_height="30dp"
         android:layout_gravity="center"
         android:progress="30"
+        android:progressBackgroundTint="#fff"
         android:progressTint="@color/colorPrimaryDark" />
 
     <RelativeLayout
@@ -147,21 +157,21 @@
     android:textStyle="bold" />
 
     <FrameLayout
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
         android:layout_gravity="center">
 
         <ProgressBar
             android:id="@+id/progressBar2"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progressDrawable="@drawable/circular_progressbar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
-            android:layout_height="190dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
+            android:progressBackgroundTint="#fff"
+            android:progressTint="@color/colorPrimary"
             android:max="180"
             android:progress="120"
-            android:indeterminateTintMode="src_atop"
-            android:indeterminateTint="@color/colorPrimary"/>
+            />
 
         <RelativeLayout
             android:layout_width="match_parent"

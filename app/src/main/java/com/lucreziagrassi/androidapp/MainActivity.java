@@ -1,6 +1,7 @@
 package com.lucreziagrassi.androidapp;
 
 import android.arch.persistence.room.Room;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,16 +12,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.lucreziagrassi.androidapp.booklet.BookletFragment;
+import com.lucreziagrassi.androidapp.booklet.PassedExamFragment;
 import com.lucreziagrassi.androidapp.db.AppDatabase;
+import com.lucreziagrassi.androidapp.db.FutureExam;
 import com.lucreziagrassi.androidapp.db.PassedExam;
+import com.lucreziagrassi.androidapp.futureExams.FutureExamsFragment;
 import com.lucreziagrassi.androidapp.home.HomeFragment;
 import com.lucreziagrassi.androidapp.timer.TimerFragment;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        BookletFragment.OnFragmentInteractionListener,
+        PassedExamFragment.OnFragmentInteractionListener {
 
     private HomeFragment homeFragment = null;
     private TimerFragment timerFragment = null;
     private BookletFragment bookletFragment = null;
+    private FutureExamsFragment futureExamsFragment = null;
 
     private AppDatabase appDB = null;
 
@@ -46,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        /*
         // Crea il db, TODO: Da spostare in splash activity in futuro
         appDB = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "uniplanner_db")
                                 .fallbackToDestructiveMigration()
@@ -54,7 +62,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // TODO: Rimuovere, debug only: aggiunge un esame al db
         PassedExam a = new PassedExam(0,"Test", "30", "25/05/18", 6);
-        appDB.getExamDao().insert(a);
+        appDB.getPassedExamDao().insert(a);
+
+        FutureExam b = new FutureExam(0, "Controllo Digitale", "25/09/18", 6);
+        appDB.getFutureExamDao().insert(b);
+        */
 
         if(homeFragment == null)
             homeFragment = new HomeFragment();
@@ -100,6 +112,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_exams) {
 
+            if(futureExamsFragment == null)
+                futureExamsFragment = new FutureExamsFragment();
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.content, futureExamsFragment).commit();
         } else if (id == R.id.nav_votes) {
 
             if(bookletFragment == null)
@@ -119,4 +135,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    @Override
+    public void onFragmentInteraction(Uri uri){
+        //you can leave it empty
+    }
+
 }

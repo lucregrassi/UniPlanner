@@ -14,7 +14,7 @@
     <string name="exams">Prossimi Esami</string>
     <string name="votes">Libretto</string>
     <string name="timer">Timer</string>
-    <string name="subjects">Materie</string>
+    <string name="subjects">Le Mie Materie</string>
     <string name="settings">Impostazioni</string>
 
     <!-- strings for intro fragment-->
@@ -34,6 +34,9 @@
 
     <!-- strings for booklet fragment-->
     <string name="booklet_fragment_name">Libretto</string>
+
+    <!-- strings for future exams fragment-->
+    <string name="future_exams_fragment_name">Prossimi Esami</string>
 
     <!-- strings for passedExamexam fragment-->
     <string name="new_exam_fragment_name">Nuovo Esame</string>

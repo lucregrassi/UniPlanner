@@ -1,28 +1,24 @@
-package com.lucreziagrassi.androidapp.booklet;
+package com.lucreziagrassi.androidapp.futureExams;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.lucreziagrassi.androidapp.R;
 
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link PassedExamFragment.OnFragmentInteractionListener} interface
+ * {@link FutureExamFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link PassedExamFragment#newInstance} factory method to
+ * Use the {@link FutureExamFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PassedExamFragment extends Fragment {
+public class FutureExamFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -34,7 +30,7 @@ public class PassedExamFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public PassedExamFragment() {
+    public FutureExamFragment() {
         // Required empty public constructor
     }
 
@@ -44,11 +40,11 @@ public class PassedExamFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PassedExamFragment.
+     * @return A new instance of fragment FutureExamFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PassedExamFragment newInstance(String param1, String param2) {
-        PassedExamFragment fragment = new PassedExamFragment();
+    public static FutureExamFragment newInstance(String param1, String param2) {
+        FutureExamFragment fragment = new FutureExamFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,7 +55,6 @@ public class PassedExamFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(false);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -70,15 +65,7 @@ public class PassedExamFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.passed_exam, container, false);
-        getActivity().setTitle(R.string.new_exam_fragment_name);
-        return view;
-    }
-
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.add_button);
-        item.setVisible(false);
+        return inflater.inflate(R.layout.future_exam, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -86,12 +73,6 @@ public class PassedExamFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
-        inflater.inflate(R.menu.activity_home_drawer, menu);
-        super.onCreateOptionsMenu(menu,inflater);
     }
 
     @Override
@@ -125,5 +106,4 @@ public class PassedExamFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
 }
