@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".IntroActivity" />
-        <activity android:name=".BookletActivity"></activity>
+        <activity android:name=".BookletFragment"></activity>
     </application>
 
 </manifest>

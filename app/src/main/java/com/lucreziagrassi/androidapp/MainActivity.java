@@ -1,6 +1,5 @@
 package com.lucreziagrassi.androidapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,11 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private HomeFragment homeFragment = null;
     private TimerFragment timerFragment = null;
+    private BookletFragment bookletFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity
         if(homeFragment == null)
             homeFragment = new HomeFragment();
 
-        getFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
     }
 
     @Override
@@ -71,21 +70,23 @@ public class MainActivity extends AppCompatActivity
             if(homeFragment == null)
                 homeFragment = new HomeFragment();
 
-            getFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
 
         } else if (id == R.id.nav_schedule) {
 
         } else if (id == R.id.nav_exams) {
 
         } else if (id == R.id.nav_votes) {
-            Intent intent = new Intent(this, BookletActivity.class);
-            startActivity(intent);
 
+            if(bookletFragment == null)
+                bookletFragment = new BookletFragment();
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.content, bookletFragment).commit();
         } else if (id == R.id.nav_timer) {
 
             if(timerFragment == null)
                 timerFragment = new TimerFragment();
-            getFragmentManager().beginTransaction().replace(R.id.content, timerFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content, timerFragment).commit();
         } else if (id == R.id.nav_subjects) {
 
         }

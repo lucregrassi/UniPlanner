@@ -44,7 +44,7 @@ public class ExamListAdapter extends ArrayAdapter<Exam> {
 
         tvSubject.setText(subject);
         tvVote.setText(vote);
-        tvCfu.setText(cfu);
+        tvCfu.setText("" + cfu);
         tvDate.setText(date);
 
         return convertView;
