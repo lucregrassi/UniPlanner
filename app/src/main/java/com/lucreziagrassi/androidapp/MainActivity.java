@@ -47,7 +47,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         // Crea il db, TODO: Da spostare in splash activity in futuro
-        appDB = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "uniplanner_db").allowMainThreadQueries().build();
+        appDB = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "uniplanner_db")
+                                .fallbackToDestructiveMigration()
+                                .allowMainThreadQueries()
+                                .build();
 
         // TODO: Rimuovere, debug only: aggiunge un esame al db
         PassedExam a = new PassedExam(0,"Test", "30", "25/05/18", 6);
