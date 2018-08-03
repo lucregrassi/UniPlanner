@@ -1,10 +1,12 @@
-package com.lucreziagrassi.androidapp;
+package com.lucreziagrassi.androidapp.home;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.lucreziagrassi.androidapp.R;
 
 
 public class HomeFragment extends Fragment {

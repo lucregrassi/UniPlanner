@@ -1,4 +1,4 @@
-package com.lucreziagrassi.androidapp;
+package com.lucreziagrassi.androidapp.timer;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.lucreziagrassi.androidapp.R;
 
 import java.util.Locale;
 

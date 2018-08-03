@@ -9,6 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.lucreziagrassi.androidapp.R;
+import com.lucreziagrassi.androidapp.booklet.BookletFragment;
+import com.lucreziagrassi.androidapp.home.HomeFragment;
+import com.lucreziagrassi.androidapp.timer.TimerFragment;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private HomeFragment homeFragment = null;

@@ -1,4 +1,4 @@
-package com.lucreziagrassi.androidapp;
+package com.lucreziagrassi.androidapp.booklet;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,11 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.lucreziagrassi.androidapp.R;
 
-/**
- * Created by lucreziagrassi on 01/08/18.
- */
+import java.util.ArrayList;
 
 public class ExamListAdapter extends ArrayAdapter<Exam> {
 
