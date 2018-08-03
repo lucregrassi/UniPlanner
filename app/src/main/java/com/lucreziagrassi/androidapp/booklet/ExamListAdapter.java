@@ -9,8 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.lucreziagrassi.androidapp.R;
+import com.lucreziagrassi.androidapp.db.Exam;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ExamListAdapter extends ArrayAdapter<Exam> {
 
@@ -18,7 +19,7 @@ public class ExamListAdapter extends ArrayAdapter<Exam> {
     private Context mContext;
     private int mResource;
 
-    public ExamListAdapter (Context context, int resource, ArrayList<Exam>objects) {
+    public ExamListAdapter (Context context, int resource, List<Exam> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
@@ -28,10 +29,10 @@ public class ExamListAdapter extends ArrayAdapter<Exam> {
     public View getView(int position, View convertView, ViewGroup parent){
         String subject = getItem(position).getSubject();
         String vote = getItem(position).getVote();
-        int cfu = getItem(position).getCfu();
+        int cfu = getItem(position).getCFU();
         String date = getItem(position).getDate();
 
-        Exam exam = new Exam(subject, vote, date, cfu);
+        Exam exam = new Exam(0, subject, vote, date, cfu);
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView= inflater.inflate(mResource, parent, false);
 

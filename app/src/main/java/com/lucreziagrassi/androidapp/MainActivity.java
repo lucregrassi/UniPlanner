@@ -1,5 +1,6 @@
 package com.lucreziagrassi.androidapp;
 
+import android.arch.persistence.room.Room;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,6 +12,8 @@ import android.view.MenuItem;
 
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.booklet.BookletFragment;
+import com.lucreziagrassi.androidapp.db.AppDatabase;
+import com.lucreziagrassi.androidapp.db.Exam;
 import com.lucreziagrassi.androidapp.home.HomeFragment;
 import com.lucreziagrassi.androidapp.timer.TimerFragment;
 
@@ -19,6 +22,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private HomeFragment homeFragment = null;
     private TimerFragment timerFragment = null;
     private BookletFragment bookletFragment = null;
+
+    private AppDatabase appDB = null;
+
+    public AppDatabase getDB()
+    {
+        return appDB;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +46,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // Crea il db, TODO: Da spostare in splash activity in futuro
+        appDB = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "uniplanner_db").allowMainThreadQueries().build();
+
+        // TODO: Rimuovere, debug only: aggiunge un esame al db
+        Exam a = new Exam(0,"Test", "30", "25/05/18", 6);
+        appDB.getExamDao().insert(a);
 
         if(homeFragment == null)
             homeFragment = new HomeFragment();
