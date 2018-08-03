@@ -8,13 +8,13 @@ import android.arch.persistence.room.Query;
 import java.util.List;
 
 @Dao
-public interface ExamDao {
-    @Query("SELECT * FROM exam")
-    List<Exam> getAll();
+public interface PassedExamDao {
+    @Query("SELECT * FROM PassedExam")
+    List<PassedExam> getAll();
 
     @Insert
-    void insert(Exam exam);
+    void insert(PassedExam passedExam);
 
     @Delete
-    void delete(Exam exam);
+    void delete(PassedExam passedExam);
 }

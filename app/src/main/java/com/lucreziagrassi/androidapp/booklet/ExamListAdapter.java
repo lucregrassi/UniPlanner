@@ -9,17 +9,17 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.lucreziagrassi.androidapp.R;
-import com.lucreziagrassi.androidapp.db.Exam;
+import com.lucreziagrassi.androidapp.db.PassedExam;
 
 import java.util.List;
 
-public class ExamListAdapter extends ArrayAdapter<Exam> {
+public class ExamListAdapter extends ArrayAdapter<PassedExam> {
 
     private static final String TAG = "ExamListAdapter";
     private Context mContext;
     private int mResource;
 
-    public ExamListAdapter (Context context, int resource, List<Exam> objects) {
+    public ExamListAdapter (Context context, int resource, List<PassedExam> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
@@ -32,7 +32,7 @@ public class ExamListAdapter extends ArrayAdapter<Exam> {
         int cfu = getItem(position).getCFU();
         String date = getItem(position).getDate();
 
-        Exam exam = new Exam(0, subject, vote, date, cfu);
+        PassedExam passedExam = new PassedExam(0, subject, vote, date, cfu);
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView= inflater.inflate(mResource, parent, false);
 

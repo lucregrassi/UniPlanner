@@ -10,10 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.booklet.BookletFragment;
 import com.lucreziagrassi.androidapp.db.AppDatabase;
-import com.lucreziagrassi.androidapp.db.Exam;
+import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.home.HomeFragment;
 import com.lucreziagrassi.androidapp.timer.TimerFragment;
 
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         appDB = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "uniplanner_db").allowMainThreadQueries().build();
 
         // TODO: Rimuovere, debug only: aggiunge un esame al db
-        Exam a = new Exam(0,"Test", "30", "25/05/18", 6);
+        PassedExam a = new PassedExam(0,"Test", "30", "25/05/18", 6);
         appDB.getExamDao().insert(a);
 
         if(homeFragment == null)

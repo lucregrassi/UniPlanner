@@ -35,7 +35,7 @@
     <!-- strings for booklet fragment-->
     <string name="booklet_fragment_name">Libretto</string>
 
-    <!-- strings for new exam fragment-->
+    <!-- strings for passedExamexam fragment-->
     <string name="new_exam_fragment_name">Nuovo Esame</string>
     <string name="add_exam_button">Aggiungi</string>
     <string name="exam_name">Nome dell\'esame</string>

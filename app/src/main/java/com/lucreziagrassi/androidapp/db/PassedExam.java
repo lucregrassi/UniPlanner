@@ -5,7 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity
-public class Exam {
+public class PassedExam {
 
     @PrimaryKey(autoGenerate = true)
     private int ID;
@@ -22,7 +22,7 @@ public class Exam {
     @ColumnInfo(name="CFU")
     private int CFU;
 
-    public Exam(int ID, String Subject, String Vote, String Date, int CFU) {
+    public PassedExam(int ID, String Subject, String Vote, String Date, int CFU) {
         this.ID = ID;
         this.Subject = Subject;
         this.Vote = Vote;
