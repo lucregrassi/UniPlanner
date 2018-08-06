@@ -6,86 +6,112 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background">
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimaryDark"
+        android:contentDescription="@string/logo_description"
+        android:paddingBottom="40dp"
+        android:src="@mipmap/ic_app_icon"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="45dp" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="66dp"
         android:fontFamily="cursive"
         android:text="UniPlanner"
-        android:textSize="35dp"
-        android:textStyle="bold|italic" />
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="120dp"
-        android:layout_height="150dp"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
-        android:contentDescription="@string/logo_description"
-        android:src="@mipmap/ic_uni_logo_round"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="45dp" />
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/nomeText"
         android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_alignStart="@+id/matricolaText"
-        android:layout_below="@+id/logo"
-        android:layout_marginTop="28dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="131dp"
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_name"
-        android:drawableTint="@color/lightgray"
         android:ems="10"
         android:hint="@string/user_name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/cognomeText"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_action_name"
+        android:ems="10"
+        android:hint="@string/user_surname"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/universityText"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="230dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_action_university"
+        android:ems="10"
+        android:hint="@string/university"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/corsoText"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="280dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_action_degree_course"
+        android:ems="10"
+        android:hint="@string/degree_course"
         android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/matricolaText"
         android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_alignStart="@+id/corsoText"
-        android:layout_below="@+id/nomeText"
-        android:layout_marginTop="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="330dp"
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_badge_number"
-        android:drawableTint="@color/lightgray"
         android:ems="10"
         android:hint="@string/badge_number"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/corsoText"
-        android:layout_width="240dp"
-        android:layout_height="40dp"
-        android:layout_alignStart="@+id/cfuText"
-        android:layout_below="@+id/matricolaText"
-        android:layout_marginTop="23dp"
-        android:background="@drawable/rounded_edittext"
-        android:drawablePadding="5dp"
-        android:drawableStart="@drawable/ic_action_degree_course"
-        android:drawableTint="@color/lightgray"
-        android:ems="10"
-        android:hint="@string/degree_course"
         android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/cfuText"
         android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/corsoText"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="380dp"
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_credits"
-        android:drawableTint="@color/lightgray"
         android:ems="10"
         android:hint="@string/credits"
         android:inputType="number" />
@@ -94,9 +120,9 @@
         android:id="@+id/cardView"
         android:layout_width="280dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/cfuText"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="440dp"
         android:clickable="true"
         app:cardBackgroundColor="@color/colorPrimaryDark"
         app:cardCornerRadius="25dp"
