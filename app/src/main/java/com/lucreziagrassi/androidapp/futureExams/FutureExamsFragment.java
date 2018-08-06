@@ -64,7 +64,7 @@ public class FutureExamsFragment extends Fragment {
                 Fragment newFragment = new FutureExamFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
-                transaction.replace(R.id.list_view_fragment, newFragment);
+                transaction.replace(R.id.content, newFragment);
                 transaction.addToBackStack(null);
 
                 transaction.commit();

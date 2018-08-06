@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.lucreziagrassi.androidapp.booklet.BookletFragment;
 import com.lucreziagrassi.androidapp.booklet.PassedExamFragment;
+import com.lucreziagrassi.androidapp.futureExams.FutureExamFragment;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamsFragment;
 import com.lucreziagrassi.androidapp.home.HomeFragment;
 import com.lucreziagrassi.androidapp.splash.SplashActivity;
@@ -19,7 +20,10 @@ import com.lucreziagrassi.androidapp.timer.TimerFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         BookletFragment.OnFragmentInteractionListener,
-        PassedExamFragment.OnFragmentInteractionListener {
+        PassedExamFragment.OnFragmentInteractionListener,
+        NewLessonFragment.OnFragmentInteractionListener,
+        NewSubjectFragment.OnFragmentInteractionListener,
+        FutureExamFragment.OnFragmentInteractionListener {
 
     private HomeFragment homeFragment = null;
     private TimerFragment timerFragment = null;
