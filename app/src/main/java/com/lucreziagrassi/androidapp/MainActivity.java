@@ -1,6 +1,5 @@
 package com.lucreziagrassi.androidapp;
 
-import android.arch.persistence.room.Room;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -13,11 +12,9 @@ import android.view.MenuItem;
 
 import com.lucreziagrassi.androidapp.booklet.BookletFragment;
 import com.lucreziagrassi.androidapp.booklet.PassedExamFragment;
-import com.lucreziagrassi.androidapp.db.AppDatabase;
-import com.lucreziagrassi.androidapp.db.FutureExam;
-import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamsFragment;
 import com.lucreziagrassi.androidapp.home.HomeFragment;
+import com.lucreziagrassi.androidapp.splash.SplashActivity;
 import com.lucreziagrassi.androidapp.timer.TimerFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
@@ -29,12 +26,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private BookletFragment bookletFragment = null;
     private FutureExamsFragment futureExamsFragment = null;
 
-    private AppDatabase appDB = null;
-
-    public AppDatabase getDB()
-    {
-        return appDB;
-    }
+    private SplashActivity splashActivity = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +46,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         /*
-        // Crea il db, TODO: Da spostare in splash activity in futuro
-        appDB = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "uniplanner_db")
-                                .fallbackToDestructiveMigration()
-                                .allowMainThreadQueries()
-                                .build();
-
         // TODO: Rimuovere, debug only: aggiunge un esame al db
         PassedExam a = new PassedExam(0,"Test", "30", "25/05/18", 6);
         appDB.getPassedExamDao().insert(a);

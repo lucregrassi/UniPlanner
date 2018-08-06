@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".SplashActivity.SplashActivity">
+        <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" android:theme="@style/AppTheme.NoActionBar"/>
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,7 +23,6 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".IntroActivity" />
-        <activity android:name=".booklet.BookletFragment" />
     </application>
 
 </manifest>

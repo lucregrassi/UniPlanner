@@ -31,10 +31,10 @@
         tools:layout_editor_absoluteY="45dp" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/nomeText"
         android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_alignStart="@+id/editText2"
+        android:layout_alignStart="@+id/matricolaText"
         android:layout_below="@+id/logo"
         android:layout_marginTop="28dp"
         android:background="@drawable/rounded_edittext"
@@ -46,11 +46,11 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/matricolaText"
         android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_alignStart="@+id/editText3"
-        android:layout_below="@+id/editText1"
+        android:layout_alignStart="@+id/corsoText"
+        android:layout_below="@+id/nomeText"
         android:layout_marginTop="25dp"
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
@@ -61,11 +61,11 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/corsoText"
         android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_alignStart="@+id/editText4"
-        android:layout_below="@+id/editText2"
+        android:layout_alignStart="@+id/cfuText"
+        android:layout_below="@+id/matricolaText"
         android:layout_marginTop="23dp"
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
@@ -76,10 +76,10 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/cfuText"
         android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/editText3"
+        android:layout_below="@+id/corsoText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
         android:background="@drawable/rounded_edittext"
@@ -88,15 +88,16 @@
         android:drawableTint="@color/lightgray"
         android:ems="10"
         android:hint="@string/credits"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="280dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/editText4"
+        android:layout_below="@+id/cfuText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
+        android:clickable="true"
         app:cardBackgroundColor="@color/colorPrimaryDark"
         app:cardCornerRadius="25dp"
         app:cardElevation="10dp">
@@ -107,9 +108,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/start_button"
-            android:textStyle="bold"
             android:textColor="#fff"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </android.support.v7.widget.CardView>
 
 

@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import com.lucreziagrassi.androidapp.MainActivity;
 import com.lucreziagrassi.androidapp.R;
+import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class FutureExamsFragment extends Fragment {
 
         ListView futureExams = (ListView)view.findViewById(R.id.listView);
 
-        List<FutureExam> futureExamList = ((MainActivity) getActivity()).getDB().getFutureExamDao().getAll();
+        List<FutureExam> futureExamList = DatabaseManager.getDatabase().getFutureExamDao().getAll();
 
         FutureExamsListAdapter adapter = new FutureExamsListAdapter(getActivity(), R.layout.future_exams_list_adapter, futureExamList);
         futureExams.setAdapter(adapter);

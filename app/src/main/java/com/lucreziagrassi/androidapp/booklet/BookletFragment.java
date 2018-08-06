@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import com.lucreziagrassi.androidapp.MainActivity;
 import com.lucreziagrassi.androidapp.R;
+import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class BookletFragment extends Fragment {
 
         ListView passedExams = (ListView)view.findViewById(R.id.listView);
 
-        List<PassedExam> passedExamList = ((MainActivity) getActivity()).getDB().getPassedExamDao().getAll();
+        List<PassedExam> passedExamList = DatabaseManager.getDatabase().getPassedExamDao().getAll();
 
         PassedExamsListAdapter adapter = new PassedExamsListAdapter(getActivity(), R.layout.booklet_list_adapter, passedExamList);
         passedExams.setAdapter(adapter);
