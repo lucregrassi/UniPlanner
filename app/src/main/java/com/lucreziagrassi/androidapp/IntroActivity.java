@@ -28,14 +28,16 @@ public class IntroActivity extends AppCompatActivity implements View.OnClickList
     {
         // Prendo le stringhe dei textView
         String nome = ((EditText)findViewById(R.id.nomeText)).getText().toString();
-        String matricola = ((EditText)findViewById(R.id.matricolaText)).getText().toString();
+        String cognome = ((EditText)findViewById(R.id.cognomeText)).getText().toString();
+        String university = ((EditText)findViewById(R.id.universityText)).getText().toString();
         String corso = ((EditText)findViewById(R.id.corsoText)).getText().toString();
+        String matricola = ((EditText)findViewById(R.id.matricolaText)).getText().toString();
         Integer cfu = Integer.parseInt(((EditText)findViewById(R.id.cfuText)).getText().toString());
 
         if(!nome.equals("") && !matricola.equals("") && !corso.equals("") && cfu != 0)
         {
             // Se i dati sono validi, creo l'utente
-            User newUser = new User(0, nome, matricola, corso);
+            User newUser = new User(0, nome, cognome, university, corso, matricola, cfu);
             DatabaseManager.getDatabase().getUserDao().setUser(newUser);
 
             // Cambio activity

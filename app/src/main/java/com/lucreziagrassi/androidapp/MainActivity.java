@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.lucreziagrassi.androidapp.booklet.BookletFragment;
 import com.lucreziagrassi.androidapp.booklet.PassedExamFragment;
@@ -65,6 +66,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             homeFragment = new HomeFragment();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+
+        ((TextView) findViewById(R.id.welcomeText)).setText("Ciao " + DatabaseManager.getDatabase().getUserDao().getUser().getName() + "!");
+        
+        // TODO: Carica anche gli altri dati dal db
     }
 
     @Override
