@@ -4,14 +4,19 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.lucreziagrassi.androidapp.R;
+import com.lucreziagrassi.androidapp.db.DatabaseManager;
+import com.lucreziagrassi.androidapp.db.PassedExam;
+import com.lucreziagrassi.androidapp.db.User;
 
 
 /**
@@ -22,7 +27,7 @@ import com.lucreziagrassi.androidapp.R;
  * Use the {@link PassedExamFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PassedExamFragment extends Fragment {
+public class PassedExamFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -64,6 +69,15 @@ public class PassedExamFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+
+        CardView addPassedExamButton = (CardView) getView().findViewById(R.id.addPassedExam);
+        addPassedExamButton.setOnClickListener(this);
     }
 
     @Override
@@ -109,6 +123,33 @@ public class PassedExamFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void onAddPassedExamClick()
+    {
+        // Prendo le stringhe dei textView
+        String nome = ((EditText) getView().findViewById(R.id.exam_name)).getText().toString();
+        String voto = ((EditText) getView().findViewById(R.id.exam_vote)).getText().toString();
+        Integer cfu = Integer.parseInt(((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString());
+        String data = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
+
+        if(!nome.equals("") && !data.equals("") && !voto.equals("") && cfu != 0)
+        {
+            // Se i dati sono validi, creo l'esame
+            PassedExam newPassedExam = new PassedExam(0, nome, voto, data, cfu);
+
+            DatabaseManager.getDatabase().getPassedExamDao().insert(newPassedExam);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId())
+        {
+            case R.id.addPassedExam:
+                onAddPassedExamClick();
+                break;
+        }
     }
 
     /**
