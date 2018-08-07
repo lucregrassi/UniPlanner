@@ -44,7 +44,7 @@
         android:drawableStart="@drawable/ic_action_name"
         android:ems="10"
         android:hint="@string/user_name"
-        android:inputType="textPersonName" />
+        android:inputType="textCapWords|textPersonName" />
 
     <EditText
         android:id="@+id/cognomeText"
@@ -58,7 +58,7 @@
         android:drawableStart="@drawable/ic_action_name"
         android:ems="10"
         android:hint="@string/user_surname"
-        android:inputType="textPersonName" />
+        android:inputType="textCapWords|textPersonName" />
 
     <EditText
         android:id="@+id/universityText"
@@ -72,7 +72,7 @@
         android:drawableStart="@drawable/ic_action_university"
         android:ems="10"
         android:hint="@string/university"
-        android:inputType="number" />
+        android:inputType="textCapWords" />
 
     <EditText
         android:id="@+id/corsoText"
@@ -86,7 +86,7 @@
         android:drawableStart="@drawable/ic_action_degree_course"
         android:ems="10"
         android:hint="@string/degree_course"
-        android:inputType="textPersonName" />
+        android:inputType="textCapWords" />
 
     <EditText
         android:id="@+id/matricolaText"
@@ -100,7 +100,7 @@
         android:drawableStart="@drawable/ic_action_badge_number"
         android:ems="10"
         android:hint="@string/badge_number"
-        android:inputType="textPersonName" />
+        android:inputType="textCapCharacters" />
 
     <EditText
         android:id="@+id/cfuText"
