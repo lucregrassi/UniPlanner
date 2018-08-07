@@ -12,6 +12,9 @@ import android.view.MenuItem;
 
 import com.lucreziagrassi.androidapp.booklet.BookletFragment;
 import com.lucreziagrassi.androidapp.booklet.PassedExamFragment;
+import com.lucreziagrassi.androidapp.db.DatabaseManager;
+import com.lucreziagrassi.androidapp.db.FutureExam;
+import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamFragment;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamsFragment;
 import com.lucreziagrassi.androidapp.home.HomeFragment;
@@ -49,14 +52,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        /*
+
         // TODO: Rimuovere, debug only: aggiunge un esame al db
-        PassedExam a = new PassedExam(0,"Test", "30", "25/05/18", 6);
-        appDB.getPassedExamDao().insert(a);
+        PassedExam a = new PassedExam(0,"Sviluppo Applicazioni Web", "30 e lode", "25/05/18", 6);
+        DatabaseManager.getDatabase().getPassedExamDao().insert(a);
 
         FutureExam b = new FutureExam(0, "Controllo Digitale", "25/09/18", 6);
-        appDB.getFutureExamDao().insert(b);
-        */
+        DatabaseManager.getDatabase().getFutureExamDao().insert(b);
+
 
         if(homeFragment == null)
             homeFragment = new HomeFragment();

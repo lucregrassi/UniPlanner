@@ -1,5 +1,7 @@
 package com.lucreziagrassi.androidapp.booklet;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -12,7 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.lucreziagrassi.androidapp.MainActivity;
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.PassedExam;
@@ -26,16 +31,76 @@ public class BookletFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.list_view, container,false);
+        View view = inflater.inflate(R.layout.swipe_menu_listview, container,false);
         getActivity().setTitle(R.string.booklet_fragment_name);
         setHasOptionsMenu(true);
 
-        ListView passedExams = (ListView)view.findViewById(R.id.listView);
+        SwipeMenuListView passedExams = (SwipeMenuListView) view.findViewById(R.id.swipeview);
 
         List<PassedExam> passedExamList = DatabaseManager.getDatabase().getPassedExamDao().getAll();
 
         PassedExamsListAdapter adapter = new PassedExamsListAdapter(getActivity(), R.layout.booklet_list_adapter, passedExamList);
         passedExams.setAdapter(adapter);
+
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
+
+            @Override
+            public void create(SwipeMenu menu) {
+                // create "modify" item
+                SwipeMenuItem openItem = new SwipeMenuItem(
+                        getActivity().getApplicationContext());
+                // set item background
+                openItem.setBackground(new ColorDrawable(Color.rgb(0xcc, 0xcc,
+                        0xcc)));
+                // set item width
+                openItem.setWidth(280);
+                // set item title
+                openItem.setTitle("Modifica");
+                // set item title fontsize
+                openItem.setTitleSize(18);
+                // set item title font color
+                openItem.setTitleColor(Color.WHITE);
+                // add to menu
+                menu.addMenuItem(openItem);
+
+                // create "delete" item
+                SwipeMenuItem deleteItem = new SwipeMenuItem(
+                       getActivity().getApplicationContext());
+                // set item background
+                deleteItem.setBackground(new ColorDrawable(Color.rgb(0xff,
+                        0x00, 0x00)));
+                // set item width
+                deleteItem.setWidth(280);
+                deleteItem.setTitle("Elimina");
+                deleteItem.setTitleSize(18);
+                deleteItem.setTitleColor(Color.WHITE);
+                /*
+                // set a icon
+                deleteItem.setIcon(R.drawable.ic_delete);
+                */
+                // add to menu
+                menu.addMenuItem(deleteItem);
+            }
+        };
+
+        // set creator
+        passedExams.setMenuCreator(creator);
+
+       passedExams.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                switch (index) {
+                    case 0:
+                        // open
+                        break;
+                    case 1:
+                        // delete
+                        break;
+                }
+                // false : close the menu; true : not close the menu
+                return false;
+            }
+        });
 
         return view;
     }
