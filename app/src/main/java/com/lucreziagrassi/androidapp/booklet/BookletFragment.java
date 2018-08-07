@@ -53,13 +53,14 @@ public class BookletFragment extends Fragment {
                 openItem.setBackground(new ColorDrawable(Color.rgb(0xcc, 0xcc,
                         0xcc)));
                 // set item width
-                openItem.setWidth(280);
+                openItem.setWidth(270);
                 // set item title
                 openItem.setTitle("Modifica");
                 // set item title fontsize
                 openItem.setTitleSize(18);
                 // set item title font color
                 openItem.setTitleColor(Color.WHITE);
+                openItem.setIcon(R.drawable.ic_edit);
                 // add to menu
                 menu.addMenuItem(openItem);
 
@@ -70,14 +71,12 @@ public class BookletFragment extends Fragment {
                 deleteItem.setBackground(new ColorDrawable(Color.rgb(0xff,
                         0x00, 0x00)));
                 // set item width
-                deleteItem.setWidth(280);
+                deleteItem.setWidth(270);
                 deleteItem.setTitle("Elimina");
                 deleteItem.setTitleSize(18);
                 deleteItem.setTitleColor(Color.WHITE);
-                /*
                 // set a icon
                 deleteItem.setIcon(R.drawable.ic_delete);
-                */
                 // add to menu
                 menu.addMenuItem(deleteItem);
             }

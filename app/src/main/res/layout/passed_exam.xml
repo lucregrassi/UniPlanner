@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:text="Inserisci i dati relativi al nuovo esame che vuoi aggiungere al tuo libretto"
         android:gravity="center"
+        android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:textSize="15dp"/>
+        android:textSize="15sp"/>
 
 
     <EditText
@@ -27,10 +28,9 @@
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_exam_name"
-        android:drawableTint="@color/lightgray"
         android:ems="10"
         android:hint="@string/exam_name"
-        android:inputType="textPersonName" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/exam_vote"
@@ -42,10 +42,9 @@
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_exam_vote"
-        android:drawableTint="@color/lightgray"
         android:ems="10"
         android:hint="@string/exam_vote"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/exam_cfu"
@@ -57,10 +56,9 @@
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_degree_course"
-        android:drawableTint="@color/lightgray"
         android:ems="10"
         android:hint="@string/exam_cfu"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/exam_date"
@@ -72,10 +70,9 @@
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_credits"
-        android:drawableTint="@color/lightgray"
         android:ems="10"
         android:hint="@string/exam_date"
-        android:inputType="textPersonName" />
+        android:inputType="date" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"

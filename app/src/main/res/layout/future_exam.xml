@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Inserisci i dati relativi al nuovo esame che dovrai sostenere"
         android:gravity="center"
+        android:layout_centerHorizontal="true"
         android:textStyle="bold"
         android:textSize="15sp"/>
 
@@ -26,7 +27,6 @@
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_exam_name"
-        android:drawableTint="@color/lightgray"
         android:ems="10"
         android:hint="@string/exam_name"
         android:inputType="text" />
@@ -41,7 +41,6 @@
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_degree_course"
-        android:drawableTint="@color/lightgray"
         android:ems="10"
         android:hint="@string/exam_cfu"
         android:inputType="number" />
@@ -56,7 +55,6 @@
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_credits"
-        android:drawableTint="@color/lightgray"
         android:ems="10"
         android:hint="@string/exam_date"
         android:inputType="date" />
