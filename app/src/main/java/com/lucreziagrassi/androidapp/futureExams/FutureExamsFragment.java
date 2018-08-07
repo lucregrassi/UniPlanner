@@ -62,7 +62,7 @@ public class FutureExamsFragment extends Fragment {
                 openItem.setBackground(new ColorDrawable(Color.rgb(0xcc, 0xcc,
                         0xcc)));
                 // set item width
-                openItem.setWidth(270);
+                openItem.setWidth(280);
                 // set item title
                 openItem.setTitle("Modifica");
                 // set item title fontsize
@@ -80,7 +80,7 @@ public class FutureExamsFragment extends Fragment {
                 confirmItem.setBackground(new ColorDrawable(Color.rgb(0x00,
                         0xe6, 0x00)));
                 // set item width
-                confirmItem.setWidth(270);
+                confirmItem.setWidth(280);
                 confirmItem.setTitle("Fatto");
                 confirmItem.setTitleSize(18);
                 confirmItem.setTitleColor(Color.WHITE);
@@ -96,7 +96,7 @@ public class FutureExamsFragment extends Fragment {
                 deleteItem.setBackground(new ColorDrawable(Color.rgb(0xff,
                         0x00, 0x00)));
                 // set item width
-                deleteItem.setWidth(270);
+                deleteItem.setWidth(280);
                 deleteItem.setTitle("Elimina");
                 deleteItem.setTitleSize(18);
                 deleteItem.setTitleColor(Color.WHITE);
