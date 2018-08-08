@@ -1,37 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="10dp"
     android:background="@color/background">
 
-    <TextView
-        android:id="@+id/welcomeText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="Ciao Lucrezia!"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:clipToPadding="false"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/gradient_background"
+        android:contentDescription="Homepage Introduction"/>
+
+        <TextView
+            android:id="@+id/university_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="casual"
+            android:text="Universita degli studi di Genova"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/university_name"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="10dp"
+            android:text="Nome utente"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/cardView_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:clipToPadding="false"
+        android:orientation="horizontal">
+
         <android.support.v7.widget.CardView
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_margin="20dp">
+            android:layout_width="150dp"
+            android:layout_height="180dp"
+            android:layout_margin="10dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="161dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -61,92 +95,90 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="28"
-                    android:textSize="30dp"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-    <LinearLayout
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <android.support.v7.widget.CardView
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_margin="20dp">
+            android:layout_width="150dp"
+            android:layout_height="180dp"
+            android:layout_margin="10dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/yellow_circle"
-                    android:src="@drawable/ic_passed_exams"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:src="@drawable/ic_passed_exams" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="@string/passed_exams" />
+                    android:text="@string/passed_exams"
+                    android:textStyle="bold" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/lightgray"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp"
+                    android:background="@color/lightgray" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="10"
-                    android:textSize="30dp"
-                    android:textStyle="bold"/>
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-
-    </LinearLayout>
     </LinearLayout>
 
     <TextView
+        android:id="@+id/title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Proiezione voto di laurea"
         android:gravity="center"
-        android:textSize="15dp"
+        android:text="Proiezione voto di laurea"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
     <FrameLayout
         android:layout_width="350dp"
         android:layout_height="70dp"
         android:layout_gravity="center">
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="center"
-        android:progress="30"
-        android:progressBackgroundTint="#fff"
-        android:progressTint="@color/colorPrimaryDark" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:progress="30"
+            android:progressBackgroundTint="#fff"
+            android:progressTint="@color/colorPrimaryDark" />
 
-        <TextView
-            android:text="30/110"
-            android:textStyle="bold"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true" />
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="30/110"
+                android:textStyle="bold" />
+        </RelativeLayout>
     </FrameLayout>
 
 <TextView
@@ -168,24 +200,24 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:progressBackgroundTint="#fff"
-            android:progressTint="@color/colorPrimary"
             android:max="180"
             android:progress="120"
-            />
+            android:progressBackgroundTint="#fff"
+            android:progressTint="@color/yellow" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:text="120/180"
-                android:textStyle="bold"
-                android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true" />
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="120/180"
+                android:textStyle="bold" />
         </RelativeLayout>
     </FrameLayout>
 
 </LinearLayout>
+</ScrollView>

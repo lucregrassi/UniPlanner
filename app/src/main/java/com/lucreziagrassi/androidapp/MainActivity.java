@@ -1,7 +1,9 @@
 package com.lucreziagrassi.androidapp;
 
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,11 +18,13 @@ import com.lucreziagrassi.androidapp.booklet.PassedExamFragment;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
 import com.lucreziagrassi.androidapp.db.PassedExam;
+import com.lucreziagrassi.androidapp.db.Subject;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamFragment;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamsFragment;
 import com.lucreziagrassi.androidapp.home.HomeFragment;
 import com.lucreziagrassi.androidapp.splash.SplashActivity;
 import com.lucreziagrassi.androidapp.subjects.NewSubjectFragment;
+import com.lucreziagrassi.androidapp.subjects.SubjectsFragment;
 import com.lucreziagrassi.androidapp.timer.TimerFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
@@ -34,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TimerFragment timerFragment = null;
     private BookletFragment bookletFragment = null;
     private FutureExamsFragment futureExamsFragment = null;
+    private SubjectsFragment subjectsFragment = null;
+    private PreferenceFragment preferenceFragment = null;
 
     private SplashActivity splashActivity = null;
 
@@ -62,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FutureExam b = new FutureExam(0, "Controllo Digitale", "25/09/18", 6);
         DatabaseManager.getDatabase().getFutureExamDao().insert(b);
 
+        Subject s = new Subject (0, "Dispositivi e circuiti elettronici", "Daniele Caviglia", Color.RED);
+        DatabaseManager.getDatabase().getSubjectDao().insert(s);
 
         if(homeFragment == null)
             homeFragment = new HomeFragment();
@@ -74,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     {
         super.onStart();
 
-        ((TextView) findViewById(R.id.welcomeText)).setText("Ciao " + DatabaseManager.getDatabase().getUserDao().getUser().getName() + "!");
+        ((TextView) findViewById(R.id.welcomeText)).setText("Bentornata " + DatabaseManager.getDatabase().getUserDao().getUser().getName() + "!");
         
         // TODO: Carica anche gli altri dati dal db
     }
@@ -133,6 +141,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 timerFragment = new TimerFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.content, timerFragment).commit();
         } else if (id == R.id.nav_subjects) {
+
+            if(subjectsFragment == null)
+                subjectsFragment = new SubjectsFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content, subjectsFragment).commit();
 
         }else if (id == R.id.nav_settings){
             getFragmentManager().beginTransaction()

@@ -3,7 +3,7 @@
     <string name="title_activity_navigation_test">NavigationTestActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Lucrezia</string>
+    <string name="nav_header_title">Lucrezia Grassi</string>
     <string name="nav_header_subtitle">Media: 28</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -50,6 +50,9 @@
 
     <!-- strings for new lesson fragment-->
     <string name="new_lesson_fragment_name">Nuova Lezione</string>
+
+    <!-- strings for subjects fragment-->
+    <string name="subjects_fragment_name">Le mie materie</string>
 
     <!-- strings for new subject fragment-->
     <string name="new_subject_fragment_name">Nuova Materia</string>

@@ -30,22 +30,69 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_timer_play"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="@color/colorPrimary"/>
 
         <ImageButton
             android:id="@+id/timer_pauseButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_timer_pause" />
+            android:src="@drawable/ic_timer_pause"
+            android:backgroundTint="@color/colorPrimary"/>
 
         <ImageButton
             android:id="@+id/timer_resetButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_timer_reset"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginStart="15dp"
+            android:backgroundTint="@color/colorPrimary"/>
 
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="35dp">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Imposta la durata del timer"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/darkgray"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/timer_length"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_gravity="center"
+            android:inputType="time" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Imposta la durata della pausa"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/darkgray"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/pause_length"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_gravity="center"
+            android:inputType="time" />
     </LinearLayout>
 
 </LinearLayout>
