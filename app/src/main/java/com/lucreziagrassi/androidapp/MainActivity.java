@@ -20,6 +20,7 @@ import com.lucreziagrassi.androidapp.futureExams.FutureExamFragment;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamsFragment;
 import com.lucreziagrassi.androidapp.home.HomeFragment;
 import com.lucreziagrassi.androidapp.splash.SplashActivity;
+import com.lucreziagrassi.androidapp.subjects.NewSubjectFragment;
 import com.lucreziagrassi.androidapp.timer.TimerFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
