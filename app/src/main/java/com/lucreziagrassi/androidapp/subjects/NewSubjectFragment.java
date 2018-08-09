@@ -68,7 +68,7 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
             @Override
             public void onOk(AmbilWarnaDialog dialog, int color) {
                 mDefaultColor = color;
-                mLayout.setBackgroundColor(color);
+                getActivity().findViewById(R.id.color_picker_button).setBackgroundColor(color);
             }
         });
         colorPicker.show();
