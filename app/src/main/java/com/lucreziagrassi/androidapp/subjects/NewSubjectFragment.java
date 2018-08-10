@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.lucreziagrassi.androidapp.R;
@@ -16,7 +17,7 @@ import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class NewSubjectFragment extends Fragment implements View.OnClickListener {
 
-    RelativeLayout mLayout;
+    ImageView mImageView;
     Integer mDefaultColor;
 
     public NewSubjectFragment() { }
@@ -39,7 +40,7 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
     {
         super.onStart();
 
-        mLayout = getActivity().findViewById(R.id.new_subject_layout);
+        mImageView = getActivity().findViewById(R.id.chosen_color);
         mDefaultColor = ContextCompat.getColor(getActivity(), R.color.colorPrimary);
 
         CardView colorPickerButton = getActivity().findViewById(R.id.color_picker_button);
@@ -68,7 +69,7 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
             @Override
             public void onOk(AmbilWarnaDialog dialog, int color) {
                 mDefaultColor = color;
-                mLayout.setBackgroundColor(color);
+                mImageView.setBackgroundColor(color);
             }
         });
         colorPicker.show();
