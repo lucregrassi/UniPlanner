@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.lucreziagrassi.androidapp.R;
@@ -140,6 +142,18 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
 
             DatabaseManager.getDatabase().getPassedExamDao().insert(newPassedExam);
         }
+
+        // Chiude la tastiera
+        InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        View currentFocusedView = getActivity().getCurrentFocus();
+
+        if (currentFocusedView != null)
+            inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+
+        // Ritorna al libretto
+        getFragmentManager().popBackStack();
     }
 
     @Override
