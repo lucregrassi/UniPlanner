@@ -27,14 +27,14 @@ public class FutureExamsListAdapter extends ArrayAdapter<FutureExam> {
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent) {
         String subject = getItem(position).getSubject();
         int cfu = getItem(position).getCFU();
         String date = getItem(position).getDate();
 
         FutureExam futureExam = new FutureExam(0, subject, date, cfu);
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        convertView= inflater.inflate(mResource, parent, false);
+        convertView = inflater.inflate(mResource, parent, false);
 
         TextView tvSubject = (TextView) convertView.findViewById(R.id.textView6);
         TextView tvDate = (TextView) convertView.findViewById(R.id.textView4);

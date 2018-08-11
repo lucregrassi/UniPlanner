@@ -10,16 +10,16 @@ public class PassedExam {
     @PrimaryKey(autoGenerate = true)
     private int ID;
 
-    @ColumnInfo(name="Subject")
+    @ColumnInfo(name = "Subject")
     private String Subject;
 
-    @ColumnInfo(name="Vote")
+    @ColumnInfo(name = "Vote")
     private Integer Vote;
 
-    @ColumnInfo(name="Date")
+    @ColumnInfo(name = "Date")
     private String Date;
 
-    @ColumnInfo(name="CFU")
+    @ColumnInfo(name = "CFU")
     private int CFU;
 
     public PassedExam(int ID, String Subject, Integer Vote, String Date, int CFU) {
@@ -30,11 +30,17 @@ public class PassedExam {
         this.CFU = CFU;
     }
 
-    public int getID() { return ID; }
+    public int getID() {
+        return ID;
+    }
 
-    public void setID(int ID) { this.ID = ID; }
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
-    public String getSubject() { return Subject; }
+    public String getSubject() {
+        return Subject;
+    }
 
     public void setSubject(String subject) {
         this.Subject = subject;

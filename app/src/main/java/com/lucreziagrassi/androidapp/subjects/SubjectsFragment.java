@@ -18,13 +18,10 @@ import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.lucreziagrassi.androidapp.R;
-import com.lucreziagrassi.androidapp.booklet.PassedExamFragment;
-import com.lucreziagrassi.androidapp.booklet.PassedExamsListAdapter;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.Subject;
 
 import java.util.List;
-
 
 public class SubjectsFragment extends Fragment {
     private static final String TAG = "SubjectsFragment";
@@ -32,7 +29,7 @@ public class SubjectsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.swipe_menu_listview, container,false);
+        View view = inflater.inflate(R.layout.swipe_menu_listview, container, false);
         getActivity().setTitle(R.string.subjects_fragment_name);
         setHasOptionsMenu(true);
 
@@ -117,9 +114,9 @@ public class SubjectsFragment extends Fragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.action_bar_add_button, menu);
-        super.onCreateOptionsMenu(menu,inflater);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override

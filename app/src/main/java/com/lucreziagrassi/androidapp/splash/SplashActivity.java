@@ -10,13 +10,11 @@ import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.AppDatabase;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 
-
 public class SplashActivity extends AppCompatActivity {
 
     private AppDatabase appDB = null;
 
-    public AppDatabase getDB()
-    {
+    public AppDatabase getDB() {
         return appDB;
     }
 

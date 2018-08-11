@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.lucreziagrassi.androidapp.R;
 
@@ -20,11 +19,12 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
     ImageView mImageView;
     Integer mDefaultColor;
 
-    public NewSubjectFragment() { }
+    public NewSubjectFragment() {
+        //empty constructor
+    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
@@ -36,8 +36,7 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void onStart()
-    {
+    public void onStart() {
         super.onStart();
 
         mImageView = getActivity().findViewById(R.id.chosen_color);
@@ -48,10 +47,8 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void onClick(View v)
-    {
-        switch(v.getId())
-        {
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.color_picker_button:
                 openColorPicker();
                 break;
@@ -59,7 +56,7 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
     }
 
 
-    public void openColorPicker(){
+    public void openColorPicker() {
         AmbilWarnaDialog colorPicker = new AmbilWarnaDialog(getActivity(), mDefaultColor, new AmbilWarnaDialog.OnAmbilWarnaListener() {
             @Override
             public void onCancel(AmbilWarnaDialog dialog) {
@@ -75,8 +72,7 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
         colorPicker.show();
     }
 
-    public interface OnFragmentInteractionListener
-    {
+    public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }

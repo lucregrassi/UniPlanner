@@ -4,7 +4,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,7 +18,6 @@ import android.widget.Toast;
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.PassedExam;
-import com.lucreziagrassi.androidapp.db.User;
 
 public class PassedExamFragment extends Fragment implements View.OnClickListener {
 
@@ -36,8 +34,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void onStart()
-    {
+    public void onStart() {
         super.onStart();
         CardView addPassedExamButton = (CardView) getView().findViewById(R.id.addPassedExam);
         addPassedExamButton.setOnClickListener(this);
@@ -59,9 +56,9 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.activity_home_drawer, menu);
-        super.onCreateOptionsMenu(menu,inflater);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -81,26 +78,24 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         mListener = null;
     }
 
-    public void onAddPassedExamClick()
-    {
+    public void onAddPassedExamClick() {
         // Prendo le stringhe dei textView
         String nome = ((EditText) getView().findViewById(R.id.exam_name)).getText().toString();
         Integer voto = Integer.parseInt(((EditText) getView().findViewById(R.id.exam_vote)).getText().toString());
         Integer cfu = Integer.parseInt(((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString());
         String data = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
 
-        if(voto < 1 || voto > 31){
-            Toast.makeText(getContext(), "Il voto deve essere compreso tra 1 e 30",Toast.LENGTH_LONG).show();
+        if (voto < 1 || voto > 31) {
+            Toast.makeText(getContext(), "Il voto deve essere compreso tra 1 e 30", Toast.LENGTH_LONG).show();
         }
 
-        if(!nome.equals("") && !data.equals("") && (voto > 0 || voto < 31) && cfu != 0) {
+        if (!nome.equals("") && !data.equals("") && (voto > 0 || voto < 31) && cfu != 0) {
             // Se i dati sono validi, creo l'esame
             PassedExam newPassedExam = new PassedExam(0, nome, voto, data, cfu);
             DatabaseManager.getDatabase().getPassedExamDao().insert(newPassedExam);
             // Ritorna al libretto
             getFragmentManager().popBackStack();
-        }
-        else {
+        } else {
             Toast.makeText(getContext(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
         }
 
@@ -116,8 +111,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        switch(v.getId())
-        {
+        switch (v.getId()) {
             case R.id.addPassedExam:
                 onAddPassedExamClick();
                 break;

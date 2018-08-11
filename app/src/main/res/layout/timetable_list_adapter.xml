@@ -7,7 +7,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp">
+        android:layout_height="35dp"
+        android:id="@+id/rl1">
 
         <TextView
             android:id="@+id/subject_tv"
@@ -16,31 +17,46 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_gravity="left"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"
             android:text="Dispositivi e Circuiti Elettronici"
             android:textColor="@color/darkgray"
-            android:textSize="22sp"
+            android:textSize="18sp"
+            android:layout_marginStart="80dp"
             android:textStyle="bold" />
 
         <ImageView
-            android:layout_width="12dp"
+            android:layout_width="70dp"
             android:id="@+id/color_tv1"
             android:layout_height="match_parent"
-            android:layout_alignEnd="@id/subject_tv"
             android:background="@color/colorPrimaryDark"/>
+
+        <TextView
+            android:id="@+id/start_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="9:00"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_alignTop="@id/color_tv1"
+            android:layout_alignBottom="@id/color_tv1"
+            android:layout_alignStart="@id/color_tv1"
+            android:layout_alignEnd="@id/color_tv1"
+            android:textSize="15sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/rl2">
 
         <ImageView
             android:id="@+id/place_icon"
             android:layout_width="30dp"
             android:layout_height="25dp"
+            android:layout_marginStart="75dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:src="@drawable/ic_location" />
@@ -52,10 +68,10 @@
             android:layout_toEndOf="@id/place_icon"
             android:text="E3"
             android:textColor="@color/darkgray"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
 
         <ImageView
-            android:id="@+id/prof_icon"
+            android:id="@+id/professor_icon"
             android:layout_width="30dp"
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
@@ -67,17 +83,29 @@
             android:id="@+id/professor_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toEndOf="@id/prof_icon"
+            android:layout_toEndOf="@id/professor_icon"
             android:text="Daniele Caviglia"
             android:textColor="@color/darkgray"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
 
         <ImageView
-            android:layout_width="12dp"
+            android:layout_width="70dp"
             android:id="@+id/color_tv2"
             android:layout_height="match_parent"
-            android:layout_alignEnd="@id/professor_tv"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@color/colorPrimaryDark" />
+
+        <TextView
+            android:id="@+id/end_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/color_tv2"
+            android:layout_alignStart="@id/color_tv2"
+            android:layout_alignEnd="@id/color_tv2"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="10:00"
+            android:textSize="15sp"/>
 
     </RelativeLayout>
 </LinearLayout>

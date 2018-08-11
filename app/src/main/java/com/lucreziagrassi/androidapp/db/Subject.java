@@ -10,13 +10,13 @@ public class Subject {
     @PrimaryKey(autoGenerate = true)
     private int ID;
 
-    @ColumnInfo(name="Subject")
+    @ColumnInfo(name = "Subject")
     private String Subject;
 
-    @ColumnInfo(name="Professor")
+    @ColumnInfo(name = "Professor")
     private String Professor;
 
-    @ColumnInfo(name="Color")
+    @ColumnInfo(name = "Color")
     private int Color;
 
     public Subject(int ID, String Subject, String Professor, int Color) {
@@ -26,22 +26,36 @@ public class Subject {
         this.Color = Color;
     }
 
-    public int getID() { return ID; }
+    public int getID() {
+        return ID;
+    }
 
-    public void setID(int ID) { this.ID = ID; }
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
-    public String getSubject() { return Subject; }
+    public String getSubject() {
+        return Subject;
+    }
 
     public void setSubject(String subject) {
         this.Subject = subject;
     }
 
-    public String getProfessor() { return Professor; }
+    public String getProfessor() {
+        return Professor;
+    }
 
-    public void setProfessor(String professor) { Professor = professor; }
+    public void setProfessor(String professor) {
+        Professor = professor;
+    }
 
-    public int getColor() { return Color; }
+    public int getColor() {
+        return Color;
+    }
 
-    public void setColor(int color) { Color = color; }
+    public void setColor(int color) {
+        Color = color;
+    }
 
 }

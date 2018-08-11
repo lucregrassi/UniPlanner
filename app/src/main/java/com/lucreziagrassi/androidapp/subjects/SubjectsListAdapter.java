@@ -25,7 +25,7 @@ public class SubjectsListAdapter extends ArrayAdapter<Subject> {
     private Context mContext;
     private int mResource;
 
-    public SubjectsListAdapter(Context context, int resource, List<Subject> objects) {
+    SubjectsListAdapter(Context context, int resource, List<Subject> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
@@ -33,14 +33,14 @@ public class SubjectsListAdapter extends ArrayAdapter<Subject> {
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent) {
         String subject_name = getItem(position).getSubject();
         String prof = getItem(position).getProfessor();
         Integer color = getItem(position).getColor();
 
         Subject subject = new Subject(0, subject_name, prof, color);
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        convertView= inflater.inflate(mResource, parent, false);
+        convertView = inflater.inflate(mResource, parent, false);
 
         TextView tvSubject = (TextView) convertView.findViewById(R.id.subject_tv);
         TextView tvProf = (TextView) convertView.findViewById(R.id.professor_tv);

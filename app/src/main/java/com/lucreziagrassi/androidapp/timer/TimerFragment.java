@@ -17,38 +17,29 @@ import java.util.Locale;
 public class TimerFragment extends Fragment {
 
     private static final long START_TIME_IN_MILLIS = 1500000;
-
     private TextView timerTextView;
-
-    private ImageButton playButton;
-    private ImageButton pauseButton;
-    private ImageButton resetButton;
-
     private CountDownTimer timer;
-
     private boolean timerRunning;
-
     private long remainingTimeInMillis = START_TIME_IN_MILLIS;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-
         // inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.timer_fragment, container,false);
+        View view = inflater.inflate(R.layout.timer_fragment, container, false);
 
         // get references to widgets
         timerTextView = view.findViewById(R.id.textViewTimer);
 
-        playButton = view.findViewById(R.id.timer_playButton);
-        pauseButton = view.findViewById(R.id.timer_pauseButton);
-        resetButton = view.findViewById(R.id.timer_resetButton);
+        ImageButton playButton = view.findViewById(R.id.timer_playButton);
+        ImageButton pauseButton = view.findViewById(R.id.timer_pauseButton);
+        ImageButton resetButton = view.findViewById(R.id.timer_resetButton);
 
         // set listeners
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!timerRunning){
+                if (!timerRunning) {
                     start();
                 }
             }
@@ -86,7 +77,7 @@ public class TimerFragment extends Fragment {
         super.onSaveInstanceState(outState);
     }
 
-    private void start(){
+    private void start() {
         timer = new CountDownTimer(remainingTimeInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -103,20 +94,20 @@ public class TimerFragment extends Fragment {
         timerRunning = true;
     }
 
-    private void pause(){
+    private void pause() {
         timer.cancel();
         timerRunning = false;
     }
 
-    private void reset(){
+    private void reset() {
         remainingTimeInMillis = START_TIME_IN_MILLIS;
         updateCountDownText();
     }
 
-    private void updateCountDownText(){
-        int minutes = (int) (remainingTimeInMillis/1000)/60;
-        int seconds = (int) (remainingTimeInMillis/1000)%60;
-        String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds);
+    private void updateCountDownText() {
+        int minutes = (int) (remainingTimeInMillis / 1000) / 60;
+        int seconds = (int) (remainingTimeInMillis / 1000) % 60;
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
         timerTextView.setText(timeLeftFormatted);
     }
 

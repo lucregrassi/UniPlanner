@@ -3,7 +3,6 @@ package com.lucreziagrassi.androidapp;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,8 +10,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.lucreziagrassi.androidapp.booklet.BookletFragment;
 import com.lucreziagrassi.androidapp.booklet.PassedExamFragment;
@@ -20,18 +17,14 @@ import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.db.Subject;
-import com.lucreziagrassi.androidapp.db.User;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamFragment;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamsFragment;
 import com.lucreziagrassi.androidapp.home.HomeFragment;
-import com.lucreziagrassi.androidapp.splash.SplashActivity;
 import com.lucreziagrassi.androidapp.subjects.NewSubjectFragment;
 import com.lucreziagrassi.androidapp.subjects.SubjectsFragment;
 import com.lucreziagrassi.androidapp.timer.TimerFragment;
-import com.lucreziagrassi.androidapp.weekCalendar.NewLessonFragment;
-import com.lucreziagrassi.androidapp.weekCalendar.WeekFragment;
-
-import java.util.List;
+import com.lucreziagrassi.androidapp.timetable.NewLessonFragment;
+import com.lucreziagrassi.androidapp.timetable.TimetableFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         BookletFragment.OnFragmentInteractionListener,
@@ -45,10 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private BookletFragment bookletFragment = null;
     private FutureExamsFragment futureExamsFragment = null;
     private SubjectsFragment subjectsFragment = null;
-    private WeekFragment weekFragment = null;
-    private PreferenceFragment preferenceFragment = null;
-
-    private SplashActivity splashActivity = null;
+    private TimetableFragment timetableFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
         // TODO: Rimuovere, debug only: aggiunge un esame al db
         PassedExam a = new PassedExam(0,"Sviluppo Applicazioni Web", 30, "25/05/18", 6);
@@ -120,10 +109,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_schedule) {
 
-            if(weekFragment == null)
-                weekFragment = new WeekFragment();
+            if(timetableFragment == null)
+                timetableFragment = new TimetableFragment();
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.content, weekFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content, timetableFragment).commit();
 
         } else if (id == R.id.nav_exams) {
 

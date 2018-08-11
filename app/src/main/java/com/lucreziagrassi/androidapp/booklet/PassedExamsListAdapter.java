@@ -25,8 +25,9 @@ public class PassedExamsListAdapter extends ArrayAdapter<PassedExam> {
         mResource = resource;
     }
 
-    @NonNull @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    @NonNull
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
         String subject = getItem(position).getSubject();
         Integer vote = getItem(position).getVote();
         int cfu = getItem(position).getCFU();
@@ -34,7 +35,7 @@ public class PassedExamsListAdapter extends ArrayAdapter<PassedExam> {
 
         PassedExam passedExam = new PassedExam(0, subject, vote, date, cfu);
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        convertView= inflater.inflate(mResource, parent, false);
+        convertView = inflater.inflate(mResource, parent, false);
 
         TextView tvSubject = (TextView) convertView.findViewById(R.id.textView6);
         TextView tvVote = (TextView) convertView.findViewById(R.id.textView7);

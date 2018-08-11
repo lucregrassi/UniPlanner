@@ -7,8 +7,7 @@ public class DatabaseManager {
 
     private static AppDatabase appDB = null;
 
-    public static void initializeDatabase(Context context)
-    {
+    public static void initializeDatabase(Context context) {
         // Crea o apre il DB
         appDB = Room.databaseBuilder(context, AppDatabase.class, "uniplanner_db")
                 .fallbackToDestructiveMigration()
@@ -16,8 +15,7 @@ public class DatabaseManager {
                 .build();
     }
 
-    public static AppDatabase getDatabase()
-    {
+    public static AppDatabase getDatabase() {
         return appDB;
     }
 }

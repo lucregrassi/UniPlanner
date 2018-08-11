@@ -12,7 +12,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
@@ -31,7 +30,7 @@ public class BookletFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.swipe_menu_listview, container,false);
+        View view = inflater.inflate(R.layout.swipe_menu_listview, container, false);
         getActivity().setTitle(R.string.booklet_fragment_name);
         setHasOptionsMenu(true);
 
@@ -66,7 +65,7 @@ public class BookletFragment extends Fragment {
 
                 // create "delete" item
                 SwipeMenuItem deleteItem = new SwipeMenuItem(
-                       getActivity().getApplicationContext());
+                        getActivity().getApplicationContext());
                 // set item background
                 deleteItem.setBackground(new ColorDrawable(Color.rgb(0xff,
                         0x00, 0x00)));
@@ -85,7 +84,7 @@ public class BookletFragment extends Fragment {
         // set creator
         passedExams.setMenuCreator(creator);
 
-       passedExams.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+        passedExams.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 switch (index) {
@@ -116,9 +115,9 @@ public class BookletFragment extends Fragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.action_bar_add_button, menu);
-        super.onCreateOptionsMenu(menu,inflater);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -139,7 +138,6 @@ public class BookletFragment extends Fragment {
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
-
         }
     }
 }

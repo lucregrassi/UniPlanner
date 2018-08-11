@@ -1,7 +1,5 @@
 package com.lucreziagrassi.androidapp.home;
 
-import android.app.Activity;
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,36 +19,31 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.home, container,false);
-
+        View view = inflater.inflate(R.layout.home, container, false);
         getActivity().setTitle(R.string.home_fragment_name);
 
         return view;
     }
 
     @Override
-    public void onStart()
-    {
+    public void onStart() {
         super.onStart();
 
         // Imposta i dati dell'utente
         User user = DatabaseManager.getDatabase().getUserDao().getUser();
 
         ((TextView) getView().findViewById(R.id.welcomeText)).setText("Ciao " + user.getName() + "!");
+        ((TextView) getView().findViewById(R.id.university_name)).setText(user.getUniversity());
 
-        // Calcola media, cfu e voto stimato
-
+        //Calcola media, cfu e voto stimato
         Double avgPonderata = 0.0;
         Integer sumCFU = 0;
 
         List<PassedExam> passedExams = DatabaseManager.getDatabase().getPassedExamDao().getAll();
 
-        for(PassedExam passedExam : passedExams)
-        {
+        for (PassedExam passedExam : passedExams) {
             avgPonderata += passedExam.getVote() * passedExam.getCFU();
             sumCFU += passedExam.getCFU();
         }
@@ -64,8 +57,8 @@ public class HomeFragment extends Fragment {
         ((TextView) getView().findViewById(R.id.avgExams)).setText(Math.round(avgPonderata) + "");
         ((TextView) getView().findViewById(R.id.passedExamCount)).setText(passedExams.size() + "");
 
-        int votoLaurea = (int)Math.round(avgPonderata * 11 / 3);
-        ((ProgressBar) getView().findViewById(R.id.votoLaureaProgressBar)).setProgress(votoLaurea);
-        ((TextView) getView().findViewById(R.id.votoLaureaProgressBarText)).setText(votoLaurea + "/" + 110);
+        int degreeVote = (int) Math.round(avgPonderata * 11 / 3);
+        ((ProgressBar) getView().findViewById(R.id.votoLaureaProgressBar)).setProgress(degreeVote);
+        ((TextView) getView().findViewById(R.id.votoLaureaProgressBarText)).setText(degreeVote + "/" + 110);
     }
 }

@@ -1,25 +1,17 @@
-package com.lucreziagrassi.androidapp.weekCalendar;
+package com.lucreziagrassi.androidapp.timetable;
 
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.lucreziagrassi.androidapp.R;
 
-import yuku.ambilwarna.AmbilWarnaDialog;
-
-public class NewLessonFragment extends Fragment
-{
+public class NewLessonFragment extends Fragment {
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
@@ -31,7 +23,6 @@ public class NewLessonFragment extends Fragment
 
         return view;
     }
-
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
