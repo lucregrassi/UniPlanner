@@ -1,4 +1,4 @@
-package com.lucreziagrassi.androidapp;
+package com.lucreziagrassi.androidapp.weekCalendar;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.lucreziagrassi.androidapp.R;
 
 import yuku.ambilwarna.AmbilWarnaDialog;
 

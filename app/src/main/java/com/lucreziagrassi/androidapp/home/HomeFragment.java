@@ -1,12 +1,21 @@
 package com.lucreziagrassi.androidapp.home;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.lucreziagrassi.androidapp.R;
+import com.lucreziagrassi.androidapp.db.DatabaseManager;
+import com.lucreziagrassi.androidapp.db.PassedExam;
+import com.lucreziagrassi.androidapp.db.User;
+
+import java.util.List;
 
 
 public class HomeFragment extends Fragment {
@@ -21,5 +30,42 @@ public class HomeFragment extends Fragment {
         getActivity().setTitle(R.string.home_fragment_name);
 
         return view;
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+
+        // Imposta i dati dell'utente
+        User user = DatabaseManager.getDatabase().getUserDao().getUser();
+
+        ((TextView) getView().findViewById(R.id.welcomeText)).setText("Ciao " + user.getName() + "!");
+
+        // Calcola media, cfu e voto stimato
+
+        Double avgPonderata = 0.0;
+        Integer sumCFU = 0;
+
+        List<PassedExam> passedExams = DatabaseManager.getDatabase().getPassedExamDao().getAll();
+
+        for(PassedExam passedExam : passedExams)
+        {
+            avgPonderata += passedExam.getVote() * passedExam.getCFU();
+            sumCFU += passedExam.getCFU();
+        }
+
+        avgPonderata /= sumCFU;
+
+        ((ProgressBar) getView().findViewById(R.id.cfuProgressBar)).setMax(user.getCFU());
+        ((ProgressBar) getView().findViewById(R.id.cfuProgressBar)).setProgress(sumCFU);
+        ((TextView) getView().findViewById(R.id.cfuProgressBarText)).setText(sumCFU + "/" + user.getCFU());
+
+        ((TextView) getView().findViewById(R.id.avgExams)).setText(Math.round(avgPonderata) + "");
+        ((TextView) getView().findViewById(R.id.passedExamCount)).setText(passedExams.size() + "");
+
+        int votoLaurea = (int)Math.round(avgPonderata * 11 / 3);
+        ((ProgressBar) getView().findViewById(R.id.votoLaureaProgressBar)).setProgress(votoLaurea);
+        ((TextView) getView().findViewById(R.id.votoLaureaProgressBarText)).setText(votoLaurea + "/" + 110);
     }
 }

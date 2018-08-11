@@ -42,8 +42,8 @@ public class PassedExamsListAdapter extends ArrayAdapter<PassedExam> {
         TextView tvCfu = (TextView) convertView.findViewById(R.id.textView5);
 
         tvSubject.setText(subject);
-        tvVote.setText(vote);
-        tvCfu.setText(cfu);
+        tvVote.setText("" + vote);
+        tvCfu.setText("" + cfu);
         tvDate.setText(date);
 
         return convertView;

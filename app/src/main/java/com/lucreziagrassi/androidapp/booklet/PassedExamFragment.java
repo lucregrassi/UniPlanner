@@ -59,13 +59,6 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         item.setVisible(false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         inflater.inflate(R.menu.activity_home_drawer, menu);
@@ -93,7 +86,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
     {
         // Prendo le stringhe dei textView
         String nome = ((EditText) getView().findViewById(R.id.exam_name)).getText().toString();
-        Integer voto = Integer.parseInt(exam_vote.getText().toString());
+        Integer voto = Integer.parseInt(((EditText) getView().findViewById(R.id.exam_vote)).getText().toString());
         Integer cfu = Integer.parseInt(((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString());
         String data = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
 
