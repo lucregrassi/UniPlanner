@@ -34,13 +34,13 @@
     <string name="expected_degree_vote">Proiezione voto di laurea</string>
     <string name="acquired_credits">Crediti acquisiti</string>
 
-    <!-- strings for booklet fragment-->
+    <!-- strings for Booklet fragment-->
     <string name="booklet_fragment_name">Libretto</string>
 
-    <!-- strings for future exams fragment-->
+    <!-- strings for FutureExams fragment-->
     <string name="future_exams_fragment_name">Prossimi Esami</string>
 
-    <!-- strings for passedExamexam fragment-->
+    <!-- strings for PassedExam fragment-->
     <string name="new_exam_fragment_name">Nuovo Esame</string>
     <string name="add_exam_button">Aggiungi</string>
     <string name="exam_name">Nome dell\'esame</string>
@@ -48,17 +48,17 @@
     <string name="exam_date">Data dell\'esame</string>
     <string name="exam_vote">Voto</string>
 
-    <!-- strings for new lesson fragment-->
+    <!-- strings for NewLesson fragment-->
     <string name="new_lesson_fragment_name">Nuova Lezione</string>
 
-    <!-- strings for subjects fragment-->
+    <!-- strings for Subjects fragment-->
     <string name="subjects_fragment_name">Le mie materie</string>
 
-    <!-- strings for new subject fragment-->
+    <!-- strings for New Subject fragment-->
     <string name="new_subject_fragment_name">Nuova Materia</string>
 
-    <!-- strings for week fragment -->
-    <string name="week_fragment_name">Orario settimanale</string>
+    <!-- strings for TimeTable fragment -->
+    <string name="timetable_fragment_name">Orario settimanale</string>
 
     <!-- strings timer_fragment -->
     <string name="timer_fragment_name">Timer</string>

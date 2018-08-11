@@ -26,7 +26,7 @@ public class TimetableFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.week_fragment, container, false);
+        View view = inflater.inflate(R.layout.timetable_fragment, container, false);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -61,7 +61,7 @@ public class TimetableFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getActivity().setTitle(R.string.week_fragment_name);
+        getActivity().setTitle(R.string.timetable_fragment_name);
     }
 
     @Override
