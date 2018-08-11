@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
@@ -91,6 +92,7 @@
                     android:background="@color/lightgray" />
 
                 <TextView
+                    android:id="@+id/avgExams"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -133,6 +135,7 @@
                     android:background="@color/lightgray" />
 
                 <TextView
+                    android:id="@+id/passedExamCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -159,7 +162,7 @@
         android:layout_gravity="center">
 
         <ProgressBar
-            android:id="@+id/progressBar1"
+            android:id="@+id/votoLaureaProgressBar"
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="30dp"
@@ -171,7 +174,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
+                android:id="@+id/votoLaureaProgressBarText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -195,7 +200,7 @@
         android:layout_gravity="center">
 
         <ProgressBar
-            android:id="@+id/progressBar2"
+            android:id="@+id/cfuProgressBar"
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="30dp"
@@ -210,6 +215,7 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/cfuProgressBarText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"

@@ -14,7 +14,7 @@ public class PassedExam {
     private String Subject;
 
     @ColumnInfo(name="Vote")
-    private String Vote;
+    private Integer Vote;
 
     @ColumnInfo(name="Date")
     private String Date;
@@ -22,7 +22,7 @@ public class PassedExam {
     @ColumnInfo(name="CFU")
     private int CFU;
 
-    public PassedExam(int ID, String Subject, String Vote, String Date, int CFU) {
+    public PassedExam(int ID, String Subject, Integer Vote, String Date, int CFU) {
         this.ID = ID;
         this.Subject = Subject;
         this.Vote = Vote;
@@ -40,11 +40,11 @@ public class PassedExam {
         this.Subject = subject;
     }
 
-    public String getVote() {
+    public Integer getVote() {
         return Vote;
     }
 
-    public void setVote(String vote) {
+    public void setVote(Integer vote) {
         this.Vote = vote;
     }
 

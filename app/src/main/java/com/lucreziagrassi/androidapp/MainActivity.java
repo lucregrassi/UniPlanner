@@ -1,6 +1,5 @@
 package com.lucreziagrassi.androidapp;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.lucreziagrassi.androidapp.booklet.BookletFragment;
@@ -20,6 +20,7 @@ import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.db.Subject;
+import com.lucreziagrassi.androidapp.db.User;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamFragment;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamsFragment;
 import com.lucreziagrassi.androidapp.home.HomeFragment;
@@ -27,7 +28,10 @@ import com.lucreziagrassi.androidapp.splash.SplashActivity;
 import com.lucreziagrassi.androidapp.subjects.NewSubjectFragment;
 import com.lucreziagrassi.androidapp.subjects.SubjectsFragment;
 import com.lucreziagrassi.androidapp.timer.TimerFragment;
+import com.lucreziagrassi.androidapp.weekCalendar.NewLessonFragment;
 import com.lucreziagrassi.androidapp.weekCalendar.WeekFragment;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         BookletFragment.OnFragmentInteractionListener,
@@ -65,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         // TODO: Rimuovere, debug only: aggiunge un esame al db
-        PassedExam a = new PassedExam(0,"Sviluppo Applicazioni Web", "30 e lode", "25/05/18", 6);
+        PassedExam a = new PassedExam(0,"Sviluppo Applicazioni Web", 30, "25/05/18", 6);
         DatabaseManager.getDatabase().getPassedExamDao().insert(a);
 
         FutureExam b = new FutureExam(0, "Controllo Digitale", "25/09/18", 6);
@@ -78,16 +82,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             homeFragment = new HomeFragment();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
-    }
-
-    @Override
-    public void onStart()
-    {
-        super.onStart();
-
-        ((TextView) findViewById(R.id.welcomeText)).setText("Bentornata " + DatabaseManager.getDatabase().getUserDao().getUser().getName() + "!");
-        
-        // TODO: Carica anche gli altri dati dal db
     }
 
     @Override

@@ -45,32 +45,10 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PassedExamFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PassedExamFragment newInstance(String param1, String param2) {
-        PassedExamFragment fragment = new PassedExamFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(false);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -78,7 +56,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
     {
         super.onStart();
 
-        CardView addPassedExamButton = (CardView) getView().findViewById(R.id.addPassedExam);
+        CardView addPassedExamButton = getView().findViewById(R.id.addPassedExam);
         addPassedExamButton.setOnClickListener(this);
     }
 
@@ -95,13 +73,6 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
     public void onPrepareOptionsMenu(Menu menu) {
         MenuItem item = menu.findItem(R.id.add_button);
         item.setVisible(false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -131,7 +102,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
     {
         // Prendo le stringhe dei textView
         String nome = ((EditText) getView().findViewById(R.id.exam_name)).getText().toString();
-        String voto = ((EditText) getView().findViewById(R.id.exam_vote)).getText().toString();
+        Integer voto = Integer.parseInt(((EditText) getView().findViewById(R.id.exam_vote)).getText().toString());
         Integer cfu = Integer.parseInt(((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString());
         String data = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
 

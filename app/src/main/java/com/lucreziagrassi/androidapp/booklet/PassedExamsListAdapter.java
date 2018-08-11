@@ -28,7 +28,7 @@ public class PassedExamsListAdapter extends ArrayAdapter<PassedExam> {
     @NonNull @Override
     public View getView(int position, View convertView, ViewGroup parent){
         String subject = getItem(position).getSubject();
-        String vote = getItem(position).getVote();
+        Integer vote = getItem(position).getVote();
         int cfu = getItem(position).getCFU();
         String date = getItem(position).getDate();
 
@@ -42,7 +42,7 @@ public class PassedExamsListAdapter extends ArrayAdapter<PassedExam> {
         TextView tvCfu = (TextView) convertView.findViewById(R.id.textView5);
 
         tvSubject.setText(subject);
-        tvVote.setText(vote);
+        tvVote.setText("" + vote);
         tvCfu.setText("" + cfu);
         tvDate.setText(date);
 
