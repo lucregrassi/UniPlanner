@@ -24,7 +24,6 @@ import com.lucreziagrassi.androidapp.db.User;
 public class PassedExamFragment extends Fragment implements View.OnClickListener {
 
     private OnFragmentInteractionListener mListener;
-    EditText exam_vote = (EditText) getActivity().findViewById(R.id.exam_vote);
 
     public PassedExamFragment() {
         // Required empty public constructor
@@ -94,7 +93,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
             Toast.makeText(getContext(), "Il voto deve essere compreso tra 1 e 30",Toast.LENGTH_LONG).show();
         }
 
-        if(!nome.isEmpty() && !data.isEmpty() && (voto > 0 || voto < 31) && cfu != 0) {
+        if(!nome.equals("") && !data.equals("") && (voto > 0 || voto < 31) && cfu != 0) {
             // Se i dati sono validi, creo l'esame
             PassedExam newPassedExam = new PassedExam(0, nome, voto, data, cfu);
             DatabaseManager.getDatabase().getPassedExamDao().insert(newPassedExam);
@@ -125,16 +124,6 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         }
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

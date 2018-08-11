@@ -20,11 +20,11 @@ public class IntroActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro);
 
-        CardView iniziaButton = (CardView)findViewById(R.id.cardView);
-        iniziaButton.setOnClickListener(this);
+        CardView startButton = (CardView)findViewById(R.id.start_button);
+        startButton.setOnClickListener(this);
     }
 
-    public void onIniziaClick()
+    public void onStartButtonClick()
     {
         // Prendo le stringhe dei textView
         String nome = ((EditText)findViewById(R.id.nomeText)).getText().toString();
@@ -50,8 +50,8 @@ public class IntroActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch(v.getId())
         {
-            case R.id.cardView:
-                onIniziaClick();
+            case R.id.start_button:
+                onStartButtonClick();
                 break;
         }
     }
