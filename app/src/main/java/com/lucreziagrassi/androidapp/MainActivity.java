@@ -15,6 +15,7 @@ import com.lucreziagrassi.androidapp.booklet.BookletFragment;
 import com.lucreziagrassi.androidapp.booklet.PassedExamFragment;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
+import com.lucreziagrassi.androidapp.db.Lesson;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.db.Subject;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamFragment;
@@ -66,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Subject s = new Subject (0, "Dispositivi e circuiti elettronici", "Daniele Caviglia", Color.RED);
         DatabaseManager.getDatabase().getSubjectDao().insert(s);
+
+        Lesson l = new Lesson(0, "Fisica Matematica", "Angelo Morro", "E1", Color.GREEN, "9:00", "11:00");
+        DatabaseManager.getDatabase().getLessonDao().insert(l);
 
         if(homeFragment == null)
             homeFragment = new HomeFragment();

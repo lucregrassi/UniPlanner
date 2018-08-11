@@ -1,61 +1,67 @@
 package com.lucreziagrassi.androidapp.timetable;
 
 import android.content.Context;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.lucreziagrassi.androidapp.R;
+import com.lucreziagrassi.androidapp.db.FutureExam;
+import com.lucreziagrassi.androidapp.db.Lesson;
 
-public class TimetableListAdapter extends Fragment {
+import java.util.List;
 
-    private OnFragmentInteractionListener mListener;
+public class TimetableListAdapter extends ArrayAdapter<Lesson> {
 
-    public TimetableListAdapter() {
-        // Required empty public constructor
-    }
+        private static final String TAG = "TimetableListAdapter";
+        private Context mContext;
+        private int mResource;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+        TimetableListAdapter(Context context, int resource, List<Lesson> objects) {
+            super(context, resource, objects);
+            mContext = context;
+            mResource = resource;
+        }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.timetable_list_adapter, container, false);
-    }
+        @NonNull
+        @Override
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+            String subject = getItem(position).getSubject();
+            String professor = getItem(position).getProfessor();
+            String location = getItem(position).getLocation();
+            Integer color = getItem(position).getColor();
+            String startHour = getItem(position).getStartHour();
+            String endHour = getItem(position).getEndHour();
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            Lesson lesson = new Lesson(0, subject, professor, location, color, startHour, endHour);
+            LayoutInflater inflater = LayoutInflater.from(mContext);
+            convertView = inflater.inflate(mResource, parent, false);
+
+            TextView tvSubject = (TextView) convertView.findViewById(R.id.subject_tv);
+            TextView tvProfessor = (TextView) convertView.findViewById(R.id.professor_tv);
+            TextView tvLocation = (TextView) convertView.findViewById(R.id.location_tv);
+            ImageView tvColor1 = (ImageView) convertView.findViewById(R.id.color_tv1);
+            ImageView tvColor2 = (ImageView) convertView.findViewById(R.id.color_tv2);
+            TextView tvStartHour = (TextView) convertView.findViewById(R.id.start_hour);
+            TextView tvEndHour = (TextView) convertView.findViewById(R.id.end_hour);
+
+            tvSubject.setText(subject);
+            tvProfessor.setText(professor);
+            tvLocation.setText(location);
+            tvColor1.setBackgroundColor(color);
+            tvColor2.setBackgroundColor(color);
+            tvStartHour.setText(startHour);
+            tvEndHour.setText(endHour);
+
+            return convertView;
         }
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
-}

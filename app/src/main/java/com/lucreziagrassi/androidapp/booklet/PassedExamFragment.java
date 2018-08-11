@@ -93,20 +93,20 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
             // Se i dati sono validi, creo l'esame
             PassedExam newPassedExam = new PassedExam(0, nome, voto, data, cfu);
             DatabaseManager.getDatabase().getPassedExamDao().insert(newPassedExam);
+
+            // Chiude la tastiera
+            InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+            View currentFocusedView = getActivity().getCurrentFocus();
+
+            if (currentFocusedView != null)
+                inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
             // Ritorna al libretto
             getFragmentManager().popBackStack();
         } else {
             Toast.makeText(getContext(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
         }
-
-        // Chiude la tastiera
-        InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-
-        View currentFocusedView = getActivity().getCurrentFocus();
-
-        if (currentFocusedView != null)
-            inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
     }
 
     @Override
@@ -122,5 +122,4 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
 }

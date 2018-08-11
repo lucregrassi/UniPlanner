@@ -16,8 +16,9 @@
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_gravity="left"
-            android:text="Dispositivi e Circuiti Elettronici"
+            android:layout_gravity="start"
+            android:layout_marginTop="5dp"
+            android:text="Materia"
             android:textColor="@color/darkgray"
             android:textSize="18sp"
             android:layout_marginStart="80dp"
@@ -35,7 +36,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:text="9:00"
+            android:text="Ora inizio"
             android:gravity="center"
             android:layout_marginTop="5dp"
             android:layout_alignTop="@id/color_tv1"
@@ -53,7 +54,7 @@
         android:id="@+id/rl2">
 
         <ImageView
-            android:id="@+id/place_icon"
+            android:id="@+id/location_icon"
             android:layout_width="30dp"
             android:layout_height="25dp"
             android:layout_marginStart="75dp"
@@ -62,11 +63,11 @@
             android:src="@drawable/ic_location" />
 
         <TextView
-            android:id="@+id/place_tv"
+            android:id="@+id/location_tv"
             android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:layout_toEndOf="@id/place_icon"
-            android:text="E3"
+            android:layout_toEndOf="@id/location_icon"
+            android:text="Aula"
             android:textColor="@color/darkgray"
             android:textSize="15sp" />
 
@@ -75,7 +76,7 @@
             android:layout_width="30dp"
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
-            android:layout_toEndOf="@id/place_tv"
+            android:layout_toEndOf="@id/location_tv"
             android:layout_alignParentTop="true"
             android:src="@drawable/ic_person" />
 
@@ -84,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toEndOf="@id/professor_icon"
-            android:text="Daniele Caviglia"
+            android:text="Docente"
             android:textColor="@color/darkgray"
             android:textSize="15sp" />
 
@@ -104,7 +105,7 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:text="10:00"
+            android:text="Ora fine"
             android:textSize="15sp"/>
 
     </RelativeLayout>

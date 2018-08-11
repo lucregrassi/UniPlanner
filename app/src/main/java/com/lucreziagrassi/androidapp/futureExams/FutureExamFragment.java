@@ -8,10 +8,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.lucreziagrassi.androidapp.R;
+import com.lucreziagrassi.androidapp.db.DatabaseManager;
+import com.lucreziagrassi.androidapp.db.FutureExam;
+import com.lucreziagrassi.androidapp.db.PassedExam;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -68,13 +73,6 @@ public class FutureExamFragment extends Fragment {
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -95,5 +93,40 @@ public class FutureExamFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void onAddFutureExamClick() {
+        // Prendo le stringhe dei textView
+        String nome = ((EditText) getView().findViewById(R.id.exam_name)).getText().toString();
+        String data = ((EditText) getView().findViewById(R.id.datepicker)).getText().toString();
+        Integer cfu = Integer.parseInt(((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString());
+
+        if (!nome.equals("") && !data.equals("") && cfu != 0) {
+            // Se i dati sono validi, creo l'esame
+            FutureExam newFutureExam = new FutureExam(0, nome, data, cfu);
+            DatabaseManager.getDatabase().getFutureExamDao().insert(newFutureExam);
+
+            // Chiude la tastiera
+            InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+            View currentFocusedView = getActivity().getCurrentFocus();
+
+            if (currentFocusedView != null)
+                inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+            // Ritorna al libretto
+            getFragmentManager().popBackStack();
+        } else {
+            Toast.makeText(getContext(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.addFutureExam:
+                onAddFutureExamClick();
+                break;
+        }
     }
 }
