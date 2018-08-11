@@ -57,6 +57,9 @@
     <!-- strings for new subject fragment-->
     <string name="new_subject_fragment_name">Nuova Materia</string>
 
+    <!-- strings for week fragment -->
+    <string name="week_fragment_name">Orario settimanale</string>
+
     <!-- strings timer_fragment -->
     <string name="timer_fragment_name">Timer</string>
     <string name="timer_countdown">25:00</string>
