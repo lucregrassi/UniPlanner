@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools"
     android:background="@color/background">
 
     <TextView
@@ -35,7 +36,7 @@
         android:id="@+id/exam_cfu"
         android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_alignStart="@+id/exam_date"
+        android:layout_alignStart="@+id/datepicker"
         android:layout_below="@+id/exam_name"
         android:layout_marginTop="23dp"
         android:background="@drawable/rounded_edittext"
@@ -46,7 +47,9 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/exam_date"
+        android:id="@+id/datepicker"
+        android:focusable="true"
+        android:inputType="none"
         android:layout_width="240dp"
         android:layout_height="40dp"
         android:layout_below="@+id/exam_cfu"
@@ -56,14 +59,13 @@
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_credits"
         android:ems="10"
-        android:hint="@string/exam_date"
-        android:inputType="date" />
+        android:hint="Data dell'esame"/>
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="280dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/exam_date"
+        android:layout_below="@+id/datepicker"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         app:cardBackgroundColor="@color/colorPrimaryDark"
