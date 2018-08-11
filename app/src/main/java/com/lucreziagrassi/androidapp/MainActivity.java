@@ -1,5 +1,6 @@
 package com.lucreziagrassi.androidapp;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import com.lucreziagrassi.androidapp.splash.SplashActivity;
 import com.lucreziagrassi.androidapp.subjects.NewSubjectFragment;
 import com.lucreziagrassi.androidapp.subjects.SubjectsFragment;
 import com.lucreziagrassi.androidapp.timer.TimerFragment;
+import com.lucreziagrassi.androidapp.weekCalendar.TabbActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         BookletFragment.OnFragmentInteractionListener,
@@ -122,6 +124,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
 
         } else if (id == R.id.nav_schedule) {
+            Intent i = new Intent(MainActivity.this, TabbActivity.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_exams) {
 

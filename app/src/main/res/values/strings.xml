@@ -67,5 +67,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="app_logo">App Logo</string>
+    <string name="title_activity_tabbed">TabbedActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_tabb">TabbActivity</string>
+    <string name="tab_text_1">Lun</string>
+    <string name="tab_text_2">Mar</string>
+    <string name="tab_text_3">Mer</string>
+    <string name="tab_text_4">Gio</string>
+    <string name="tab_text_5">Ven</string>
+    <string name="tab_text_6">Sab</string>
 
 </resources>
