@@ -79,16 +79,11 @@ public class TimerFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         getActivity().setTitle(R.string.timer_fragment_name);
-        if (savedInstanceState != null) {
-            // Restore the fragment's state here
-        }
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
-        // Save the fragment's state here
     }
 
     private void start(){

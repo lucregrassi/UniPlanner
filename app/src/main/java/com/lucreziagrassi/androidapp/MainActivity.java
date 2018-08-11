@@ -27,7 +27,7 @@ import com.lucreziagrassi.androidapp.splash.SplashActivity;
 import com.lucreziagrassi.androidapp.subjects.NewSubjectFragment;
 import com.lucreziagrassi.androidapp.subjects.SubjectsFragment;
 import com.lucreziagrassi.androidapp.timer.TimerFragment;
-import com.lucreziagrassi.androidapp.weekCalendar.TabbActivity;
+import com.lucreziagrassi.androidapp.weekCalendar.WeekFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         BookletFragment.OnFragmentInteractionListener,
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private BookletFragment bookletFragment = null;
     private FutureExamsFragment futureExamsFragment = null;
     private SubjectsFragment subjectsFragment = null;
+    private WeekFragment weekFragment = null;
     private PreferenceFragment preferenceFragment = null;
 
     private SplashActivity splashActivity = null;
@@ -124,8 +125,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
 
         } else if (id == R.id.nav_schedule) {
-            Intent i = new Intent(MainActivity.this, TabbActivity.class);
-            startActivity(i);
+
+            if(weekFragment == null)
+                weekFragment = new WeekFragment();
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.content, weekFragment).commit();
 
         } else if (id == R.id.nav_exams) {
 
