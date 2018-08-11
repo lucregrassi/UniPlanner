@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         // TODO: Rimuovere, debug only: aggiunge un esame al db
-        PassedExam a = new PassedExam(0,"Sviluppo Applicazioni Web", "30 e lode", "25/05/18", 6);
+        PassedExam a = new PassedExam(0,"Sviluppo Applicazioni Web", 30, "25/05/18", 6);
         DatabaseManager.getDatabase().getPassedExamDao().insert(a);
 
         FutureExam b = new FutureExam(0, "Controllo Digitale", "25/09/18", 6);

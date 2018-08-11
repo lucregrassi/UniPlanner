@@ -41,9 +41,6 @@ public class WeekFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.week_fragment, container, false);
 
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());

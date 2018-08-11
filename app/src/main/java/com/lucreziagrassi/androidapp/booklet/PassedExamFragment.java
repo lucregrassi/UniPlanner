@@ -14,70 +14,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.db.User;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link PassedExamFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link PassedExamFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PassedExamFragment extends Fragment implements View.OnClickListener {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    EditText exam_vote = (EditText) getActivity().findViewById(R.id.exam_vote);
 
     public PassedExamFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PassedExamFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PassedExamFragment newInstance(String param1, String param2) {
-        PassedExamFragment fragment = new PassedExamFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(false);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public void onStart()
     {
         super.onStart();
-
         CardView addPassedExamButton = (CardView) getView().findViewById(R.id.addPassedExam);
         addPassedExamButton.setOnClickListener(this);
     }
@@ -131,16 +93,23 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
     {
         // Prendo le stringhe dei textView
         String nome = ((EditText) getView().findViewById(R.id.exam_name)).getText().toString();
-        String voto = ((EditText) getView().findViewById(R.id.exam_vote)).getText().toString();
+        Integer voto = Integer.parseInt(exam_vote.getText().toString());
         Integer cfu = Integer.parseInt(((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString());
         String data = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
 
-        if(!nome.equals("") && !data.equals("") && !voto.equals("") && cfu != 0)
-        {
+        if(voto < 1 || voto > 31){
+            Toast.makeText(getContext(), "Il voto deve essere compreso tra 1 e 30",Toast.LENGTH_LONG).show();
+        }
+
+        if(!nome.isEmpty() && !data.isEmpty() && (voto > 0 || voto < 31) && cfu != 0) {
             // Se i dati sono validi, creo l'esame
             PassedExam newPassedExam = new PassedExam(0, nome, voto, data, cfu);
-
             DatabaseManager.getDatabase().getPassedExamDao().insert(newPassedExam);
+            // Ritorna al libretto
+            getFragmentManager().popBackStack();
+        }
+        else {
+            Toast.makeText(getContext(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
         }
 
         // Chiude la tastiera
@@ -151,9 +120,6 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         if (currentFocusedView != null)
             inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
-
-        // Ritorna al libretto
-        getFragmentManager().popBackStack();
     }
 
     @Override

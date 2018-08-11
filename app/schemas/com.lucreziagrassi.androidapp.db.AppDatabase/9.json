@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 9,
-    "identityHash": "9801cf1444ca18307004c0626168079e",
+    "identityHash": "3269e791d5c9b002b9e81af3fa0ff66c",
     "entities": [
       {
         "tableName": "PassedExam",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Subject` TEXT, `Vote` TEXT, `Date` TEXT, `CFU` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Subject` TEXT, `Vote` INTEGER, `Date` TEXT, `CFU` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "ID",
@@ -23,7 +23,7 @@
           {
             "fieldPath": "Vote",
             "columnName": "Vote",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": false
           },
           {
@@ -183,7 +183,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"9801cf1444ca18307004c0626168079e\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"3269e791d5c9b002b9e81af3fa0ff66c\")"
     ]
   }
 }
