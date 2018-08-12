@@ -19,6 +19,7 @@ import com.lucreziagrassi.androidapp.db.FutureExam;
 import com.lucreziagrassi.androidapp.db.Lesson;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.db.Subject;
+import com.lucreziagrassi.androidapp.db.User;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamFragment;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamsFragment;
 import com.lucreziagrassi.androidapp.home.HomeFragment;
@@ -27,6 +28,8 @@ import com.lucreziagrassi.androidapp.subjects.SubjectsFragment;
 import com.lucreziagrassi.androidapp.timer.TimerFragment;
 import com.lucreziagrassi.androidapp.timetable.NewLessonFragment;
 import com.lucreziagrassi.androidapp.timetable.TimetableFragment;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         BookletFragment.OnFragmentInteractionListener,
@@ -60,16 +63,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         // TODO: Rimuovere, debug only: aggiunge un esame al db
-        PassedExam a = new PassedExam(0,"Sviluppo Applicazioni Web", 30, "25/05/18", 6);
+        PassedExam a = new PassedExam(0, "Sviluppo Applicazioni Web", 30, "25/05/18", 6);
         DatabaseManager.getDatabase().getPassedExamDao().insert(a);
 
         FutureExam b = new FutureExam(0, "Controllo Digitale", "25/09/18", 6);
         DatabaseManager.getDatabase().getFutureExamDao().insert(b);
 
-        Subject s = new Subject (0, "Dispositivi e circuiti elettronici", "Daniele Caviglia", Color.RED);
+        Subject s = new Subject(0, "Dispositivi e circuiti elettronici", "Daniele Caviglia", Color.RED);
         DatabaseManager.getDatabase().getSubjectDao().insert(s);
 
-        Lesson l = new Lesson(0, "Fisica Matematica", "Angelo Morro", "E1", Color.GREEN, "9:00", "11:00");
+        Lesson l = new Lesson(0, "Fisica Matematica", "Angelo Morro", "E" + new Random().nextInt((7 - 1) + 1), Color.GREEN, "9:00", "11:00", new Random().nextInt((6 - 1) + 1) + 1);
         DatabaseManager.getDatabase().getLessonDao().insert(l);
 
         if(homeFragment == null)

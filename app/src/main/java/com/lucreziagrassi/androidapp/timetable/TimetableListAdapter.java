@@ -41,17 +41,17 @@ public class TimetableListAdapter extends ArrayAdapter<Lesson> {
             String startHour = getItem(position).getStartHour();
             String endHour = getItem(position).getEndHour();
 
-            Lesson lesson = new Lesson(0, subject, professor, location, color, startHour, endHour);
+            Lesson lesson = new Lesson(0, subject, professor, location, color, startHour, endHour, position);
             LayoutInflater inflater = LayoutInflater.from(mContext);
             convertView = inflater.inflate(mResource, parent, false);
 
-            TextView tvSubject = (TextView) convertView.findViewById(R.id.subject_tv);
-            TextView tvProfessor = (TextView) convertView.findViewById(R.id.professor_tv);
-            TextView tvLocation = (TextView) convertView.findViewById(R.id.location_tv);
-            ImageView tvColor1 = (ImageView) convertView.findViewById(R.id.color_tv1);
-            ImageView tvColor2 = (ImageView) convertView.findViewById(R.id.color_tv2);
-            TextView tvStartHour = (TextView) convertView.findViewById(R.id.start_hour);
-            TextView tvEndHour = (TextView) convertView.findViewById(R.id.end_hour);
+            TextView tvSubject = convertView.findViewById(R.id.subject_tv);
+            TextView tvProfessor = convertView.findViewById(R.id.professor_tv);
+            TextView tvLocation = convertView.findViewById(R.id.location_tv);
+            ImageView tvColor1 = convertView.findViewById(R.id.color_tv1);
+            ImageView tvColor2 = convertView.findViewById(R.id.color_tv2);
+            TextView tvStartHour = convertView.findViewById(R.id.start_hour);
+            TextView tvEndHour = convertView.findViewById(R.id.end_hour);
 
             tvSubject.setText(subject);
             tvProfessor.setText(professor);

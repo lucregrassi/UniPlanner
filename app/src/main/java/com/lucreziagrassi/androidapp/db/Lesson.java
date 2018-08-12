@@ -28,7 +28,10 @@ public class Lesson {
     @ColumnInfo(name = "End")
     private String EndHour;
 
-    public Lesson(int ID, String Subject, String Professor, String Location, Integer Color, String StartHour, String EndHour) {
+    @ColumnInfo(name = "Day")
+    private Integer Day;
+
+    public Lesson(int ID, String Subject, String Professor, String Location, Integer Color, String StartHour, String EndHour, Integer Day) {
         this.ID = ID;
         this.Subject = Subject;
         this.Professor = Professor;
@@ -36,6 +39,7 @@ public class Lesson {
         this.Color = Color;
         this.StartHour = StartHour;
         this.EndHour = EndHour;
+        this.Day = Day;
     }
 
     public int getID() {
@@ -51,7 +55,7 @@ public class Lesson {
     }
 
     public void setSubject(String subject) {
-        Subject = subject;
+        this.Subject = subject;
     }
 
     public String getProfessor() {
@@ -59,27 +63,25 @@ public class Lesson {
     }
 
     public void setProfessor(String professor) {
-        Professor = professor;
+        this.Professor = professor;
     }
 
     public String getLocation() {
         return Location;
     }
 
-    public void setLocation(String location) {
-        Location = location;
-    }
+    public void setLocation(String location) { this.Location = location; }
 
     public Integer getColor() { return Color; }
 
-    public void setColor(Integer color) { Color = color; }
+    public void setColor(Integer color) { this.Color = color; }
 
     public String getStartHour() {
         return StartHour;
     }
 
     public void setStartHour(String startHour) {
-        StartHour = startHour;
+        this.StartHour = startHour;
     }
 
     public String getEndHour() {
@@ -87,8 +89,12 @@ public class Lesson {
     }
 
     public void setEndHour(String endHour) {
-        EndHour = endHour;
+        this.EndHour = endHour;
     }
+
+    public Integer getDay() { return Day; }
+
+    public void setDay(Integer Day) { this.Day = Day; }
 
 }
 

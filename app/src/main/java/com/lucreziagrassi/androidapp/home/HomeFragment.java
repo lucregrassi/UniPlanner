@@ -1,5 +1,6 @@
 package com.lucreziagrassi.androidapp.home;
 
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -34,9 +35,8 @@ public class HomeFragment extends Fragment {
         User user = DatabaseManager.getDatabase().getUserDao().getUser();
         ((TextView) getView().findViewById(R.id.university_name)).setText(user.getUniversity());
         ((TextView) getView().findViewById(R.id.degree_course)).setText(user.getCourse());
-        /*
-        ((TextView) getView().findViewById(R.id.nav_username)).setText(user.getName() + " " + user.getSurname());
-        */
+        ((TextView) ((NavigationView)getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_username)).setText(user.getName() + " " + user.getSurname());
+
         //Calcola media, cfu e voto stimato
         Double avgPonderata = 0.0;
         Integer sumCFU = 0;
@@ -54,10 +54,8 @@ public class HomeFragment extends Fragment {
         ((ProgressBar) getView().findViewById(R.id.cfuProgressBar)).setProgress(sumCFU);
         ((TextView) getView().findViewById(R.id.cfuProgressBarText)).setText(sumCFU + "/" + user.getCFU());
 
-        ((TextView) getView().findViewById(R.id.avgExams)).setText(Math.round(avgPonderata) + "");
-        /*
-        ((TextView) getView().findViewById(R.id.nav_avg)).setText(Math.round(avgPonderata) + "");
-        */
+        ((TextView) getView().findViewById(R.id.avgExams)).setText((Math.round(avgPonderata * 100) / 100) + "");
+        ((TextView) ((NavigationView)getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_avg)).setText((Math.round(avgPonderata * 100) / 100) + "");
         ((TextView) getView().findViewById(R.id.passedExamCount)).setText(passedExams.size() + "");
 
         int degreeVote = (int) Math.round(avgPonderata * 11 / 3);

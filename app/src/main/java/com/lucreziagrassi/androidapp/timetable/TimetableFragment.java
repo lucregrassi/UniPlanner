@@ -87,7 +87,7 @@ public class TimetableFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            return PlaceholderFragment.newInstance(position + 1);
+            return TimetableDayFragment.newInstance(position + 1);
         }
 
         @Override

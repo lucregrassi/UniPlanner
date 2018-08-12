@@ -19,15 +19,15 @@ import com.lucreziagrassi.androidapp.db.Lesson;
 
 import java.util.List;
 
-public class PlaceholderFragment extends Fragment {
+public class TimetableDayFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    public PlaceholderFragment() {
+    public TimetableDayFragment() {
     }
 
-    public static PlaceholderFragment newInstance(int sectionNumber) {
-        PlaceholderFragment fragment = new PlaceholderFragment();
+    public static TimetableDayFragment newInstance(int sectionNumber) {
+        TimetableDayFragment fragment = new TimetableDayFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
@@ -40,9 +40,9 @@ public class PlaceholderFragment extends Fragment {
         View view = inflater.inflate(R.layout.swipe_menu_listview, container, false);
         setHasOptionsMenu(true);
 
-        SwipeMenuListView futureExams = (SwipeMenuListView) view.findViewById(R.id.swipeview);
+        SwipeMenuListView futureExams = view.findViewById(R.id.swipeview);
 
-        List<Lesson> lessonList = DatabaseManager.getDatabase().getLessonDao().getAll();
+        List<Lesson> lessonList = DatabaseManager.getDatabase().getLessonDao().getLessonOfDay(getArguments().getInt(ARG_SECTION_NUMBER));
 
         TimetableListAdapter adapter = new TimetableListAdapter(getActivity(), R.layout.timetable_list_adapter, lessonList);
 

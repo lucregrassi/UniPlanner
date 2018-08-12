@@ -10,8 +10,11 @@ import java.util.List;
 
 @Dao
 public interface LessonDao {
-    @Query("SELECT * FROM Lesson")
+    @Query("SELECT * FROM Lesson ORDER BY Start")
     List<Lesson> getAll();
+
+    @Query("SELECT * FROM Lesson WHERE Day = :Day ORDER BY Start")
+    List<Lesson> getLessonOfDay(Integer Day);
 
     @Insert
     void insert(Lesson lesson);
