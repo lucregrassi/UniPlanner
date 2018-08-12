@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.User;
@@ -24,26 +25,31 @@ public class IntroActivity extends AppCompatActivity implements View.OnClickList
         startButton.setOnClickListener(this);
     }
 
-    public void onStartButtonClick()
-    {
+    public void onStartButtonClick() {
         // Prendo le stringhe dei textView
         String nome = ((EditText)findViewById(R.id.nomeText)).getText().toString();
         String cognome = ((EditText)findViewById(R.id.cognomeText)).getText().toString();
         String university = ((EditText)findViewById(R.id.universityText)).getText().toString();
         String corso = ((EditText)findViewById(R.id.corsoText)).getText().toString();
         String matricola = ((EditText)findViewById(R.id.matricolaText)).getText().toString();
-        Integer cfu = Integer.parseInt(((EditText)findViewById(R.id.cfuText)).getText().toString());
+        String cfu = ((EditText)findViewById(R.id.cfuText)).getText().toString();
 
-        if(!nome.equals("") && !matricola.equals("") && !corso.equals("") && cfu != 0)
-        {
-            // Se i dati sono validi, creo l'utente
-            User newUser = new User(0, nome, cognome, university, corso, matricola, cfu);
-            DatabaseManager.getDatabase().getUserDao().setUser(newUser);
+        if(!nome.isEmpty() && !matricola.isEmpty() && !corso.isEmpty() && !cfu.isEmpty()) {
+            Integer intCfu = Integer.parseInt(cfu);
+            if(intCfu > 0) {
+                // Se i dati sono validi, creo l'utente
+                User newUser = new User(0, nome, cognome, university, corso, matricola, intCfu);
+                DatabaseManager.getDatabase().getUserDao().setUser(newUser);
 
-            // Cambio activity
-            Intent intent = new Intent(IntroActivity.this, MainActivity.class);
-            startActivity(intent);
+                // Cambio activity
+                Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+            else
+                Toast.makeText(this, "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
         }
+        else
+            Toast.makeText(this, "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
     }
 
     @Override

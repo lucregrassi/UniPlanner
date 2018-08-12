@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -116,10 +117,10 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
                 // Ritorna al libretto
                 getFragmentManager().popBackStack();
             }
-            else Toast.makeText(getContext(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
+            else Toast.makeText(getActivity(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(getContext(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -131,7 +132,7 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
                 break;
 
             case R.id.exam_date:
-                android.support.v4.app.DialogFragment datePicker = new DatePickerFragment();
+                DialogFragment datePicker = new DatePickerFragment();
                 datePicker.show(getFragmentManager(), "Date Picker");
                 break;
         }

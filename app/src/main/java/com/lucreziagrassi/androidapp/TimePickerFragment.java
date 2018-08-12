@@ -37,7 +37,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
 
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.ITALY);
         String formattedTime = sdf.format(c.getTime());
-        EditText start_hour = (EditText) getActivity().findViewById(this.getArguments().getInt("timeEditTextID"));
-        start_hour.setHint(formattedTime);
+        EditText editText = (EditText) getActivity().findViewById(this.getArguments().getInt("timeEditTextID"));
+        editText.setHint(formattedTime);
     }
 }

@@ -30,13 +30,13 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
         // Imposta i dati dell'utente
         User user = DatabaseManager.getDatabase().getUserDao().getUser();
-
-        ((TextView) getView().findViewById(R.id.welcomeText)).setText("Ciao " + user.getName() + "!");
         ((TextView) getView().findViewById(R.id.university_name)).setText(user.getUniversity());
-
+        ((TextView) getView().findViewById(R.id.degree_course)).setText(user.getCourse());
+        /*
+        ((TextView) getView().findViewById(R.id.nav_username)).setText(user.getName() + " " + user.getSurname());
+        */
         //Calcola media, cfu e voto stimato
         Double avgPonderata = 0.0;
         Integer sumCFU = 0;
@@ -55,6 +55,9 @@ public class HomeFragment extends Fragment {
         ((TextView) getView().findViewById(R.id.cfuProgressBarText)).setText(sumCFU + "/" + user.getCFU());
 
         ((TextView) getView().findViewById(R.id.avgExams)).setText(Math.round(avgPonderata) + "");
+        /*
+        ((TextView) getView().findViewById(R.id.nav_avg)).setText(Math.round(avgPonderata) + "");
+        */
         ((TextView) getView().findViewById(R.id.passedExamCount)).setText(passedExams.size() + "");
 
         int degreeVote = (int) Math.round(avgPonderata * 11 / 3);
