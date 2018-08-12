@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lucreziagrassi.androidapp.DatePickerFragment;
@@ -95,7 +96,7 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
     public void onAddFutureExamClick() {
         // Prendo le stringhe dei textView
         String nome = ((EditText) getView().findViewById(R.id.exam_name)).getText().toString();
-        String data = ((EditText) getView().findViewById(R.id.chosen_date)).getText().toString();
+        String data = ((TextView) getView().findViewById(R.id.chosen_date)).getText().toString();
         String cfu = ((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString();
 
         if (!nome.isEmpty() && !data.isEmpty() && !cfu.isEmpty()) {
