@@ -54,8 +54,19 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        DialogFragment timePicker = new TimePickerFragment();
-        timePicker.show(getFragmentManager(), "Time Picker");
+        switch(v.getId()) {
+            case R.id.start_hour:
+            case R.id.end_hour:
+                DialogFragment timePicker = new TimePickerFragment();
+
+                // Imposto su quale EditText devo inserire l'ora
+                Bundle timePickerArguments = new Bundle();
+                timePickerArguments.putInt("timeEditTextID", v.getId());
+                timePicker.setArguments(timePickerArguments);
+
+                timePicker.show(getFragmentManager(), "Time Picker");
+                break;
+        }
     }
 
     @Override
