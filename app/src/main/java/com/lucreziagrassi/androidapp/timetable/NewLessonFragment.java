@@ -26,9 +26,9 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onStart() {
         super.onStart();
-        EditText start_hour = (EditText) getView().findViewById(R.id.ora_inizio);
+        EditText start_hour = (EditText) getView().findViewById(R.id.start_hour);
         start_hour.setOnClickListener(this);
-        EditText end_hour = (EditText) getView().findViewById(R.id.ora_fine);
+        EditText end_hour = (EditText) getView().findViewById(R.id.end_hour);
         end_hour.setOnClickListener(this);
     }
 
@@ -55,8 +55,8 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
-            case R.id.ora_inizio:
-            case R.id.ora_fine:
+            case R.id.start_hour:
+            case R.id.end_hour:
                 DialogFragment timePicker = new TimePickerFragment();
 
                 // Imposto su quale EditText devo inserire l'ora
