@@ -18,26 +18,26 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Locale locale = getResources().getConfiguration().locale;
-        Locale.setDefault(locale);
+        Locale.setDefault(Locale.ITALY);
         // Use the current time as the default values for the picker
         Calendar c;
-        c = Calendar.getInstance();
+        c = Calendar.getInstance(Locale.ITALY);
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
 
         // Create a new instance of TimePickerDialog and return it
-        return new TimePickerDialog(getActivity(), this, hour, minute, DateFormat.is24HourFormat(getActivity()));
+        return new TimePickerDialog(getActivity(), this, hour, minute, true);
     }
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        Calendar c = Calendar.getInstance();
-        c.set(hourOfDay, minute);
+        Calendar c = Calendar.getInstance(Locale.ITALY);
+        c.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        c.set(Calendar.MINUTE, minute);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm", Locale.ITALY);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.ITALY);
         String formattedTime = sdf.format(c.getTime());
-        EditText start_hour = (EditText) getActivity().findViewById(R.id.start_hour);
+        EditText start_hour = (EditText) getActivity().findViewById(this.getArguments().getInt("timeEditTextID"));
         start_hour.setHint(formattedTime);
     }
 }
