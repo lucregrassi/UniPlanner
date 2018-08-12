@@ -21,19 +21,38 @@
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <TextView
+        android:id="@+id/nav_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/nav_header_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/media"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nav_header_subtitle"
+        android:textSize="15sp"
         android:textStyle="bold"
-        android:textSize="15sp" />
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/nav_avg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/media"
+        android:text="Valore media"
+        android:textSize="15sp"
+        android:layout_marginStart="3dp"
+        android:textColor="@color/white"/>
+    </RelativeLayout>
 
 </LinearLayout>

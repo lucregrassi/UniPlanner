@@ -55,7 +55,6 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         DialogFragment timePicker = new TimePickerFragment();
-        //newFragment.show(getActivity().getFragmentManager(), DIALOG_TIME);
         timePicker.show(getFragmentManager(), "Time Picker");
     }
 

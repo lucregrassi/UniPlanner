@@ -44,7 +44,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/ora_inizio"
+        android:id="@+id/start_hour"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_alignStart="@+id/spinner"
@@ -61,11 +61,11 @@
 
 
     <EditText
-        android:id="@+id/ora_fine"
+        android:id="@+id/end_hour"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_alignEnd="@+id/spinner"
-        android:layout_alignTop="@+id/ora_inizio"
+        android:layout_alignTop="@+id/start_hour"
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_credits"
@@ -79,7 +79,7 @@
         android:id="@+id/cardView"
         android:layout_width="280dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/ora_fine"
+        android:layout_below="@+id/end_hour"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         app:cardBackgroundColor="@color/colorPrimaryDark"
