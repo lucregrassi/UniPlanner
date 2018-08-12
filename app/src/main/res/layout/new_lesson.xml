@@ -55,8 +55,9 @@
         android:drawableStart="@drawable/ic_action_exam_vote"
         android:drawableTint="@color/lightgray"
         android:ems="10"
+        android:focusable="false"
         android:hint="Ora inizio"
-        android:inputType="textPersonName" />
+        android:inputType="text" />
 
 
     <EditText
@@ -70,8 +71,9 @@
         android:drawableStart="@drawable/ic_action_credits"
         android:drawableTint="@color/lightgray"
         android:ems="10"
+        android:focusable="false"
         android:hint="Ora fine"
-        android:inputType="textPersonName" />
+        android:inputType="text" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"

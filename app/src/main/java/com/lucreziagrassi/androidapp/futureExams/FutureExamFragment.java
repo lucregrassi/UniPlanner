@@ -5,7 +5,11 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -13,6 +17,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.lucreziagrassi.androidapp.DatePickerFragment;
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
@@ -22,30 +27,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class FutureExamFragment extends Fragment {
+public class FutureExamFragment extends Fragment implements View.OnClickListener{
 
     private OnFragmentInteractionListener mListener;
-    Calendar myCalendar = Calendar.getInstance();
-    EditText edittext = (EditText) getActivity().findViewById(R.id.datepicker);
-
-    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
-        @Override
-        public void onDateSet(DatePicker view, int year, int month,
-                              int day) {
-            // TODO Auto-generated method stub
-            myCalendar.set(Calendar.YEAR, year);
-            myCalendar.set(Calendar.MONTH, month);
-            myCalendar.set(Calendar.DAY_OF_MONTH, day);
-            updateLabel();
-        }
-    };
-
-    private void updateLabel() {
-        String myFormat = "dd/MM/yy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        edittext.setText(sdf.format(myCalendar.getTime()));
-    }
 
     public FutureExamFragment() {
         // Required empty public constructor
@@ -54,22 +38,22 @@ public class FutureExamFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(false);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public void onStart() {
+        super.onStart();
+        CardView addFutureExamButton = (CardView) getView().findViewById(R.id.addFutureExam);
+        addFutureExamButton.setOnClickListener(this);
+        CardView exam_date = (CardView) getView().findViewById(R.id.exam_date);
+        exam_date.setOnClickListener(this);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.future_exam, container, false);
         getActivity().setTitle(R.string.new_exam_fragment_name);
-        edittext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                new DatePickerDialog(getActivity(), date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
         return view;
     }
 
@@ -82,6 +66,18 @@ public class FutureExamFragment extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        MenuItem item = menu.findItem(R.id.add_button);
+        item.setVisible(false);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.activity_home_drawer, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -98,25 +94,30 @@ public class FutureExamFragment extends Fragment {
     public void onAddFutureExamClick() {
         // Prendo le stringhe dei textView
         String nome = ((EditText) getView().findViewById(R.id.exam_name)).getText().toString();
-        String data = ((EditText) getView().findViewById(R.id.datepicker)).getText().toString();
-        Integer cfu = Integer.parseInt(((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString());
+        String data = ((EditText) getView().findViewById(R.id.chosen_date)).getText().toString();
+        String cfu = ((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString();
 
-        if (!nome.equals("") && !data.equals("") && cfu != 0) {
-            // Se i dati sono validi, creo l'esame
-            FutureExam newFutureExam = new FutureExam(0, nome, data, cfu);
-            DatabaseManager.getDatabase().getFutureExamDao().insert(newFutureExam);
+        if (!nome.isEmpty() && !data.isEmpty() && !cfu.isEmpty()) {
+            Integer inCfu = Integer.parseInt(cfu);
+            if(inCfu > 0) {
+                // Se i dati sono validi, creo l'esame
+                FutureExam newFutureExam = new FutureExam(0, nome, data, inCfu);
+                DatabaseManager.getDatabase().getFutureExamDao().insert(newFutureExam);
 
-            // Chiude la tastiera
-            InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                // Chiude la tastiera
+                InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
-            View currentFocusedView = getActivity().getCurrentFocus();
+                View currentFocusedView = getActivity().getCurrentFocus();
 
-            if (currentFocusedView != null)
-                inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                if (currentFocusedView != null)
+                    inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
-            // Ritorna al libretto
-            getFragmentManager().popBackStack();
-        } else {
+                // Ritorna al libretto
+                getFragmentManager().popBackStack();
+            }
+            else Toast.makeText(getContext(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
+        }
+        else {
             Toast.makeText(getContext(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
         }
     }
@@ -126,6 +127,11 @@ public class FutureExamFragment extends Fragment {
         switch (v.getId()) {
             case R.id.addFutureExam:
                 onAddFutureExamClick();
+                break;
+
+            case R.id.exam_date:
+                android.support.v4.app.DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getFragmentManager(), "Date Picker");
                 break;
         }
     }
