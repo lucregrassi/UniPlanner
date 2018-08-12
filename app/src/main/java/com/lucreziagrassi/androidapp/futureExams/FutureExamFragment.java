@@ -48,7 +48,7 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
         super.onStart();
         CardView addFutureExamButton = (CardView) getView().findViewById(R.id.addFutureExam);
         addFutureExamButton.setOnClickListener(this);
-        CardView exam_date = (CardView) getView().findViewById(R.id.exam_date);
+        EditText exam_date = (EditText) getView().findViewById(R.id.exam_date);
         exam_date.setOnClickListener(this);
     }
 
@@ -96,8 +96,8 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
     public void onAddFutureExamClick() {
         // Prendo le stringhe dei textView
         String nome = ((EditText) getView().findViewById(R.id.exam_name)).getText().toString();
-        String data = ((TextView) getView().findViewById(R.id.chosen_date)).getText().toString();
         String cfu = ((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString();
+        String data = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
 
         if (!nome.isEmpty() && !data.isEmpty() && !cfu.isEmpty()) {
             Integer inCfu = Integer.parseInt(cfu);

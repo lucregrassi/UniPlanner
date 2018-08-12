@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -36,7 +37,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy", Locale.ITALY);
         String formattedDate = sdf.format(c.getTime());
-        TextView chosenDate = (TextView) getActivity().findViewById(R.id.chosen_date);
+        EditText chosenDate = (EditText) getActivity().findViewById(R.id.exam_date);
         chosenDate.setText(formattedDate);
     }
 }

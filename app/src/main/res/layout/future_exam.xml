@@ -46,27 +46,21 @@
         android:hint="@string/exam_cfu"
         android:inputType="number" />
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/exam_date"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/exam_cfu"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="25dp"
-        app:cardElevation="10dp">
 
-        <TextView
-            android:id="@+id/chosen_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Seleziona una data"
-            android:textStyle="bold"
-            android:textColor="@color/darkgray"
-            android:textSize="18sp" />
-    </android.support.v7.widget.CardView>
+    <EditText
+        android:id="@+id/exam_date"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/exam_cfu"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_action_credits"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="@string/exam_date"
+        android:inputType="text" />
 
 
     <android.support.v7.widget.CardView
