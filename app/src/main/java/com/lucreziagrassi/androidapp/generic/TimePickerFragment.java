@@ -1,4 +1,4 @@
-package com.lucreziagrassi.androidapp;
+package com.lucreziagrassi.androidapp.generic;
 import android.os.Bundle;
 
 import android.app.Dialog;

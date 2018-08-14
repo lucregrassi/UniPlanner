@@ -1,6 +1,5 @@
 package com.lucreziagrassi.androidapp.futureExams;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,20 +13,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lucreziagrassi.androidapp.DatePickerFragment;
+import com.lucreziagrassi.androidapp.generic.DatePickerFragment;
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
-import com.lucreziagrassi.androidapp.db.PassedExam;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 
 public class FutureExamFragment extends Fragment implements View.OnClickListener{
 

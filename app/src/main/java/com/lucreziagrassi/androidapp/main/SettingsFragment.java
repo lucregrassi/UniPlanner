@@ -1,7 +1,9 @@
-package com.lucreziagrassi.androidapp;
+package com.lucreziagrassi.androidapp.main;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+
+import com.lucreziagrassi.androidapp.R;
 
 
 public class SettingsFragment extends PreferenceFragment {
