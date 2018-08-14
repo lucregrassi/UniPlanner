@@ -144,8 +144,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.content, subjectsFragment).commit();
 
         }else if (id == R.id.nav_settings){
+
             getFragmentManager().beginTransaction()
-                    .replace(android.R.id.content, new SettingsFragment())
+                    .replace(R.id.content, new SettingsFragment())
                     .commit();
         }
 
