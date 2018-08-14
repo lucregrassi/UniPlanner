@@ -88,7 +88,7 @@
       },
       {
         "tableName": "User",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ID` INTEGER NOT NULL, `name` TEXT, `surname` TEXT, `university` TEXT, `course` TEXT, `registration` TEXT, `cfu` INTEGER, PRIMARY KEY(`ID`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ID` INTEGER NOT NULL, `name` TEXT, `surname` TEXT, `university` TEXT, `course` TEXT, `registration` TEXT, `cfu` INTEGER, `avg_type` INTEGER, PRIMARY KEY(`ID`))",
         "fields": [
           {
             "fieldPath": "ID",
@@ -129,6 +129,12 @@
           {
             "fieldPath": "CFU",
             "columnName": "cfu",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Avg_type",
+            "columnName": "avg_type",
             "affinity": "INTEGER",
             "notNull": false
           }
@@ -245,7 +251,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b624efdcc4fac899d296c63b61a5d19c\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"44ab675d0a2c062d55eb336ed4503613\")"
     ]
   }
 }

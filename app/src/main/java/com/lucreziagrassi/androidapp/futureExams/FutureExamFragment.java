@@ -1,6 +1,5 @@
 package com.lucreziagrassi.androidapp.futureExams;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
@@ -24,15 +23,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lucreziagrassi.androidapp.DatePickerFragment;
+import com.lucreziagrassi.androidapp.generic.DatePickerFragment;
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
-import com.lucreziagrassi.androidapp.db.PassedExam;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 
 public class FutureExamFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 

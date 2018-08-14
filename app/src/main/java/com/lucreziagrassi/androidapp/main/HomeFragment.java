@@ -1,4 +1,4 @@
-package com.lucreziagrassi.androidapp.home;
+package com.lucreziagrassi.androidapp.main;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;

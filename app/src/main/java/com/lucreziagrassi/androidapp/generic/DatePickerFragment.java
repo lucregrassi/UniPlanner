@@ -1,4 +1,4 @@
-package com.lucreziagrassi.androidapp;
+package com.lucreziagrassi.androidapp.generic;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -8,6 +8,8 @@ import android.support.v4.app.DialogFragment;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.lucreziagrassi.androidapp.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

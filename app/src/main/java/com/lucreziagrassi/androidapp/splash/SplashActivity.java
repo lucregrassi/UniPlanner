@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.lucreziagrassi.androidapp.IntroActivity;
-import com.lucreziagrassi.androidapp.MainActivity;
+import com.lucreziagrassi.androidapp.main.IntroActivity;
+import com.lucreziagrassi.androidapp.main.MainActivity;
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.AppDatabase;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;

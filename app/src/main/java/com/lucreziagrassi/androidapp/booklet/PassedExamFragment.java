@@ -21,7 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lucreziagrassi.androidapp.DatePickerFragment;
+import com.lucreziagrassi.androidapp.generic.DatePickerFragment;
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.PassedExam;

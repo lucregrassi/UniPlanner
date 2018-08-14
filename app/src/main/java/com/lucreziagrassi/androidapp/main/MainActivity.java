@@ -1,4 +1,4 @@
-package com.lucreziagrassi.androidapp;
+package com.lucreziagrassi.androidapp.main;
 
 import android.graphics.Color;
 import android.net.Uri;
@@ -10,8 +10,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.TextView;
 
+import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.booklet.BookletFragment;
 import com.lucreziagrassi.androidapp.booklet.PassedExamFragment;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
@@ -19,10 +19,8 @@ import com.lucreziagrassi.androidapp.db.FutureExam;
 import com.lucreziagrassi.androidapp.db.Lesson;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.db.Subject;
-import com.lucreziagrassi.androidapp.db.User;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamFragment;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamsFragment;
-import com.lucreziagrassi.androidapp.home.HomeFragment;
 import com.lucreziagrassi.androidapp.subjects.NewSubjectFragment;
 import com.lucreziagrassi.androidapp.subjects.SubjectsFragment;
 import com.lucreziagrassi.androidapp.timer.TimerFragment;
@@ -146,8 +144,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.content, subjectsFragment).commit();
 
         }else if (id == R.id.nav_settings){
+
             getFragmentManager().beginTransaction()
-                    .replace(android.R.id.content, new SettingsFragment())
+                    .replace(R.id.content, new SettingsFragment())
                     .commit();
         }
 

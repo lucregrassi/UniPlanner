@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="avg_types">
+        <item>Ponderata</item>
+        <item>Aritmetica</item>
+    </string-array>
+</resources>

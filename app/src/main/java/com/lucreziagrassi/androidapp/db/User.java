@@ -7,13 +7,6 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity
 public class User {
 
-/*  String nome = ((EditText)findViewById(R.id.nomeText)).getText().toString();
-    String cognome = ((EditText)findViewById(R.id.cognomeText)).getText().toString();
-    String university = ((EditText)findViewById(R.id.universityText)).getText().toString();
-    String corso = ((EditText)findViewById(R.id.corsoText)).getText().toString();
-    String matricola = ((EditText)findViewById(R.id.matricolaText)).getText().toString();
-    Integer cfu = Integer.parseInt(((EditText)findViewById(R.id.cfuText)).getText().toString());*/
-
     @PrimaryKey
     private int ID;
 
@@ -34,6 +27,9 @@ public class User {
 
     @ColumnInfo(name = "cfu")
     private Integer CFU;
+
+    @ColumnInfo(name = "avg_type") // 0: Ponderata, 1: Aritmetica
+    private Integer Avg_type;
 
     public int getID() {
         return ID;
@@ -87,11 +83,29 @@ public class User {
         return CFU;
     }
 
-    public void setCFU(Integer CFU) {
-        this.CFU = CFU;
+    public void setCFU(Integer CFU) { this.CFU = CFU; }
+
+    public Integer getAvg_type() { return Avg_type; }
+
+    public void setAvg_type(Integer Avg_type) { this.Avg_type = Avg_type; }
+
+    public String getAvg_type_String()
+    {
+        if(Avg_type == 1)
+            return "Aritmetica";
+        else
+            return "Ponderata";
     }
 
-    public User(int ID, String Name, String Surname, String University, String Course, String Registration, Integer CFU) {
+    public void setAvg_type_String(String avg_type_string)
+    {
+        if(avg_type_string.equals("Aritmetica"))
+            setAvg_type(1);
+        else
+            setAvg_type(0);
+    }
+
+    public User(int ID, String Name, String Surname, String University, String Course, String Registration, Integer CFU, Integer Avg_type) {
         this.ID = 0; // Essendoci un unico utente, può solo avere ID zero
         this.Name = Name;
         this.Surname = Surname;
@@ -99,5 +113,6 @@ public class User {
         this.Course = Course;
         this.Registration = Registration;
         this.CFU = CFU;
+        this.Avg_type = Avg_type;
     }
 }

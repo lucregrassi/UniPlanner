@@ -1,18 +1,16 @@
-package com.lucreziagrassi.androidapp;
+package com.lucreziagrassi.androidapp.main;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.User;
-import com.lucreziagrassi.androidapp.splash.SplashActivity;
 
 public class IntroActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,7 +36,7 @@ public class IntroActivity extends AppCompatActivity implements View.OnClickList
             Integer intCfu = Integer.parseInt(cfu);
             if(intCfu > 0) {
                 // Se i dati sono validi, creo l'utente
-                User newUser = new User(0, nome, cognome, university, corso, matricola, intCfu);
+                User newUser = new User(0, nome, cognome, university, corso, matricola, intCfu, 0);
                 DatabaseManager.getDatabase().getUserDao().setUser(newUser);
 
                 // Cambio activity
