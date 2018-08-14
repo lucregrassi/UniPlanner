@@ -24,24 +24,28 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActivity().setTitle(R.string.settings_fragment_name);
 
         // Set actual values
         User user = DatabaseManager.getDatabase().getUserDao().getUser();
 
         SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("cfu", "" + user.getCFU());
         editor.putString("university", user.getUniversity());
         editor.putString("corso", user.getCourse());
         editor.putString("avg_type", user.getAvg_type_String());
-        editor.commit();
+        editor.putString("cfu", "" + user.getCFU());
+        editor.putString("badge_number", "" + user.getBadge_number());
+
+        editor.apply();
 
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.preferences);
 
-        findPreference("cfu").setSummary(user.getCFU() + "");
         findPreference("university").setSummary(user.getUniversity() + "");
         findPreference("corso").setSummary(user.getCourse() + "");
+        findPreference("cfu").setSummary(user.getCFU() + "");
+        findPreference("badge_number").setSummary(user.getBadge_number() + "");
         findPreference("avg_type").setSummary(user.getAvg_type_String());
 
         getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
@@ -55,20 +59,21 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     }
 
     @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s)
-    {
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
         User user = DatabaseManager.getDatabase().getUserDao().getUser();
 
-        user.setCFU(Integer.parseInt(sharedPreferences.getString("cfu", "" + user.getCFU())));
         user.setUniversity(sharedPreferences.getString("university", user.getUniversity()));
         user.setCourse(sharedPreferences.getString("corso", user.getCourse()));
+        user.setCFU(Integer.parseInt(sharedPreferences.getString("cfu", "" + user.getCFU())));
+        user.setBadge_number(sharedPreferences.getString("badge_number", "" + user.getBadge_number()));
         user.setAvg_type_String(sharedPreferences.getString("avg_type", user.getAvg_type_String()));
 
         DatabaseManager.getDatabase().getUserDao().setUser(user);
 
-        findPreference("cfu").setSummary(user.getCFU() + "");
         findPreference("university").setSummary(user.getUniversity() + "");
         findPreference("corso").setSummary(user.getCourse() + "");
+        findPreference("cfu").setSummary(user.getCFU() + "");
+        findPreference("badge_number").setSummary(user.getBadge_number() + "");
         findPreference("avg_type").setSummary(user.getAvg_type_String());
     }
 }

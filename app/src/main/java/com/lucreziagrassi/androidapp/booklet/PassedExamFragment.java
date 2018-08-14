@@ -54,7 +54,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
             "Teoria dei sistemi",
             "Fisica Generale",
             "Geometria",
-            "+"
+            "Aggiungi nuova materia"
         };
         Spinner spinner = (Spinner) getView().findViewById(R.id.subjects_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,
@@ -123,18 +123,18 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
 
     public void onAddPassedExamClick() {
         // Prendo le stringhe dei textView
-        String materia = ((Spinner) getView().findViewById(R.id.subjects_spinner)).getSelectedItem().toString();
-        String voto = ((EditText) getView().findViewById(R.id.exam_vote)).getText().toString();
+        String subject = ((Spinner) getView().findViewById(R.id.subjects_spinner)).getSelectedItem().toString();
+        String vote = ((EditText) getView().findViewById(R.id.exam_vote)).getText().toString();
         String cfu = ((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString();
-        String data = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
+        String date = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
 
-        if (!materia.isEmpty() && !data.isEmpty() && !voto.isEmpty() && !cfu.isEmpty()) {
-            Integer intVoto = Integer.parseInt(voto);
+        if (!subject.equals("Seleziona una materia") && !date.isEmpty() && !vote.isEmpty() && !cfu.isEmpty()) {
+            Integer intVoto = Integer.parseInt(vote);
             Integer intCfu = Integer.parseInt(cfu);
             if (intVoto > 0 && intVoto < 31) {
                 if (intCfu > 0) {
                     // Se i dati sono validi, creo l'esame
-                    PassedExam newPassedExam = new PassedExam(0, materia, intVoto, data, intCfu);
+                    PassedExam newPassedExam = new PassedExam(0, subject, intVoto, date, intCfu);
                     DatabaseManager.getDatabase().getPassedExamDao().insert(newPassedExam);
 
                     // Chiude la tastiera

@@ -25,7 +25,7 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:layout_width="12dp"
+            android:layout_width="15dp"
             android:id="@+id/color_tv1"
             android:layout_height="match_parent"
             android:layout_alignEnd="@id/subject_tv"
@@ -56,7 +56,7 @@
             android:textSize="18sp" />
 
         <ImageView
-            android:layout_width="12dp"
+            android:layout_width="15dp"
             android:id="@+id/color_tv2"
             android:layout_height="match_parent"
             android:layout_alignEnd="@id/professor_tv"

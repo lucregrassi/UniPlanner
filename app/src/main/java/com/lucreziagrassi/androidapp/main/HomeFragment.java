@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
         ((TextView) getView().findViewById(R.id.university_name)).setText(user.getUniversity());
         ((TextView) getView().findViewById(R.id.degree_course)).setText(user.getCourse());
         ((TextView) ((NavigationView)getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_username)).setText(user.getName() + " " + user.getSurname());
-
+        ((TextView) ((NavigationView)getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_badge_number)).setText(user.getBadge_number());
         //Calcola media, cfu e voto stimato
         Double avgPonderata = 0.0;
         Integer sumCFU = 0;

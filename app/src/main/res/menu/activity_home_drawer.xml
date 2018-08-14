@@ -25,14 +25,14 @@
             android:title="@string/votes"/>
 
         <item
-            android:id="@+id/nav_timer"
-            android:icon="@drawable/ic_menu_timer"
-            android:title="@string/timer" />
-
-        <item
             android:id="@+id/nav_subjects"
             android:icon="@drawable/ic_menu_exams"
             android:title="@string/subjects" />
+
+        <item
+            android:id="@+id/nav_timer"
+            android:icon="@drawable/ic_menu_timer"
+            android:title="@string/timer" />
 
         <item
             android:id="@+id/nav_settings"

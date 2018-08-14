@@ -3,8 +3,9 @@
     <string name="title_activity_navigation_test">NavigationTestActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Utente</string>
-    <string name="nav_header_subtitle">Media</string>
+    <string name="nav_header_title">Nome Utente</string>
+    <string name="nav_header_subtitle">Media: </string>
+    <string name="nav_header_badge_number">Matricola: </string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -66,6 +67,9 @@
     <string name="start">Start</string>
     <string name="pause">Pause</string>
     <string name="reset">Reset</string>
+
+    <!--strings Settings fragment -->
+    <string name="settings_fragment_name">Timer</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

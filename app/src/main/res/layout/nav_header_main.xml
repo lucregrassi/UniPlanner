@@ -49,10 +49,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/media"
-        android:text="Valore media"
+        android:text=""
         android:textSize="15sp"
         android:layout_marginStart="3dp"
         android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/matricola"
+            android:layout_toStartOf="@id/nav_badge_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_header_badge_number"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/nav_badge_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="ciao"
+            android:textSize="15sp"
+            android:layout_marginStart="3dp"
+            android:textColor="@color/white"/>
+
     </RelativeLayout>
 
 </LinearLayout>

@@ -60,16 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        // TODO: Rimuovere, debug only: aggiunge un esame al db
-        PassedExam a = new PassedExam(0, "Sviluppo Applicazioni Web", 30, "25/05/18", 6);
-        DatabaseManager.getDatabase().getPassedExamDao().insert(a);
-
-        FutureExam b = new FutureExam(0, "Controllo Digitale", "25/09/18", 6);
-        DatabaseManager.getDatabase().getFutureExamDao().insert(b);
-
-        Subject s = new Subject(0, "Dispositivi e circuiti elettronici", "Daniele Caviglia", Color.RED);
-        DatabaseManager.getDatabase().getSubjectDao().insert(s);
-
+        // TODO: Rimuovere, debug only
         Lesson l = new Lesson(0, "Fisica Matematica", "Angelo Morro", "E" + new Random().nextInt((7 - 1) + 1), Color.GREEN, "9:00", "11:00", new Random().nextInt((6 - 1) + 1) + 1);
         DatabaseManager.getDatabase().getLessonDao().insert(l);
 
@@ -132,19 +123,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 bookletFragment = new BookletFragment();
 
             getSupportFragmentManager().beginTransaction().replace(R.id.content, bookletFragment).commit();
+        }else if (id == R.id.nav_subjects) {
+
+            if (subjectsFragment == null)
+                subjectsFragment = new SubjectsFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content, subjectsFragment).commit();
         } else if (id == R.id.nav_timer) {
 
             if(timerFragment == null)
                 timerFragment = new TimerFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.content, timerFragment).commit();
-        } else if (id == R.id.nav_subjects) {
-
-            if(subjectsFragment == null)
-                subjectsFragment = new SubjectsFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.content, subjectsFragment).commit();
-
         }else if (id == R.id.nav_settings){
-
             getFragmentManager().beginTransaction()
                     .replace(R.id.content, new SettingsFragment())
                     .commit();

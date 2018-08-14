@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -56,7 +55,7 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
                 "Teoria dei sistemi",
                 "Fisica Generale",
                 "Geometria",
-                "+"
+                "Aggiungi nuova materia"
         };
         Spinner spinner = (Spinner) getView().findViewById(R.id.subjects_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,
@@ -129,13 +128,13 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
         // Prendo le stringhe dei textView
         String materia = ((Spinner) getView().findViewById(R.id.subjects_spinner)).getSelectedItem().toString();
         String cfu = ((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString();
-        String data = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
+        String date = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
 
-        if (!materia.equals("Seleziona una materia") && !data.isEmpty() && !cfu.isEmpty()) {
+        if (!materia.equals("Seleziona una materia") && !date.isEmpty() && !cfu.isEmpty()) {
             Integer inCfu = Integer.parseInt(cfu);
             if (inCfu > 0) {
                 // Se i dati sono validi, creo l'esame
-                FutureExam newFutureExam = new FutureExam(0, materia, data, inCfu);
+                FutureExam newFutureExam = new FutureExam(0, materia, date, inCfu);
                 DatabaseManager.getDatabase().getFutureExamDao().insert(newFutureExam);
 
                 // Chiude la tastiera

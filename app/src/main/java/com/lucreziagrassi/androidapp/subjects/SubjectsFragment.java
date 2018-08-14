@@ -125,12 +125,9 @@ public class SubjectsFragment extends Fragment {
             case R.id.add_button:
                 Fragment newFragment = new NewSubjectFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
                 transaction.replace(R.id.content, newFragment);
                 transaction.addToBackStack(null);
-
                 transaction.commit();
-
                 return true;
 
             default:

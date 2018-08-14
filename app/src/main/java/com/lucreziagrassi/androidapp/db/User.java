@@ -22,8 +22,8 @@ public class User {
     @ColumnInfo(name = "course")
     private String Course;
 
-    @ColumnInfo(name = "registration")
-    private String Registration;
+    @ColumnInfo(name = "badge_number")
+    private String Badge_number;
 
     @ColumnInfo(name = "cfu")
     private Integer CFU;
@@ -71,13 +71,9 @@ public class User {
         this.Course = Course;
     }
 
-    public String getRegistration() {
-        return Registration;
-    }
+    public String getBadge_number() { return Badge_number; }
 
-    public void setRegistration(String Registration) {
-        this.Registration = Registration;
-    }
+    public void setBadge_number(String badge_number) { this.Badge_number = badge_number; }
 
     public Integer getCFU() {
         return CFU;
@@ -105,13 +101,13 @@ public class User {
             setAvg_type(0);
     }
 
-    public User(int ID, String Name, String Surname, String University, String Course, String Registration, Integer CFU, Integer Avg_type) {
+    public User(int ID, String Name, String Surname, String University, String Course, String Badge_number, Integer CFU, Integer Avg_type) {
         this.ID = 0; // Essendoci un unico utente, può solo avere ID zero
         this.Name = Name;
         this.Surname = Surname;
         this.University = University;
         this.Course = Course;
-        this.Registration = Registration;
+        this.Badge_number = Badge_number;
         this.CFU = CFU;
         this.Avg_type = Avg_type;
     }

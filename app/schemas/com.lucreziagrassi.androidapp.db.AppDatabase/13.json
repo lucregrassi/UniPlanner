@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 13,
-    "identityHash": "b624efdcc4fac899d296c63b61a5d19c",
+    "identityHash": "44ab675d0a2c062d55eb336ed4503613",
     "entities": [
       {
         "tableName": "PassedExam",
