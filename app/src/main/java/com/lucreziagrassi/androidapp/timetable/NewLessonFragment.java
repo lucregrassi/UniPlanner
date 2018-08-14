@@ -1,20 +1,27 @@
 package com.lucreziagrassi.androidapp.timetable;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.TimePickerFragment;
 
-public class NewLessonFragment extends Fragment implements View.OnClickListener{
+public class NewLessonFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener{
 
     private NewLessonFragment.OnFragmentInteractionListener mListener;
 
@@ -30,6 +37,39 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener{
         start_hour.setOnClickListener(this);
         EditText end_hour = (EditText) getView().findViewById(R.id.end_hour);
         end_hour.setOnClickListener(this);
+
+        final String[] subjects = new String[]{
+                "Seleziona una materia",
+                "Analisi",
+                "Teoria dei sistemi",
+                "Fisica Generale",
+                "Geometria",
+                "+"
+        };
+        Spinner spinner = (Spinner) getView().findViewById(R.id.subjects_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,
+                subjects) {
+            @Override
+            public boolean isEnabled(int position) {
+                return position != 0;
+            }
+
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        @NonNull ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView tv = (TextView) view;
+                if (position == 0) {
+                    tv.setTextColor(Color.GRAY);
+                } else {
+                    tv.setTextColor(Color.BLACK);
+                }
+                return view;
+            }
+        };
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
     }
 
 
@@ -78,5 +118,17 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener{
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+        String subject = adapterView.getItemAtPosition(position).toString();
+        if (position > 0)
+            Toast.makeText(adapterView.getContext(), "Hai selezionato: " + subject, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

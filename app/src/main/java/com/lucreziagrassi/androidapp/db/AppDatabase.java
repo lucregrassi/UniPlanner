@@ -3,7 +3,7 @@ package com.lucreziagrassi.androidapp.db;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
-@Database(entities = {PassedExam.class, FutureExam.class, User.class, Subject.class, Lesson.class}, version = 12)
+@Database(entities = {PassedExam.class, FutureExam.class, User.class, Subject.class, Lesson.class}, version = 13)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract PassedExamDao getPassedExamDao();

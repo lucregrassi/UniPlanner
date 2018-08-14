@@ -19,7 +19,7 @@ public class FutureExamsListAdapter extends ArrayAdapter<FutureExam> {
     private Context mContext;
     private int mResource;
 
-    public FutureExamsListAdapter(Context context, int resource, List<FutureExam> objects) {
+    FutureExamsListAdapter(Context context, int resource, List<FutureExam> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;

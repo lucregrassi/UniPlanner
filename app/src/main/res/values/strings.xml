@@ -43,7 +43,7 @@
     <!-- strings for PassedExam fragment-->
     <string name="new_exam_fragment_name">Nuovo Esame</string>
     <string name="add_exam_button">Aggiungi</string>
-    <string name="exam_name">Nome dell\'esame</string>
+    <string name="exam_name">Seleziona una materia</string>
     <string name="exam_cfu">CFU</string>
     <string name="exam_date">Data dell\'esame</string>
     <string name="exam_vote">Voto</string>

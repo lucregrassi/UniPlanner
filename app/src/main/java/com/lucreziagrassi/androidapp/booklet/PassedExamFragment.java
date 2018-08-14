@@ -1,8 +1,10 @@
 package com.lucreziagrassi.androidapp.booklet;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -12,7 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +26,7 @@ import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 
-public class PassedExamFragment extends Fragment implements View.OnClickListener{
+public class PassedExamFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private OnFragmentInteractionListener mListener;
 
@@ -42,6 +47,40 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         addPassedExamButton.setOnClickListener(this);
         EditText exam_date = (EditText) getView().findViewById(R.id.exam_date);
         exam_date.setOnClickListener(this);
+
+        final String[] subjects = new String[]{
+            "Seleziona una materia",
+            "Analisi",
+            "Teoria dei sistemi",
+            "Fisica Generale",
+            "Geometria",
+            "+"
+        };
+        Spinner spinner = (Spinner) getView().findViewById(R.id.subjects_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,
+                subjects){
+            @Override
+            public boolean isEnabled(int position) {
+                return position != 0;
+            }
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        @NonNull ViewGroup parent) {
+            View view = super.getDropDownView(position, convertView, parent);
+            TextView tv = (TextView) view;
+            if(position == 0) {
+                tv.setTextColor(Color.GRAY);
+            } else if(position == subjects.length) {
+                tv.setAllCaps(true);
+            } else {
+                tv.setTextColor(Color.BLACK);
+            }
+            return view;
+        }
+    };
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -84,18 +123,18 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
 
     public void onAddPassedExamClick() {
         // Prendo le stringhe dei textView
-        String nome = ((EditText) getView().findViewById(R.id.exam_name)).getText().toString();
+        String materia = ((Spinner) getView().findViewById(R.id.subjects_spinner)).getSelectedItem().toString();
         String voto = ((EditText) getView().findViewById(R.id.exam_vote)).getText().toString();
         String cfu = ((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString();
         String data = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
 
-        if (!nome.isEmpty() && !data.isEmpty() && !voto.isEmpty() && !cfu.isEmpty()) {
+        if (!materia.isEmpty() && !data.isEmpty() && !voto.isEmpty() && !cfu.isEmpty()) {
             Integer intVoto = Integer.parseInt(voto);
             Integer intCfu = Integer.parseInt(cfu);
             if (intVoto > 0 && intVoto < 31) {
                 if (intCfu > 0) {
                     // Se i dati sono validi, creo l'esame
-                    PassedExam newPassedExam = new PassedExam(0, nome, intVoto, data, intCfu);
+                    PassedExam newPassedExam = new PassedExam(0, materia, intVoto, data, intCfu);
                     DatabaseManager.getDatabase().getPassedExamDao().insert(newPassedExam);
 
                     // Chiude la tastiera
@@ -134,5 +173,17 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+        String subject = adapterView.getItemAtPosition(position).toString();
+        if(position > 0)
+            Toast.makeText(adapterView.getContext(), "Hai selezionato: "+ subject, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

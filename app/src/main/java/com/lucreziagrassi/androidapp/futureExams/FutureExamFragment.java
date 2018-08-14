@@ -2,8 +2,10 @@ package com.lucreziagrassi.androidapp.futureExams;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -14,8 +16,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class FutureExamFragment extends Fragment implements View.OnClickListener{
+public class FutureExamFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private OnFragmentInteractionListener mListener;
 
@@ -50,6 +55,39 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
         addFutureExamButton.setOnClickListener(this);
         EditText exam_date = (EditText) getView().findViewById(R.id.exam_date);
         exam_date.setOnClickListener(this);
+
+        final String[] subjects = new String[]{
+                "Seleziona una materia",
+                "Analisi",
+                "Teoria dei sistemi",
+                "Fisica Generale",
+                "Geometria",
+                "+"
+        };
+        Spinner spinner = (Spinner) getView().findViewById(R.id.subjects_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,
+                subjects) {
+            @Override
+            public boolean isEnabled(int position) {
+                return position != 0;
+            }
+
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        @NonNull ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView tv = (TextView) view;
+                if (position == 0) {
+                    tv.setTextColor(Color.GRAY);
+                } else {
+                    tv.setTextColor(Color.BLACK);
+                }
+                return view;
+            }
+        };
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -95,33 +133,27 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
 
     public void onAddFutureExamClick() {
         // Prendo le stringhe dei textView
-        String nome = ((EditText) getView().findViewById(R.id.exam_name)).getText().toString();
+        String materia = ((Spinner) getView().findViewById(R.id.subjects_spinner)).getSelectedItem().toString();
         String cfu = ((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString();
         String data = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
 
-        if (!nome.isEmpty() && !data.isEmpty() && !cfu.isEmpty()) {
+        if (!materia.equals("Seleziona una materia") && !data.isEmpty() && !cfu.isEmpty()) {
             Integer inCfu = Integer.parseInt(cfu);
-            if(inCfu > 0) {
+            if (inCfu > 0) {
                 // Se i dati sono validi, creo l'esame
-                FutureExam newFutureExam = new FutureExam(0, nome, data, inCfu);
+                FutureExam newFutureExam = new FutureExam(0, materia, data, inCfu);
                 DatabaseManager.getDatabase().getFutureExamDao().insert(newFutureExam);
 
                 // Chiude la tastiera
                 InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-
                 View currentFocusedView = getActivity().getCurrentFocus();
 
                 if (currentFocusedView != null)
                     inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
                 // Ritorna al libretto
                 getFragmentManager().popBackStack();
-            }
-            else Toast.makeText(getActivity(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(getActivity(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
-        }
+            } else Toast.makeText(getActivity(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(getActivity(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -136,5 +168,17 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
                 datePicker.show(getFragmentManager(), "Date Picker");
                 break;
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+        String subject = adapterView.getItemAtPosition(position).toString();
+        if (position > 0)
+            Toast.makeText(adapterView.getContext(), "Hai selezionato: " + subject, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

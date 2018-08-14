@@ -24,7 +24,7 @@ import com.lucreziagrassi.androidapp.db.FutureExam;
 import java.util.List;
 
 
-public class FutureExamsFragment extends Fragment {
+public class FutureExamsFragment extends Fragment implements View.OnClickListener{
 
     private static final String TAG = "FutureExamsFragment";
 
@@ -65,6 +65,7 @@ public class FutureExamsFragment extends Fragment {
                 // add to menu
                 menu.addMenuItem(openItem);
 
+                /* NON CI STA SUL TAB
                 // create "add to booklet" item
                 SwipeMenuItem confirmItem = new SwipeMenuItem(
                         getActivity().getApplicationContext());
@@ -80,6 +81,7 @@ public class FutureExamsFragment extends Fragment {
                 confirmItem.setIcon(R.drawable.ic_check);
                 // add to menu
                 menu.addMenuItem(confirmItem);
+                */
 
                 // create "delete" item
                 SwipeMenuItem deleteItem = new SwipeMenuItem(
@@ -107,13 +109,20 @@ public class FutureExamsFragment extends Fragment {
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 switch (index) {
                     case 0:
-                        // open
-                        break;
+                        //TODO: Apri fragment per modificare esame con dati precedenti gia inseriti con titolo "Modifica esame"
+                        Fragment newFragment = new FutureExamFragment();
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.content, newFragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                    break;
                     case 1:
-                        // delete
+                        /*
+                        FutureExam futureExam =
+                        DatabaseManager.getDatabase().getFutureExamDao().delete(futureExam);
+                        */
                         break;
                 }
-                // false : close the menu; true : not close the menu
                 return false;
             }
         });
@@ -146,7 +155,6 @@ public class FutureExamsFragment extends Fragment {
 
                 transaction.replace(R.id.content, newFragment);
                 transaction.addToBackStack(null);
-
                 transaction.commit();
 
                 return true;
@@ -156,5 +164,10 @@ public class FutureExamsFragment extends Fragment {
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

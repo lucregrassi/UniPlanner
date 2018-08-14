@@ -31,4 +31,10 @@
         <item name="android:textSize">20sp</item>
         <item name="android:layout_weight">1</item>
     </style>
+
+    <style name="DatePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+    </style>
 </resources>
