@@ -2,39 +2,44 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="Generali" >
         <EditTextPreference
-            android:defaultValue="Default value"
-            android:key="edit_text_preference_1"
+            android:id="@+id/preference_cfu"
+            android:key="cfu"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:title="Crediti da acquisire"
+            android:inputType="number"
             android:summary="180"/>
+
         <EditTextPreference
-            android:defaultValue="Default value"
-            android:key="edit_text_preference_2"
+            android:id="@+id/preference_university"
+            android:key="university"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:title="Università"
             android:summary="Università degli studi di Genova"/>
 
         <EditTextPreference
-            android:defaultValue="Default value"
-            android:key="edit_text_preference_2"
+            android:id="@+id/preference_corso"
+            android:key="corso"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:title="Corso di studi"
             android:summary="Ingegneria Informatica"/>
-        <EditTextPreference
-            android:defaultValue="Default value"
-            android:key="edit_text_preference_3"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
+
+        <ListPreference
+            android:key="avg_type"
             android:title="Tipo di media"
-            android:summary="Ponderata"/>
+            android:summary=""
+            android:entries="@array/avg_types"
+            android:entryValues="@array/avg_types"
+            android:defaultValue="0" />
+
     </PreferenceCategory>
+
     <PreferenceCategory android:title="Impostazioni personali">
         <EditTextPreference
-            android:defaultValue="Default value"
-            android:key="edit_text_preference_5"
+            android:id="@+id/preference_delete_all"
+            android:key="delete_all"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:title="Elimina tutti i dati"

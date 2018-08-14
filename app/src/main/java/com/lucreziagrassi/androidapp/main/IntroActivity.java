@@ -36,7 +36,7 @@ public class IntroActivity extends AppCompatActivity implements View.OnClickList
             Integer intCfu = Integer.parseInt(cfu);
             if(intCfu > 0) {
                 // Se i dati sono validi, creo l'utente
-                User newUser = new User(0, nome, cognome, university, corso, matricola, intCfu);
+                User newUser = new User(0, nome, cognome, university, corso, matricola, intCfu, 0);
                 DatabaseManager.getDatabase().getUserDao().setUser(newUser);
 
                 // Cambio activity
