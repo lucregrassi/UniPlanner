@@ -22,10 +22,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lucreziagrassi.androidapp.db.Subject;
 import com.lucreziagrassi.androidapp.generic.DatePickerFragment;
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FutureExamFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -49,17 +53,15 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
         EditText exam_date = (EditText) getView().findViewById(R.id.exam_date);
         exam_date.setOnClickListener(this);
 
-        final String[] subjects = new String[]{
-                "Seleziona una materia",
-                "Analisi",
-                "Teoria dei sistemi",
-                "Fisica Generale",
-                "Geometria",
-                "Aggiungi nuova materia"
-        };
+        List<String> subjects = new ArrayList<String>();
+
+        for(Subject subject : DatabaseManager.getDatabase().getSubjectDao().getAll())
+            subjects.add(subject.getSubject());
+
+        final String[] subjectsArray = subjects.toArray(new String[0]);
+
         Spinner spinner = (Spinner) getView().findViewById(R.id.subjects_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,
-                subjects) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, subjectsArray) {
             @Override
             public boolean isEnabled(int position) {
                 return position != 0;
