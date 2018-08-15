@@ -26,6 +26,7 @@
 
     <EditText
         android:id="@+id/subject_name"
+        android:elevation="10dp"
         android:layout_width="240dp"
         android:layout_height="40dp"
         android:layout_alignStart="@+id/prof_name"
@@ -40,6 +41,7 @@
 
     <EditText
         android:id="@+id/prof_name"
+        android:elevation="10dp"
         android:layout_width="240dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
@@ -66,7 +68,8 @@
         android:layout_height="40dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="5dp"
-        app:cardElevation="10dp">
+        android:layout_marginBottom="10dp"
+        app:cardElevation="5dp">
 
         <TextView
             android:id="@+id/buttonContent"
@@ -93,7 +96,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/relative_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         app:cardBackgroundColor="@color/colorPrimaryDark"
         app:cardCornerRadius="25dp"
         app:cardElevation="10dp"

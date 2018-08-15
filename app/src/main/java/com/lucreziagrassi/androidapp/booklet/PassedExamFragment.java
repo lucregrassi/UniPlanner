@@ -66,6 +66,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
             public boolean isEnabled(int position) {
                 return position != 0;
             }
+
             @Override
             public View getDropDownView(int position, View convertView,
                                         @NonNull ViewGroup parent) {
@@ -73,8 +74,6 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
             TextView tv = (TextView) view;
             if(position == 0) {
                 tv.setTextColor(Color.GRAY);
-            } else if(position == subjectsArray.length) {
-                tv.setAllCaps(true);
             } else {
                 tv.setTextColor(Color.BLACK);
             }

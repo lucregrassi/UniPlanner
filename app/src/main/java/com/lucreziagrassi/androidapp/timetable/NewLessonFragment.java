@@ -23,7 +23,11 @@ import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.Lesson;
 import com.lucreziagrassi.androidapp.db.PassedExam;
+import com.lucreziagrassi.androidapp.db.Subject;
 import com.lucreziagrassi.androidapp.generic.TimePickerFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewLessonFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener{
 
@@ -44,17 +48,16 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
         EditText end_hour = (EditText) getView().findViewById(R.id.end_hour);
         end_hour.setOnClickListener(this);
 
-        final String[] subjects = new String[]{
-                "Seleziona una materia",
-                "Analisi",
-                "Teoria dei sistemi",
-                "Fisica Generale",
-                "Geometria",
-                "Aggiungi nuova materia"
-        };
+        List<String> subjects = new ArrayList<>();
+        subjects.add("Seleziona una materia");
+
+        for(Subject subject : DatabaseManager.getDatabase().getSubjectDao().getAll())
+            subjects.add(subject.getSubject());
+
+        final String[] subjectsArray = subjects.toArray(new String[0]);
+
         Spinner spinner = (Spinner) getView().findViewById(R.id.subjects_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,
-                subjects) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, subjectsArray) {
             @Override
             public boolean isEnabled(int position) {
                 return position != 0;

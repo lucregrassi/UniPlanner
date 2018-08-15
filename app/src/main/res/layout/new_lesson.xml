@@ -24,7 +24,7 @@
 
     <Spinner
         android:id="@+id/subjects_spinner"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/new_lesson"
         android:spinnerMode="dropdown"
@@ -33,6 +33,7 @@
 
     <EditText
         android:id="@+id/location"
+        android:elevation="10dp"
         android:layout_width="240dp"
         android:layout_height="40dp"
         android:layout_below="@+id/subjects_spinner"
@@ -47,11 +48,12 @@
 
     <EditText
         android:id="@+id/start_hour"
+        android:elevation="10dp"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_alignStart="@+id/subjects_spinner"
         android:layout_below="@+id/location"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="35dp"
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_time"
@@ -62,6 +64,7 @@
 
     <EditText
         android:id="@+id/end_hour"
+        android:elevation="10dp"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_alignEnd="@+id/subjects_spinner"
