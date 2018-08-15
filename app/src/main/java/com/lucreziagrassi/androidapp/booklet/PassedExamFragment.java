@@ -52,7 +52,8 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         EditText exam_date = (EditText) getView().findViewById(R.id.exam_date);
         exam_date.setOnClickListener(this);
 
-        List<String> subjects = new ArrayList<String>();
+        List<String> subjects = new ArrayList<>();
+        subjects.add("Seleziona una materia");
 
         for(Subject subject : DatabaseManager.getDatabase().getSubjectDao().getAll())
             subjects.add(subject.getSubject());
