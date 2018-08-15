@@ -47,6 +47,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private SubjectsFragment subjectsFragment = null;
     private TimetableFragment timetableFragment = null;
 
+    public static Context contextOfApplication;
+    public static Context getContextOfApplication() {
+        return contextOfApplication;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
