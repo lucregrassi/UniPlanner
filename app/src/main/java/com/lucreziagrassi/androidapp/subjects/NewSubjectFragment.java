@@ -77,11 +77,14 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
         // Prendo le stringhe dei textView
         String subject = ((EditText) getView().findViewById(R.id.subject_name)).getText().toString();
         String professor  = ((EditText) getView().findViewById(R.id.prof_name)).getText().toString();
+        String cfu = ((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString();
         Integer color = subjectColor;
 
-        if (!subject.isEmpty() && !professor.isEmpty()) {
+        if (!subject.isEmpty() && !professor.isEmpty() && !cfu.isEmpty()) {
+            Integer intCfu = Integer.parseInt(cfu);
+            if(intCfu > 0){
             // Se i dati sono validi, creo l'esame
-            Subject newSubject = new Subject(0, subject, professor, color);
+            Subject newSubject = new Subject(0, subject, professor, intCfu, color);
             DatabaseManager.getDatabase().getSubjectDao().insert(newSubject);
 
             // Chiude la tastiera
@@ -92,6 +95,7 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
 
             // Ritorna al libretto
             getFragmentManager().popBackStack();
+        }else Toast.makeText(getActivity(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
         }
         else Toast.makeText(getActivity(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
     }

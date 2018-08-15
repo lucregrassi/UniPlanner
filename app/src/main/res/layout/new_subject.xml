@@ -54,11 +54,26 @@
         android:hint="Nome del professore"
         android:inputType="textPersonName" />
 
+    <EditText
+        android:id="@+id/exam_cfu"
+        android:elevation="10dp"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/prof_name"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_action_degree_course"
+        android:ems="10"
+        android:hint="@string/exam_cfu"
+        android:inputType="number" />
+
     <RelativeLayout
         android:layout_width="240dp"
         android:id="@+id/relative_layout"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/prof_name"
+        android:layout_below="@+id/exam_cfu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp">
 
