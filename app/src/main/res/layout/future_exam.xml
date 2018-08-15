@@ -68,7 +68,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/exam_date"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         app:cardBackgroundColor="@color/colorPrimaryDark"
         app:cardCornerRadius="25dp"
         app:cardElevation="10dp"

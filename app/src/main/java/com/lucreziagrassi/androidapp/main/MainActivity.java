@@ -1,5 +1,6 @@
 package com.lucreziagrassi.androidapp.main;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -42,6 +43,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FutureExamsFragment futureExamsFragment = null;
     private SubjectsFragment subjectsFragment = null;
     private TimetableFragment timetableFragment = null;
+
+    public static Context contextOfApplication;
+    public static Context getContextOfApplication() {
+        return contextOfApplication;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
