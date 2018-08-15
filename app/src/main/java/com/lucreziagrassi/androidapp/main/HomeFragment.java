@@ -73,8 +73,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ((ProgressBar) getView().findViewById(R.id.cfuProgressBar)).setProgress(sumCFU);
         ((TextView) getView().findViewById(R.id.cfuProgressBarText)).setText(sumCFU + "/" + user.getCFU());
 
-        ((TextView) getView().findViewById(R.id.avgExams)).setText((Math.round(avgPonderata * 100) / 100) + "");
-        ((TextView) ((NavigationView)getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_avg)).setText((Math.round(avgPonderata * 100) / 100) + "");
+        ((TextView) getView().findViewById(R.id.avgExams)).setText((Math.round(avgPonderata * 100) / 100.0) + "");
+        ((TextView) ((NavigationView)getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_avg)).setText((Math.round(avgPonderata * 100) / 100.0) + "");
         ((TextView) getView().findViewById(R.id.passedExamCount)).setText(passedExams.size() + "");
 
         int degreeVote = (int) Math.round(avgPonderata * 11 / 3);
