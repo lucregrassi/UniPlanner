@@ -56,6 +56,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ((TextView) ((NavigationView)getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_username)).setText(user.getName() + " " + user.getSurname());
         ((TextView) ((NavigationView)getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_badge_number)).setText(user.getBadge_number());
         ((NavigationView) getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.profile_image).setOnClickListener(this);
+
         //Calcola media, cfu e voto stimato
         Double avgPonderata = 0.0;
         Integer sumCFU = 0;

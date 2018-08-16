@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.booklet.BookletFragment;
@@ -23,6 +25,7 @@ import com.lucreziagrassi.androidapp.db.FutureExam;
 import com.lucreziagrassi.androidapp.db.Lesson;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.db.Subject;
+import com.lucreziagrassi.androidapp.db.User;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamFragment;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamsFragment;
 import com.lucreziagrassi.androidapp.subjects.NewSubjectFragment;
@@ -31,6 +34,7 @@ import com.lucreziagrassi.androidapp.timer.TimerFragment;
 import com.lucreziagrassi.androidapp.timetable.NewLessonFragment;
 import com.lucreziagrassi.androidapp.timetable.TimetableFragment;
 
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
