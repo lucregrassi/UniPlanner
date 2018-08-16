@@ -29,7 +29,7 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
     Integer subjectColor;
 
     public NewSubjectFragment() {
-        //empty constructor
+
     }
 
     @Override
@@ -82,21 +82,35 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
 
         if (!subject.isEmpty() && !professor.isEmpty() && !cfu.isEmpty()) {
             Integer intCfu = Integer.parseInt(cfu);
-            if(intCfu > 0){
-            // Se i dati sono validi, creo l'esame
-            Subject newSubject = new Subject(0, subject, professor, intCfu, color);
-            DatabaseManager.getDatabase().getSubjectDao().insert(newSubject);
+            if(intCfu > 0)
+            {
+                // Se i dati sono validi, creo l'esame
+                Subject newSubject = new Subject(0, subject, professor, intCfu, color);
 
-            // Chiude la tastiera
-            InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-            View currentFocusedView = getActivity().getCurrentFocus();
-            if (currentFocusedView != null)
-                inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                // Check che il nome sia univoco
+                for(Subject sub : DatabaseManager.getDatabase().getSubjectDao().getAll())
+                {
+                    if(sub.getSubject().equals(newSubject.getSubject()))
+                    {
+                        // Nome già usato
+                        Toast.makeText(getActivity(), "Hai già inserito questa materia", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
 
-            // Ritorna al libretto
-            getFragmentManager().popBackStack();
-        }else Toast.makeText(getActivity(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
-        }
+                DatabaseManager.getDatabase().getSubjectDao().insert(newSubject);
+
+                // Chiude la tastiera
+                InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                View currentFocusedView = getActivity().getCurrentFocus();
+                if (currentFocusedView != null)
+                    inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                // Ritorna al libretto
+                getFragmentManager().popBackStack();
+            }
+                else Toast.makeText(getActivity(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
+            }
         else Toast.makeText(getActivity(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
     }
 
@@ -106,6 +120,7 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
             case R.id.color_picker_button:
                 openColorPicker();
                 break;
+
             case R.id.addNewSubject:
                 onAddNewSubjectClick();
                 break;

@@ -28,8 +28,13 @@ import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class FutureExamFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -139,18 +144,30 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
         }
 
         if (!subject.equals("Seleziona una materia") && !date.isEmpty()) {
-                // Se i dati sono validi, creo l'esame
-                FutureExam newFutureExam = new FutureExam(0, subject, date, cfu);
-                DatabaseManager.getDatabase().getFutureExamDao().insert(newFutureExam);
+            // Date to timestamp
+            Long timestamp = 0L;
 
-                // Chiude la tastiera
-                InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                View currentFocusedView = getActivity().getCurrentFocus();
+            try
+            {
+                DateFormat df = new SimpleDateFormat("dd/MM/yy", Locale.ITALY);
+                Date result = df.parse(date);
 
-                if (currentFocusedView != null)
-                    inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                // Ritorna al libretto
-                getFragmentManager().popBackStack();
+                timestamp = result.getTime();
+            }
+            catch(ParseException pe) { }
+
+            // Se i dati sono validi, creo l'esame
+            FutureExam newFutureExam = new FutureExam(0, subject, timestamp, cfu);
+            DatabaseManager.getDatabase().getFutureExamDao().insert(newFutureExam);
+
+            // Chiude la tastiera
+            InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            View currentFocusedView = getActivity().getCurrentFocus();
+
+            if (currentFocusedView != null)
+                inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            // Ritorna al libretto
+            getFragmentManager().popBackStack();
         } else Toast.makeText(getActivity(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
     }
 

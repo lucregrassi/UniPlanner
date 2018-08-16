@@ -11,7 +11,13 @@ import android.widget.TextView;
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.FutureExam;
 
+import java.security.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class FutureExamsListAdapter extends ArrayAdapter<FutureExam> {
 
@@ -30,7 +36,7 @@ public class FutureExamsListAdapter extends ArrayAdapter<FutureExam> {
     public View getView(int position, View convertView, ViewGroup parent) {
         String subject = getItem(position).getSubject();
         int cfu = getItem(position).getCFU();
-        String date = getItem(position).getDate();
+        Long date = getItem(position).getDate();
 
         FutureExam futureExam = new FutureExam(0, subject, date, cfu);
         LayoutInflater inflater = LayoutInflater.from(mContext);
@@ -42,7 +48,10 @@ public class FutureExamsListAdapter extends ArrayAdapter<FutureExam> {
 
         tvSubject.setText(subject);
         tvCfu.setText("" + cfu);
-        tvDate.setText(date);
+
+        // Timestamp to date
+        DateFormat df = new SimpleDateFormat("dd/MM/yy", Locale.ITALY);
+        tvDate.setText(df.format(new Date(date)));
 
         return convertView;
     }

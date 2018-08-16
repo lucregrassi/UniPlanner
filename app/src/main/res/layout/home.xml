@@ -283,23 +283,22 @@
                 android:background="@color/lightgray" />
 
             <TextView
-                android:id="@+id/boh"
+                android:id="@+id/nextExamText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Discussione Tesi"
+                android:text="Non hai esami registrati"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/boh1"
+                android:id="@+id/nextExamDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="24 Agosto 2018"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"/>
+                android:textStyle="bold" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

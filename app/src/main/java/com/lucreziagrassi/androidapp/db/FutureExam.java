@@ -14,12 +14,12 @@ public class FutureExam {
     private String Subject;
 
     @ColumnInfo(name = "Date")
-    private String Date;
+    private Long Date;
 
     @ColumnInfo(name = "CFU")
     private int CFU;
 
-    public FutureExam(int ID, String Subject, String Date, int CFU) {
+    public FutureExam(int ID, String Subject, Long Date, int CFU) {
         this.ID = ID;
         this.Subject = Subject;
         this.Date = Date;
@@ -42,11 +42,11 @@ public class FutureExam {
         this.Subject = subject;
     }
 
-    public String getDate() {
+    public Long getDate() {
         return Date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Long date) {
         this.Date = date;
     }
 

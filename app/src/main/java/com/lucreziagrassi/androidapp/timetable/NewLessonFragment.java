@@ -137,6 +137,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
             case R.id.start_hour:
             case R.id.end_hour:
                 DialogFragment timePicker = new TimePickerFragment();
+
                 // Imposto su quale EditText devo inserire l'ora
                 Bundle timePickerArguments = new Bundle();
                 timePickerArguments.putInt("timeEditTextID", v.getId());
