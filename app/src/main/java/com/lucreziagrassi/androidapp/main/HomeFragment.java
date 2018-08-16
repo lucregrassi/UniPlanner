@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -25,9 +26,14 @@ import android.widget.Toast;
 
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
+import com.lucreziagrassi.androidapp.db.FutureExam;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.db.User;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -80,6 +86,20 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         int degreeVote = (int) Math.round(avgPonderata * 11 / 3);
         ((ProgressBar) getView().findViewById(R.id.votoLaureaProgressBar)).setProgress(degreeVote);
         ((TextView) getView().findViewById(R.id.votoLaureaProgressBarText)).setText(degreeVote + "/" + 110);
+
+        // Setta il prossimo esame
+        List<FutureExam> futureExams = DatabaseManager.getDatabase().getFutureExamDao().getAll();
+
+        if(futureExams.size() >= 1)
+        {
+            FutureExam nextExam = futureExams.get(0);
+
+            DateFormat df = new SimpleDateFormat("dd MMMM yyyy", Locale.ITALY);
+            String formattedNextExamDate = df.format(nextExam.getDate());
+
+            ((TextView) getView().findViewById(R.id.nextExamText)).setText(nextExam.getSubject());
+            ((TextView) getView().findViewById(R.id.nextExamDate)).setText(formattedNextExamDate);
+        }
     }
 
     @Override
