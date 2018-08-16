@@ -1,6 +1,9 @@
 package com.lucreziagrassi.androidapp.main;
 
+import android.app.AlertDialog;
 import android.arch.persistence.room.Database;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
@@ -12,15 +15,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.User;
+import com.lucreziagrassi.androidapp.splash.SplashActivity;
 
 import java.util.Map;
 
 
-public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class SettingsFragment extends PreferenceFragment implements
+        SharedPreferences.OnSharedPreferenceChangeListener,
+        Preference.OnPreferenceClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +56,8 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         findPreference("avg_type").setSummary(user.getAvg_type_String());
 
         getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+
+        findPreference("delete_all").setOnPreferenceClickListener(this);
     }
 
     @Override
@@ -75,5 +84,25 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         findPreference("cfu").setSummary(user.getCFU() + "");
         findPreference("badge_number").setSummary(user.getBadge_number() + "");
         findPreference("avg_type").setSummary(user.getAvg_type_String());
+    }
+
+    @Override
+    public boolean onPreferenceClick(Preference preference)
+    {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Cancellazione dati")
+                .setMessage("Vuoi davvero cancellare tutti i dati?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        DatabaseManager.getDatabase().clearAllTables();
+
+                        // Riporta alla splash activity
+                        Intent intent = new Intent(getActivity(), SplashActivity.class);
+                        startActivity(intent);
+                    }})
+                .setNegativeButton(android.R.string.no, null).show();
+
+        return true;
     }
 }
