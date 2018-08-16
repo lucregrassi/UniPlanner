@@ -33,11 +33,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="sans-serif-smallcaps"
             android:text="Università"
             android:textColor="@color/white"
-            android:textSize="25sp" />
+            android:textStyle="bold"
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/degree_course"
@@ -45,8 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="65dp"
-            android:fontFamily="sans-serif-smallcaps"
+            android:layout_marginTop="70dp"
+            android:fontFamily="sans-serif"
             android:text="Facoltà"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -170,7 +171,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:cardCornerRadius="15dp"
             app:cardElevation="2dp">
 
         <ProgressBar
@@ -218,7 +218,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        app:cardCornerRadius="15dp"
         app:cardElevation="2dp">
 
         <ProgressBar

@@ -53,7 +53,8 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
         EditText exam_date = (EditText) getView().findViewById(R.id.exam_date);
         exam_date.setOnClickListener(this);
 
-        List<String> subjects = new ArrayList<String>();
+        List<String> subjects = new ArrayList<>();
+        subjects.add("Seleziona una materia");
 
         for(Subject subject : DatabaseManager.getDatabase().getSubjectDao().getAll())
             subjects.add(subject.getSubject());
@@ -128,15 +129,18 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
 
     public void onAddFutureExamClick() {
         // Prendo le stringhe dei textView
-        String materia = ((Spinner) getView().findViewById(R.id.subjects_spinner)).getSelectedItem().toString();
-        String cfu = ((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString();
+        String subject = ((Spinner) getView().findViewById(R.id.subjects_spinner)).getSelectedItem().toString();
         String date = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
+        Integer cfu = 0;
 
-        if (!materia.equals("Seleziona una materia") && !date.isEmpty() && !cfu.isEmpty()) {
-            Integer inCfu = Integer.parseInt(cfu);
-            if (inCfu > 0) {
+        for(Subject subj :DatabaseManager.getDatabase().getSubjectDao().getAll()) {
+            if (subj.getSubject().equals(subject))
+                cfu = subj.getCfu();
+        }
+
+        if (!subject.equals("Seleziona una materia") && !date.isEmpty()) {
                 // Se i dati sono validi, creo l'esame
-                FutureExam newFutureExam = new FutureExam(0, materia, date, inCfu);
+                FutureExam newFutureExam = new FutureExam(0, subject, date, cfu);
                 DatabaseManager.getDatabase().getFutureExamDao().insert(newFutureExam);
 
                 // Chiude la tastiera
@@ -147,7 +151,6 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
                     inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 // Ritorna al libretto
                 getFragmentManager().popBackStack();
-            } else Toast.makeText(getActivity(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
         } else Toast.makeText(getActivity(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
     }
 

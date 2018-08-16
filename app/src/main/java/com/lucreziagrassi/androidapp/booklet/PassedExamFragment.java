@@ -52,7 +52,8 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         EditText exam_date = (EditText) getView().findViewById(R.id.exam_date);
         exam_date.setOnClickListener(this);
 
-        List<String> subjects = new ArrayList<String>();
+        List<String> subjects = new ArrayList<>();
+        subjects.add("Seleziona una materia");
 
         for(Subject subject : DatabaseManager.getDatabase().getSubjectDao().getAll())
             subjects.add(subject.getSubject());
@@ -65,6 +66,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
             public boolean isEnabled(int position) {
                 return position != 0;
             }
+
             @Override
             public View getDropDownView(int position, View convertView,
                                         @NonNull ViewGroup parent) {
@@ -72,8 +74,6 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
             TextView tv = (TextView) view;
             if(position == 0) {
                 tv.setTextColor(Color.GRAY);
-            } else if(position == subjectsArray.length) {
-                tv.setAllCaps(true);
             } else {
                 tv.setTextColor(Color.BLACK);
             }
@@ -127,16 +127,19 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         // Prendo le stringhe dei textView
         String subject = ((Spinner) getView().findViewById(R.id.subjects_spinner)).getSelectedItem().toString();
         String vote = ((EditText) getView().findViewById(R.id.exam_vote)).getText().toString();
-        String cfu = ((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString();
         String date = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
+        Integer cfu = 0;
 
-        if (!subject.equals("Seleziona una materia") && !date.isEmpty() && !vote.isEmpty() && !cfu.isEmpty()) {
+        for(Subject subj :DatabaseManager.getDatabase().getSubjectDao().getAll()) {
+            if (subj.getSubject().equals(subject))
+                cfu = subj.getCfu();
+        }
+
+        if (!subject.equals("Seleziona una materia") && !date.isEmpty() && !vote.isEmpty()) {
             Integer intVoto = Integer.parseInt(vote);
-            Integer intCfu = Integer.parseInt(cfu);
             if (intVoto > 0 && intVoto < 31) {
-                if (intCfu > 0) {
                     // Se i dati sono validi, creo l'esame
-                    PassedExam newPassedExam = new PassedExam(0, subject, intVoto, date, intCfu);
+                    PassedExam newPassedExam = new PassedExam(0, subject, intVoto, date, cfu);
                     DatabaseManager.getDatabase().getPassedExamDao().insert(newPassedExam);
 
                     // Chiude la tastiera
@@ -148,9 +151,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
                     // Ritorna al libretto
                     getFragmentManager().popBackStack();
                 }
-                else
-                    Toast.makeText(getActivity(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
-            } else {
+                else {
                 Toast.makeText(getActivity(), "Inserisci un voto tra 1 e 30", Toast.LENGTH_SHORT).show();
             }
         }

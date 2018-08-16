@@ -16,13 +16,17 @@ public class Subject {
     @ColumnInfo(name = "Professor")
     private String Professor;
 
+    @ColumnInfo(name = "CFU")
+    private int Cfu;
+
     @ColumnInfo(name = "Color")
     private int Color;
 
-    public Subject(int ID, String Subject, String Professor, int Color) {
+    public Subject(int ID, String Subject, String Professor, int Cfu, int Color) {
         this.ID = ID;
         this.Subject = Subject;
         this.Professor = Professor;
+        this.Cfu = Cfu;
         this.Color = Color;
     }
 
@@ -50,6 +54,10 @@ public class Subject {
         Professor = professor;
     }
 
+    public int getCfu() { return Cfu; }
+
+    public void setCfu(int cfu) { Cfu = cfu; }
+
     public int getColor() {
         return Color;
     }
@@ -57,5 +65,4 @@ public class Subject {
     public void setColor(int color) {
         Color = color;
     }
-
 }

@@ -9,25 +9,27 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_menu_profile"
             android:title="@string/profile" />
+
         <item
             android:id="@+id/nav_schedule"
             android:icon="@drawable/ic_menu_schedule"
             android:title="@string/schedule" />
 
         <item
-            android:id="@+id/nav_exams"
-            android:icon="@drawable/ic_menu_exams"
-            android:title="@string/exams" />
-
-        <item
-            android:id="@+id/nav_votes"
-            android:icon="@drawable/ic_menu_schedule"
-            android:title="@string/votes"/>
-
-        <item
             android:id="@+id/nav_subjects"
             android:icon="@drawable/ic_menu_exams"
             android:title="@string/subjects" />
+
+        <item
+            android:id="@+id/nav_exams"
+            android:icon="@drawable/ic_menu_future_exams"
+            android:title="@string/exams" />
+
+
+        <item
+            android:id="@+id/nav_votes"
+            android:icon="@drawable/ic_menu_libretto"
+            android:title="@string/votes"/>
 
         <item
             android:id="@+id/nav_timer"
@@ -38,7 +40,6 @@
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/settings" />
-
     </group>
 
 </menu>

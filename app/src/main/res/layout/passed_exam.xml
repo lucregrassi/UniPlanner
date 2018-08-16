@@ -24,7 +24,7 @@
 
     <Spinner
         android:id="@+id/subjects_spinner"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/new_passed_exam"
         android:spinnerMode="dropdown"
@@ -33,9 +33,10 @@
 
     <EditText
         android:id="@+id/exam_vote"
+        android:elevation="10dp"
         android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_alignStart="@+id/exam_cfu"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/subjects_spinner"
         android:layout_marginTop="25dp"
         android:background="@drawable/rounded_edittext"
@@ -46,26 +47,13 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/exam_cfu"
+        android:id="@+id/exam_date"
+        android:elevation="10dp"
         android:layout_width="240dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/exam_vote"
-        android:layout_marginTop="23dp"
-        android:background="@drawable/rounded_edittext"
-        android:drawablePadding="5dp"
-        android:drawableStart="@drawable/ic_action_degree_course"
-        android:ems="10"
-        android:hint="@string/exam_cfu"
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/exam_date"
-        android:layout_width="240dp"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/exam_cfu"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/rounded_edittext"
         android:drawablePadding="5dp"
         android:drawableStart="@drawable/ic_action_credits"

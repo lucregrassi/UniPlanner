@@ -48,18 +48,36 @@
 
         <TextView
             android:id="@+id/professor_tv"
-            android:layout_width="match_parent"
+            android:layout_width="230dp"
             android:layout_height="match_parent"
             android:layout_toEndOf="@id/prof_icon"
-            android:text="Daniele Caviglia"
+            android:text=""
             android:textColor="@color/darkgray"
             android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/credits_icon"
+            android:contentDescription="credits icon"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_toEndOf="@id/professor_tv"
+            android:src="@drawable/ic_subject_credits" />
+
+        <TextView
+            android:id="@+id/credits_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/credits_icon"
+            android:text=""
+            android:textColor="@color/darkgray"
+            android:textSize="18sp" />
+
 
         <ImageView
             android:layout_width="15dp"
             android:id="@+id/color_tv2"
             android:layout_height="match_parent"
-            android:layout_alignEnd="@id/professor_tv"
+            android:layout_alignEnd="@id/credits_tv"
             android:background="@color/colorPrimaryDark"/>
 
     </RelativeLayout>

@@ -65,24 +65,6 @@ public class FutureExamsFragment extends Fragment implements View.OnClickListene
                 // add to menu
                 menu.addMenuItem(openItem);
 
-                /* NON CI STA SUL TAB
-                // create "add to booklet" item
-                SwipeMenuItem confirmItem = new SwipeMenuItem(
-                        getActivity().getApplicationContext());
-                // set item background
-                confirmItem.setBackground(new ColorDrawable(Color.rgb(0x00,
-                        0xe6, 0x00)));
-                // set item width
-                confirmItem.setWidth(280);
-                confirmItem.setTitle("Fatto");
-                confirmItem.setTitleSize(18);
-                confirmItem.setTitleColor(Color.WHITE);
-                // set a icon
-                confirmItem.setIcon(R.drawable.ic_check);
-                // add to menu
-                menu.addMenuItem(confirmItem);
-                */
-
                 // create "delete" item
                 SwipeMenuItem deleteItem = new SwipeMenuItem(
                         getActivity().getApplicationContext());

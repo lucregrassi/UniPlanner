@@ -29,19 +29,22 @@ public class SubjectsListAdapter extends ArrayAdapter<Subject> {
     public View getView(int position, View convertView, ViewGroup parent) {
         String subject_name = getItem(position).getSubject();
         String prof = getItem(position).getProfessor();
-        Integer color = getItem(position).getColor();
+        int cfu = getItem(position).getCfu();
+        int color = getItem(position).getColor();
 
-        Subject subject = new Subject(0, subject_name, prof, color);
+        Subject subject = new Subject(0, subject_name, prof, cfu , color);
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
         TextView tvSubject = (TextView) convertView.findViewById(R.id.subject_tv);
         TextView tvProf = (TextView) convertView.findViewById(R.id.professor_tv);
+        TextView credits_tv = (TextView) convertView.findViewById(R.id.credits_tv);
         ImageView tvColor1 = (ImageView) convertView.findViewById(R.id.color_tv1);
         ImageView tvColor2 = (ImageView) convertView.findViewById(R.id.color_tv2);
 
         tvSubject.setText(subject_name);
         tvProf.setText(prof);
+        credits_tv.setText("" + cfu);
         tvColor1.setBackgroundColor(color);
         tvColor2.setBackgroundColor(color);
 

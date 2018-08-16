@@ -101,8 +101,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         // TODO: Rimuovere, debug only
-        Lesson l = new Lesson(0, "Fisica Matematica", "Angelo Morro", "E" + new Random().nextInt((7 - 1) + 1), Color.GREEN, "9:00", "11:00", new Random().nextInt((6 - 1) + 1) + 1);
+        Lesson c = new Lesson(0, "Chimica", "Elisabetta Finocchio", "E2", Color.parseColor("#f442c8"), "14:00", "17:00", 1);
+        DatabaseManager.getDatabase().getLessonDao().insert(c);
+        Lesson l = new Lesson(0, "Controllo Digitale", "Giorgio Cannata", "E3", Color.parseColor("#ffa500"), "8:00", "10:00", 1);
         DatabaseManager.getDatabase().getLessonDao().insert(l);
+        Lesson i = new Lesson(0, "Dispositivi e circuiti elettronici", "Daniele Caviglia", "G1", Color.parseColor("#31ba0e"), "10:00", "13:00", 1);
+        DatabaseManager.getDatabase().getLessonDao().insert(i);
 
         if(homeFragment == null)
             homeFragment = new HomeFragment();

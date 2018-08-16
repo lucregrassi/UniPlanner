@@ -91,7 +91,10 @@ public class SubjectsFragment extends Fragment {
                         // open
                         break;
                     case 1:
-                        // delete
+                        /*
+                        for(Subject subj : DatabaseManager.getDatabase().getSubjectDao().getAll())
+                            if(subj.getSubject().equals())
+                        */
                         break;
                 }
                 // false : close the menu; true : not close the menu
