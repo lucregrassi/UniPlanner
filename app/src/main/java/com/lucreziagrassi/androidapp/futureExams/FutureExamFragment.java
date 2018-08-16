@@ -147,8 +147,7 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
             // Date to timestamp
             Long timestamp = 0L;
 
-            try
-            {
+            try {
                 DateFormat df = new SimpleDateFormat("dd/MM/yy", Locale.ITALY);
                 Date result = df.parse(date);
 
