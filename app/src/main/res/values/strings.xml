@@ -29,19 +29,29 @@
     <string name="start_button">Inizia</string>
 
     <!-- strings for home fragment-->
+    <string name="content_description_homepage">Homepage Introduction</string>
+    <string name="content_description_icon">Icona</string>
     <string name="home_fragment_name">Home</string>
     <string name="average_grade">Media attuale</string>
     <string name="passed_exams">Esami sostenuti</string>
     <string name="expected_degree_vote">Proiezione voto di laurea</string>
     <string name="acquired_credits">Crediti acquisiti</string>
+    <string name="next_exam">Prossimo esame</string>
+    <string name="no_exams">Nessun esame in programma</string>
 
     <!-- strings for Booklet fragment-->
     <string name="booklet_fragment_name">Libretto</string>
 
     <!-- strings for FutureExams fragment-->
     <string name="future_exams_fragment_name">Prossimi Esami</string>
+    <string name="future_exams_title">Inserisci i dati relativi al nuovo esame che dovrai sostenere</string>
+    <string name="exam_location">Aula dell\'esame</string>
+    <string name="data">Data:</string>
+    <string name="crediti">Crediti:</string>
+    <string name="materia">Materia</string>
 
     <!-- strings for PassedExam fragment-->
+    <string name="passed_exam_title">Inserisci i dati relativi al nuovo esame che vuoi aggiungere al tuo libretto</string>
     <string name="new_exam_fragment_name">Nuovo Esame</string>
     <string name="add_exam_button">Aggiungi</string>
     <string name="exam_name">Seleziona una materia</string>
@@ -51,15 +61,25 @@
 
     <!-- strings for NewLesson fragment-->
     <string name="new_lesson_fragment_name">Nuova Lezione</string>
+    <string name="new_lesson_title">Inserisci una nuova lezione da aggiungere all\'orario</string>
+    <string name="lesson_location">Aula della lezione</string>
+    <string name="start_hour">Ora inizio</string>
+    <string name="end_hour">Ora fine</string>
 
     <!-- strings for Subjects fragment-->
     <string name="subjects_fragment_name">Le mie materie</string>
 
     <!-- strings for New Subject fragment-->
     <string name="new_subject_fragment_name">Nuova Materia</string>
+    <string name="new_subject_title">Inserisci i dati relativi al nuovo insegnamento che vuoi aggiungere</string>
+    <string name="subject_name">Nome della materia</string>
+    <string name="prof_name">Nome del professore</string>
+    <string name="choose_color">Scegli un colore</string>
 
     <!-- strings for TimeTable fragment -->
     <string name="timetable_fragment_name">Orario settimanale</string>
+    <string name="docente">Docente</string>
+    <string name="aula">Aula</string>
 
     <!-- strings timer_fragment -->
     <string name="timer_fragment_name">Timer</string>

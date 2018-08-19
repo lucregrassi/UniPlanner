@@ -11,8 +11,7 @@ import java.util.List;
 @Dao
 public abstract class FutureExamDao {
 
-    public List<FutureExam> getAll()
-    {
+    public List<FutureExam> getAll() {
         // Cancella gli esami vecchi, lascia quelli di oggi
         clearOld(Calendar.getInstance().getTimeInMillis() - 60 * 60 * 24 * 1000);
         return get();

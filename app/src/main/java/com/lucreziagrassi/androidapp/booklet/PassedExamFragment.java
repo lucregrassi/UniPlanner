@@ -140,7 +140,17 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
             if (intVoto > 0 && intVoto < 31) {
                     // Se i dati sono validi, creo l'esame
                     PassedExam newPassedExam = new PassedExam(0, subject, intVoto, date, cfu);
+
+                    // Check che il nome sia univoco
+                    for(PassedExam pe : DatabaseManager.getDatabase().getPassedExamDao().getAll()) {
+                        if (pe.getSubject().equals(newPassedExam.getSubject())) {
+                            // Nome già usato
+                            Toast.makeText(getActivity(), "Hai già inserito questo esame", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
                     DatabaseManager.getDatabase().getPassedExamDao().insert(newPassedExam);
+                    Toast.makeText(getActivity(), "Esame aggiunto con successo!", Toast.LENGTH_SHORT).show();
 
                     // Chiude la tastiera
                     InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);

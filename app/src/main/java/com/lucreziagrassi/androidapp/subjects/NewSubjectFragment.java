@@ -82,16 +82,13 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
 
         if (!subject.isEmpty() && !professor.isEmpty() && !cfu.isEmpty()) {
             Integer intCfu = Integer.parseInt(cfu);
-            if(intCfu > 0)
-            {
+            if(intCfu > 0) {
                 // Se i dati sono validi, creo l'esame
                 Subject newSubject = new Subject(0, subject, professor, intCfu, color);
 
                 // Check che il nome sia univoco
-                for(Subject sub : DatabaseManager.getDatabase().getSubjectDao().getAll())
-                {
-                    if(sub.getSubject().equals(newSubject.getSubject()))
-                    {
+                for(Subject sub : DatabaseManager.getDatabase().getSubjectDao().getAll()) {
+                    if(sub.getSubject().equals(newSubject.getSubject())){
                         // Nome già usato
                         Toast.makeText(getActivity(), "Hai già inserito questa materia", Toast.LENGTH_SHORT).show();
                         return;
@@ -99,6 +96,7 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
                 }
 
                 DatabaseManager.getDatabase().getSubjectDao().insert(newSubject);
+                Toast.makeText(getActivity(), "Materia aggiunta con successo!", Toast.LENGTH_SHORT).show();
 
                 // Chiude la tastiera
                 InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -108,10 +106,9 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
 
                 // Ritorna al libretto
                 getFragmentManager().popBackStack();
-            }
-                else Toast.makeText(getActivity(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
-            }
-        else Toast.makeText(getActivity(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
+
+            } else Toast.makeText(getActivity(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(getActivity(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
     }
 
     @Override

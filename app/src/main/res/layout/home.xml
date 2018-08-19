@@ -6,112 +6,253 @@
     android:background="@color/background"
     android:layout_gravity="center">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/colorPrimaryDark"
-        app:cardElevation="5dp">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="@drawable/gradient_background"
-        android:contentDescription="Homepage Introduction"/>
-
-        <TextView
-            android:id="@+id/university_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="Università"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="22sp" />
-
-        <TextView
-            android:id="@+id/degree_course"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="70dp"
-            android:fontFamily="sans-serif"
-            android:text="Facoltà"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-    </RelativeLayout>
-    </android.support.v7.widget.CardView>
-
     <LinearLayout
-        android:id="@+id/cardView_container"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center"
-        android:clipToPadding="false"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <android.support.v7.widget.CardView
-            android:layout_width="150dp"
-            android:layout_height="180dp"
-            android:layout_margin="10dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/colorPrimaryDark"
+            app:cardElevation="5dp">
 
-            <LinearLayout
-                android:layout_width="161dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/orange_circle"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_average" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/average_grade"
-                    android:textStyle="bold" />
-
-                <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="10dp"
-                    android:background="@color/lightgray" />
+                    android:layout_height="120dp"
+                    android:background="@drawable/gradient_background"
+                    android:contentDescription="@string/content_description_homepage" />
 
                 <TextView
-                    android:id="@+id/avgExams"
+                    android:id="@+id/university_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="28"
-                    android:textSize="30sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/degree_course"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="70dp"
+                    android:fontFamily="sans-serif"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
-            </LinearLayout>
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/cardView_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:clipToPadding="false"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="180dp"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="161dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:background="@drawable/orange_circle"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_average" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/average_grade"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/lightgray" />
+
+                    <TextView
+                        android:id="@+id/avgExams"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=""
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="180dp"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:contentDescription="@string/content_description_icon"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:background="@drawable/yellow_circle"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_passed_exams" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/passed_exams"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/lightgray" />
+
+                    <TextView
+                        android:id="@+id/passedExamCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=""
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/expected_degree_vote"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:cardElevation="2dp">
+
+                <ProgressBar
+                    android:id="@+id/votoLaureaProgressBar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:progress="30"
+                    android:progressBackgroundTint="#fff"
+                    android:progressTint="@color/colorPrimaryDark" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/votoLaureaProgressBarText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </FrameLayout>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/acquired_credits"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:cardElevation="2dp">
+
+                <ProgressBar
+                    android:id="@+id/cfuProgressBar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:max="180"
+                    android:progress="120"
+                    android:progressBackgroundTint="#fff"
+                    android:progressTint="@color/yellow" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/cfuProgressBarText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </FrameLayout>
 
 
         <android.support.v7.widget.CardView
-            android:layout_width="150dp"
-            android:layout_height="180dp"
-            android:layout_margin="10dp">
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -121,16 +262,18 @@
 
                 <ImageView
                     android:layout_width="64dp"
+                    android:contentDescription="@string/content_description_icon"
                     android:layout_height="64dp"
                     android:background="@drawable/yellow_circle"
                     android:padding="10dp"
-                    android:src="@drawable/ic_passed_exams" />
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_action_credits" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@string/passed_exams"
+                    android:text="@string/next_exam"
                     android:textStyle="bold" />
 
                 <View
@@ -140,166 +283,24 @@
                     android:background="@color/lightgray" />
 
                 <TextView
-                    android:id="@+id/passedExamCount"
+                    android:id="@+id/nextExamText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="10"
-                    android:textSize="30sp"
+                    android:textSize="22sp"
+                    android:layout_marginBottom="3dp"
+                    android:text="@string/no_exams"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/nextExamDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:textSize="18sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/title_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Proiezione voto di laurea"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <FrameLayout
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center">
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            app:cardElevation="2dp">
-
-        <ProgressBar
-            android:id="@+id/votoLaureaProgressBar"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:progress="30"
-            android:progressBackgroundTint="#fff"
-            android:progressTint="@color/colorPrimaryDark" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/votoLaureaProgressBarText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="30/110"
-                android:textStyle="bold" />
-        </RelativeLayout>
-        </android.support.v7.widget.CardView>
-    </FrameLayout>
-
-
-<TextView
-    android:layout_marginTop="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Crediti acquisiti"
-    android:gravity="center"
-    android:textSize="15dp"
-    android:textStyle="bold" />
-
-    <FrameLayout
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center">
-
-        <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:cardElevation="2dp">
-
-        <ProgressBar
-            android:id="@+id/cfuProgressBar"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:max="180"
-            android:progress="120"
-            android:progressBackgroundTint="#fff"
-            android:progressTint="@color/yellow" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/cfuProgressBarText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="120/180"
-                android:textStyle="bold" />
-        </RelativeLayout>
-        </android.support.v7.widget.CardView>
-    </FrameLayout>
-
-
-    <android.support.v7.widget.CardView
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:background="@drawable/yellow_circle"
-                android:padding="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_action_credits" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Prossimo esame"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:background="@color/lightgray" />
-
-            <TextView
-                android:id="@+id/nextExamText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="22sp"
-                android:layout_marginBottom="3dp"
-                android:text="Nessun esame in programma"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/nextExamDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:textSize="18sp" />
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-</LinearLayout>
 </ScrollView>

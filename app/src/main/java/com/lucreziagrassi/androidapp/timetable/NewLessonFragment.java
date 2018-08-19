@@ -119,6 +119,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
             // Se i dati sono validi, creo l'esame
             Lesson newLesson = new Lesson(0, subject, professor, location, color, startHour, endHour, day);
             DatabaseManager.getDatabase().getLessonDao().insert(newLesson);
+            Toast.makeText(getActivity(), "Lezione aggiunta con successo!", Toast.LENGTH_SHORT).show();
 
             // Chiude la tastiera
             InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);

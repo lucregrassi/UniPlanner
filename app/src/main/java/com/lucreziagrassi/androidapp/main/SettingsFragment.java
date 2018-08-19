@@ -87,8 +87,7 @@ public class SettingsFragment extends PreferenceFragment implements
     }
 
     @Override
-    public boolean onPreferenceClick(Preference preference)
-    {
+    public boolean onPreferenceClick(Preference preference) {
         new AlertDialog.Builder(getActivity())
                 .setTitle("Cancellazione dati")
                 .setMessage("Vuoi davvero cancellare tutti i dati?")
@@ -96,7 +95,6 @@ public class SettingsFragment extends PreferenceFragment implements
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         DatabaseManager.getDatabase().clearAllTables();
-
                         // Riporta alla splash activity
                         Intent intent = new Intent(getActivity(), SplashActivity.class);
                         startActivity(intent);

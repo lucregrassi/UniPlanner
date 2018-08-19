@@ -159,6 +159,8 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
             FutureExam newFutureExam = new FutureExam(0, subject, timestamp, cfu);
             DatabaseManager.getDatabase().getFutureExamDao().insert(newFutureExam);
 
+            Toast.makeText(getActivity(), "Esame aggiunto con successo!", Toast.LENGTH_SHORT).show();
+
             // Chiude la tastiera
             InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             View currentFocusedView = getActivity().getCurrentFocus();
