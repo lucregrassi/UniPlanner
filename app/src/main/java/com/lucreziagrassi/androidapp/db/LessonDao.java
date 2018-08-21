@@ -17,6 +17,9 @@ public interface LessonDao {
     @Query("SELECT * FROM Lesson WHERE Day = :Day ORDER BY Start")
     List<Lesson> getLessonOfDay(Integer Day);
 
+    @Query("SELECT * FROM Lesson WHERE ID = :ID")
+    Lesson get(int ID);
+
     @Insert
     void insert(Lesson lesson);
 

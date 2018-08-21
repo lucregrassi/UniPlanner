@@ -64,6 +64,7 @@
 
     <!-- strings for NewLesson fragment-->
     <string name="new_lesson_fragment_name">Nuova Lezione</string>
+    <string name="new_lesson_modify_fragment_name">Modifica Lezione</string>
     <string name="new_lesson_title">Inserisci una nuova lezione da aggiungere all\'orario</string>
     <string name="lesson_location">Aula della lezione</string>
     <string name="start_hour">Ora inizio</string>

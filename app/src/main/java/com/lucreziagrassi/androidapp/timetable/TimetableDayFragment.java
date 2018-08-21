@@ -18,6 +18,7 @@ import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.Lesson;
+import com.lucreziagrassi.androidapp.main.MainActivity;
 
 import java.util.List;
 
@@ -106,21 +107,13 @@ public class TimetableDayFragment extends Fragment {
                 switch (index) {
                     case 0:
                         // Modifica
-                        Fragment newFragment = new NewLessonFragment();
-
-                        Bundle modifyBundle = new Bundle();
-                        modifyBundle.putInt("currentLesson", selectedLesson.getID());
-                        newFragment.setArguments(modifyBundle);
-
-                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                        transaction.replace(R.id.content, newFragment);
-                        transaction.addToBackStack(null);
-                        transaction.commit();
+                        ((MainActivity)getActivity()).getTimetableFragment().openLessonModify(selectedLesson);
                         break;
                     case 1:
                         // Elimina
                         DatabaseManager.getDatabase().getLessonDao().delete(selectedLesson);
                         // Reload view
+                        ((MainActivity)getActivity()).getTimetableFragment().updateTimetableRecords();
                         break;
                 }
                 // false : close the menu; true : not close the menu

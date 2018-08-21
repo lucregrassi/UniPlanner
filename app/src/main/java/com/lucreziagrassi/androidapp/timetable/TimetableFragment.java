@@ -70,6 +70,21 @@ public class TimetableFragment extends Fragment {
         return view;
     }
 
+    public void openLessonModify(Lesson lesson)
+    {
+        Fragment newFragment = new NewLessonFragment();
+
+        Bundle modifyBundle = new Bundle();
+        modifyBundle.putInt("currentLesson", lesson.getID());
+        modifyBundle.putInt("selectedDay", lesson.getDay());
+        newFragment.setArguments(modifyBundle);
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.content, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
     public void updateTimetableRecords() {
         adapter.notifyDataSetChanged();
     }

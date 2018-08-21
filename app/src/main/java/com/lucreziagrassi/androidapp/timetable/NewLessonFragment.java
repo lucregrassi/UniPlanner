@@ -80,6 +80,34 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
+
+        // Set modifying lesson if present
+        if(this.getArguments() != null) {
+            Integer currentLessonID = (Integer)this.getArguments().get("currentLesson");
+
+            if(currentLessonID != null)
+                this.currentLesson = DatabaseManager.getDatabase().getLessonDao().get(currentLessonID);
+        }
+
+        if(this.currentLesson != null) {
+            Spinner spinner2 = getView().findViewById(R.id.subjects_spinner);
+
+            for(int i = 0; i < spinner2.getCount(); i++)
+            {
+                String item = (String)spinner2.getItemAtPosition(i);
+
+                if(item.equals(currentLesson.getSubject()))
+                    spinner2.setSelection(i);
+            }
+
+            ((EditText) getView().findViewById(R.id.location)).setText(currentLesson.getLocation());
+            ((EditText) getView().findViewById(R.id.start_hour)).setText(currentLesson.getStartHour());
+            ((EditText) getView().findViewById(R.id.end_hour)).setText(currentLesson.getEndHour());
+
+            ((TextView)getView().findViewById(R.id.addNewLessonText)).setText(R.string.modify_button);
+            getActivity().setTitle(R.string.new_lesson_modify_fragment_name);
+        }
     }
 
 
@@ -118,6 +146,10 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
         Integer day = getArguments().getInt("selectedDay");
 
         if (!subject.equals("Seleziona una materia") && !professor.isEmpty() &&!location.isEmpty() && !startHour.isEmpty() && !endHour.isEmpty()) {
+            // Cancello la vecchia lezione in fase di modifica
+            if(currentLesson != null)
+                DatabaseManager.getDatabase().getLessonDao().delete(currentLesson);
+
             // Se i dati sono validi, creo l'esame
             Lesson newLesson = new Lesson(0, subjectName, professor, location, color, startHour, endHour, day);
             DatabaseManager.getDatabase().getLessonDao().insert(newLesson);
