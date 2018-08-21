@@ -17,12 +17,12 @@ public class PassedExam {
     private Integer Vote;
 
     @ColumnInfo(name = "Date")
-    private String Date;
+    private Long Date;
 
     @ColumnInfo(name = "CFU")
     private int CFU;
 
-    public PassedExam(int ID, String Subject, Integer Vote, String Date, int CFU) {
+    public PassedExam(int ID, String Subject, Integer Vote, Long Date, int CFU) {
         this.ID = ID;
         this.Subject = Subject;
         this.Vote = Vote;
@@ -54,11 +54,11 @@ public class PassedExam {
         this.Vote = vote;
     }
 
-    public String getDate() {
+    public Long getDate() {
         return Date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Long date) {
         this.Date = date;
     }
 

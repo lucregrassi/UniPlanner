@@ -51,9 +51,9 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
     @Override
     public void onStart() {
         super.onStart();
-        CardView addPassedExamButton = (CardView) getView().findViewById(R.id.addPassedExam);
+        CardView addPassedExamButton = getView().findViewById(R.id.addPassedExam);
         addPassedExamButton.setOnClickListener(this);
-        EditText exam_date = (EditText) getView().findViewById(R.id.exam_date);
+        EditText exam_date = getView().findViewById(R.id.exam_date);
         exam_date.setOnClickListener(this);
 
         List<String> subjects = new ArrayList<>();
@@ -107,7 +107,8 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
             }
 
             ((EditText) getView().findViewById(R.id.exam_vote)).setText(currentPassedExam.getVote() + "");
-            ((EditText) getView().findViewById(R.id.exam_date)).setText(currentPassedExam.getDate());
+            DateFormat df = new SimpleDateFormat("dd/MM/yy", Locale.ITALY);
+            ((EditText) getView().findViewById(R.id.exam_date)).setText(df.format(new Date(currentPassedExam.getDate())));
 
             ((TextView) getView().findViewById(R.id.addPassedExamText)).setText(R.string.modify_button);
             getActivity().setTitle(R.string.new_exam_modify_fragment_name);
@@ -171,7 +172,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
                 }
 
                 // Se i dati sono validi, creo l'esame
-                PassedExam newPassedExam = new PassedExam(0, subject, intVoto, date, cfu);
+                PassedExam newPassedExam = new PassedExam(0, subject, intVoto, timestamp, cfu);
 
                 // Check che il nome sia univoco
                 for (PassedExam pe : DatabaseManager.getDatabase().getPassedExamDao().getAll()) {

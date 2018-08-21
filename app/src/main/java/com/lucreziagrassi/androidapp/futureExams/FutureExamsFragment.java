@@ -25,7 +25,7 @@ import com.lucreziagrassi.androidapp.db.FutureExam;
 
 import java.util.List;
 
-public class FutureExamsFragment extends Fragment implements View.OnClickListener {
+public class FutureExamsFragment extends Fragment {
 
     private static final String TAG = "FutureExamsFragment";
 
@@ -131,11 +131,6 @@ public class FutureExamsFragment extends Fragment implements View.OnClickListene
         getActivity().setTitle("Prossimi Esami");
     }
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
-    }
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.action_bar_add_button, menu);
@@ -152,7 +147,6 @@ public class FutureExamsFragment extends Fragment implements View.OnClickListene
                 transaction.replace(R.id.content, newFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
-
                 return true;
 
             default:
@@ -160,10 +154,5 @@ public class FutureExamsFragment extends Fragment implements View.OnClickListene
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public void onClick(View view) {
-
     }
 }

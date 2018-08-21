@@ -27,8 +27,7 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
     ImageView mImageView;
     Integer subjectColor;
 
-    public NewSubjectFragment() {
-    }
+    public NewSubjectFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,7 +72,6 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
             getActivity().setTitle(R.string.new_subject_modify_fragment_name);
         }
     }
-
 
     public void openColorPicker() {
         AmbilWarnaDialog colorPicker = new AmbilWarnaDialog(getActivity(), subjectColor, new AmbilWarnaDialog.OnAmbilWarnaListener() {

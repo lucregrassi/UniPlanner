@@ -11,7 +11,11 @@ import android.widget.TextView;
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class PassedExamsListAdapter extends ArrayAdapter<PassedExam> {
 
@@ -31,7 +35,7 @@ public class PassedExamsListAdapter extends ArrayAdapter<PassedExam> {
         String subject = getItem(position).getSubject();
         Integer vote = getItem(position).getVote();
         int cfu = getItem(position).getCFU();
-        String date = getItem(position).getDate();
+        Long date = getItem(position).getDate();
 
         PassedExam passedExam = new PassedExam(0, subject, vote, date, cfu);
         LayoutInflater inflater = LayoutInflater.from(mContext);
@@ -45,7 +49,10 @@ public class PassedExamsListAdapter extends ArrayAdapter<PassedExam> {
         tvSubject.setText(subject);
         tvVote.setText("" + vote);
         tvCfu.setText("" + cfu);
-        tvDate.setText(date);
+
+        // Timestamp to date
+        DateFormat df = new SimpleDateFormat("dd/MM/yy", Locale.ITALY);
+        tvDate.setText(df.format(new Date(date)));
 
         return convertView;
     }

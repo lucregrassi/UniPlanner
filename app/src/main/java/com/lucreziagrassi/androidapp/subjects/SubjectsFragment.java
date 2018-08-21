@@ -135,11 +135,6 @@ public class SubjectsFragment extends Fragment {
         getActivity().setTitle("Le mie Materie");
     }
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
-    }
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.action_bar_add_button, menu);

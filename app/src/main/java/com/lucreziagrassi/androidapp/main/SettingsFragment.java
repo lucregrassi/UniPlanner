@@ -16,8 +16,7 @@ import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.User;
 import com.lucreziagrassi.androidapp.splash.SplashActivity;
 
-public class SettingsFragment extends PreferenceFragment implements
-        SharedPreferences.OnSharedPreferenceChangeListener,
+public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener,
         Preference.OnPreferenceClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -94,5 +93,11 @@ public class SettingsFragment extends PreferenceFragment implements
                 .setNegativeButton(android.R.string.no, null).show();
 
         return true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle("Impostazioni");
     }
 }

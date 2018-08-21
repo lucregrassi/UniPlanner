@@ -27,8 +27,7 @@ public class TimetableDayFragment extends Fragment {
     private TimetableListAdapter adapter;
     private List<Lesson> lessonList;
 
-    public TimetableDayFragment() {
-    }
+    public TimetableDayFragment() {}
 
     public static TimetableDayFragment newInstance(int sectionNumber) {
         TimetableDayFragment fragment = new TimetableDayFragment();

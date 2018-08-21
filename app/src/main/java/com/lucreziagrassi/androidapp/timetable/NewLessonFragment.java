@@ -44,11 +44,11 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onStart() {
         super.onStart();
-        CardView addNewLessonButton = (CardView) getView().findViewById(R.id.addNewLesson);
+        CardView addNewLessonButton = getView().findViewById(R.id.addNewLesson);
         addNewLessonButton.setOnClickListener(this);
-        EditText start_hour = (EditText) getView().findViewById(R.id.start_hour);
+        EditText start_hour = getView().findViewById(R.id.start_hour);
         start_hour.setOnClickListener(this);
-        EditText end_hour = (EditText) getView().findViewById(R.id.end_hour);
+        EditText end_hour = getView().findViewById(R.id.end_hour);
         end_hour.setOnClickListener(this);
 
         List<String> subjects = new ArrayList<>();
@@ -59,7 +59,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
 
         final String[] subjectsArray = subjects.toArray(new String[0]);
 
-        Spinner spinner = (Spinner) getView().findViewById(R.id.subjects_spinner);
+        Spinner spinner = getView().findViewById(R.id.subjects_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, subjectsArray) {
             @Override
             public boolean isEnabled(int position) {
@@ -138,7 +138,6 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
         String professor = subject.getProfessor();
 
         String location = ((EditText) getView().findViewById(R.id.location)).getText().toString();
-        Integer color = subject.getColor();
         String startHour = ((EditText) getView().findViewById(R.id.start_hour)).getText().toString();
         String endHour = ((EditText) getView().findViewById(R.id.end_hour)).getText().toString();
         Integer day = getArguments().getInt("selectedDay");
@@ -155,7 +154,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
                     Toast.makeText(getActivity(), "Orario inserito non valido", Toast.LENGTH_SHORT).show();
                     return;
                 }
-            } catch (ParseException pe) {
+            } catch (ParseException ignored) {
             }
 
             // Cancello la vecchia lezione in fase di modifica
@@ -187,7 +186,6 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
             case R.id.start_hour:
             case R.id.end_hour:
                 DialogFragment timePicker = new TimePickerFragment();
-
                 // Imposto su quale EditText devo inserire l'ora
                 Bundle timePickerArguments = new Bundle();
                 timePickerArguments.putInt("timeEditTextID", v.getId());
@@ -201,7 +199,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
         }
     }
 
-    /*
+    /* per far apparire messaggio di selezione materia dallo spinner
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         String subject = adapterView.getItemAtPosition(position).toString();

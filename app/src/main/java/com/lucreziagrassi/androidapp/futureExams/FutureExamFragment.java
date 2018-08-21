@@ -39,8 +39,7 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
 
     private FutureExam currentFutureExam;
 
-    public FutureExamFragment() {
-    }
+    public FutureExamFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

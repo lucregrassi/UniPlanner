@@ -10,7 +10,8 @@ import java.util.List;
 
 @Dao
 public interface PassedExamDao {
-    @Query("SELECT * FROM PassedExam")
+
+    @Query("SELECT * FROM PassedExam ORDER BY Date ASC")
     List<PassedExam> getAll();
 
     @Insert
