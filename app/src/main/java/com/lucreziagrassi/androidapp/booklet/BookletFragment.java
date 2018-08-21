@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,9 +35,9 @@ public class BookletFragment extends Fragment {
         getActivity().setTitle(R.string.booklet_fragment_name);
         setHasOptionsMenu(true);
 
-        SwipeMenuListView passedExams = (SwipeMenuListView) view.findViewById(R.id.swipeview);
+        final SwipeMenuListView passedExams = (SwipeMenuListView) view.findViewById(R.id.swipeview);
 
-        List<PassedExam> passedExamList = DatabaseManager.getDatabase().getPassedExamDao().getAll();
+        final List<PassedExam> passedExamList = DatabaseManager.getDatabase().getPassedExamDao().getAll();
 
         PassedExamsListAdapter adapter = new PassedExamsListAdapter(getActivity(), R.layout.booklet_list_adapter, passedExamList);
         passedExams.setAdapter(adapter);
@@ -87,12 +88,33 @@ public class BookletFragment extends Fragment {
         passedExams.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                Log.d("SwipeClick", "Click at: " + position + ", " + index);
+                // Position: indice dell'elemento
+                // Index: indice del tasto su quell'elemento
+
+                // Prende l'elemento
+                PassedExam selectedPassedExam = passedExamList.get(position);
+
                 switch (index) {
                     case 0:
-                        // open
+                        // Modifica
+                        Fragment newFragment = new PassedExamFragment();
+
+                        Bundle modifyBundle = new Bundle();
+                        modifyBundle.putInt("currentPassedExam", selectedPassedExam.getID());
+                        newFragment.setArguments(modifyBundle);
+
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.content, newFragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
                         break;
                     case 1:
-                        // delete
+                        // Elimina
+                        DatabaseManager.getDatabase().getPassedExamDao().delete(selectedPassedExam);
+                        // Reload view
+                        getFragmentManager().beginTransaction().detach(BookletFragment.this).attach(BookletFragment.this).commit();
+
                         break;
                 }
                 // false : close the menu; true : not close the menu

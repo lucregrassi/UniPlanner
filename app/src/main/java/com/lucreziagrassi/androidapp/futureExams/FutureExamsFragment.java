@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,6 +23,7 @@ import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
 
 import java.util.List;
+import java.util.concurrent.Future;
 
 
 public class FutureExamsFragment extends Fragment implements View.OnClickListener{
@@ -35,9 +37,9 @@ public class FutureExamsFragment extends Fragment implements View.OnClickListene
         getActivity().setTitle(R.string.future_exams_fragment_name);
         setHasOptionsMenu(true);
 
-        SwipeMenuListView futureExams = (SwipeMenuListView) view.findViewById(R.id.swipeview);
+        final SwipeMenuListView futureExams = (SwipeMenuListView) view.findViewById(R.id.swipeview);
 
-        List<FutureExam> futureExamList = DatabaseManager.getDatabase().getFutureExamDao().getAll();
+        final List<FutureExam> futureExamList = DatabaseManager.getDatabase().getFutureExamDao().getAll();
 
         FutureExamsListAdapter adapter = new FutureExamsListAdapter(getActivity(), R.layout.future_exams_list_adapter, futureExamList);
 
@@ -89,20 +91,33 @@ public class FutureExamsFragment extends Fragment implements View.OnClickListene
         futureExams.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                Log.d("SwipeClick", "Click at: " + position + ", " + index);
+                // Position: indice dell'elemento
+                // Index: indice del tasto su quell'elemento
+
+                // Prende l'elemento
+                FutureExam selectedFutureExam = futureExamList.get(position);
+
                 switch (index) {
                     case 0:
-                        //TODO: Apri fragment per modificare esame con dati precedenti gia inseriti con titolo "Modifica esame"
+                        // Modifica
                         Fragment newFragment = new FutureExamFragment();
+
+                        Bundle modifyBundle = new Bundle();
+                        modifyBundle.putInt("currentFutureExam", selectedFutureExam.getID());
+                        newFragment.setArguments(modifyBundle);
+
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
                         transaction.replace(R.id.content, newFragment);
                         transaction.addToBackStack(null);
                         transaction.commit();
                     break;
                     case 1:
-                        /*
-                        FutureExam futureExam =
-                        DatabaseManager.getDatabase().getFutureExamDao().delete(futureExam);
-                        */
+                        // Elimina
+                        DatabaseManager.getDatabase().getFutureExamDao().delete(selectedFutureExam);
+                        // Reload view
+                        getFragmentManager().beginTransaction().detach(FutureExamsFragment.this).attach(FutureExamsFragment.this).commit();
+
                         break;
                 }
                 return false;
