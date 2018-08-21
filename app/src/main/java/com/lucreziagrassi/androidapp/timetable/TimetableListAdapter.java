@@ -14,8 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lucreziagrassi.androidapp.R;
+import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
 import com.lucreziagrassi.androidapp.db.Lesson;
+import com.lucreziagrassi.androidapp.db.Subject;
 
 import java.util.List;
 
@@ -34,14 +36,18 @@ public class TimetableListAdapter extends ArrayAdapter<Lesson> {
         @NonNull
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-            String subject = getItem(position).getSubject();
-            String professor = getItem(position).getProfessor();
+            String subjectName = getItem(position).getSubject();
+
+            Subject subject = DatabaseManager.getDatabase().getSubjectDao().get(subjectName);
+
+            String professor = subject.getProfessor();
+            Integer color = subject.getColor();
+
             String location = getItem(position).getLocation();
-            Integer color = getItem(position).getColor();
             String startHour = getItem(position).getStartHour();
             String endHour = getItem(position).getEndHour();
 
-            Lesson lesson = new Lesson(0, subject, professor, location, color, startHour, endHour, position);
+            Lesson lesson = new Lesson(0, subjectName, location, startHour, endHour, position);
             LayoutInflater inflater = LayoutInflater.from(mContext);
             convertView = inflater.inflate(mResource, parent, false);
 
@@ -53,7 +59,7 @@ public class TimetableListAdapter extends ArrayAdapter<Lesson> {
             TextView tvStartHour = convertView.findViewById(R.id.start_hour);
             TextView tvEndHour = convertView.findViewById(R.id.end_hour);
 
-            tvSubject.setText(subject);
+            tvSubject.setText(subjectName);
             tvProfessor.setText(professor);
             tvLocation.setText(location);
             tvColor1.setBackgroundColor(color);
