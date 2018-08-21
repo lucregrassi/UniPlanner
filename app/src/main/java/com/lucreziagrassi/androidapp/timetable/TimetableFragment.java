@@ -1,7 +1,5 @@
 package com.lucreziagrassi.androidapp.timetable;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Parcelable;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -16,15 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.baoyz.swipemenulistview.SwipeMenu;
-import com.baoyz.swipemenulistview.SwipeMenuCreator;
-import com.baoyz.swipemenulistview.SwipeMenuItem;
-import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.lucreziagrassi.androidapp.R;
-import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.Lesson;
-
-import java.util.List;
 
 public class TimetableFragment extends Fragment {
 

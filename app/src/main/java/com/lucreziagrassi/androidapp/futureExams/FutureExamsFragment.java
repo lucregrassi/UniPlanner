@@ -24,8 +24,6 @@ import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
 
 import java.util.List;
-import java.util.concurrent.Future;
-
 
 public class FutureExamsFragment extends Fragment implements View.OnClickListener{
 

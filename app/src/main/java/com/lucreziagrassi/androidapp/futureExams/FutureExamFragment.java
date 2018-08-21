@@ -2,7 +2,6 @@ package com.lucreziagrassi.androidapp.futureExams;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -15,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -41,9 +39,7 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
 
     private FutureExam currentFutureExam;
 
-    public FutureExamFragment() {
-        // Required empty public constructor
-    }
+    public FutureExamFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

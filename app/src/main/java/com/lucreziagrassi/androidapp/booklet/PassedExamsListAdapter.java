@@ -19,7 +19,7 @@ public class PassedExamsListAdapter extends ArrayAdapter<PassedExam> {
     private Context mContext;
     private int mResource;
 
-    public PassedExamsListAdapter(Context context, int resource, List<PassedExam> objects) {
+    PassedExamsListAdapter(Context context, int resource, List<PassedExam> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;

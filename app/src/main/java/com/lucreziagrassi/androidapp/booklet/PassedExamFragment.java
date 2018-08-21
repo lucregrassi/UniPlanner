@@ -2,7 +2,6 @@ package com.lucreziagrassi.androidapp.booklet;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -14,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -152,7 +150,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
 
         if (!subject.equals("Seleziona una materia") && !date.isEmpty() && !vote.isEmpty()) {
             Integer intVoto = Integer.parseInt(vote);
-            if (intVoto > 0 && intVoto < 31) {
+            if (intVoto > 17 && intVoto < 31) {
                 // Cancello un esame da modificare
                 if(this.currentPassedExam != null)
                     DatabaseManager.getDatabase().getPassedExamDao().delete(currentPassedExam);
@@ -166,7 +164,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
 
                     timestamp = result.getTime();
                 }
-                catch(ParseException pe) { }
+                catch(ParseException ignored) { }
 
                 if(timestamp > Calendar.getInstance().getTimeInMillis())
                 {
@@ -198,7 +196,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
                 getFragmentManager().popBackStack();
             }
             else
-                Toast.makeText(getActivity(), "Inserisci un voto tra 1 e 30", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Inserisci un voto tra 18 e 30", Toast.LENGTH_SHORT).show();
 
         }
         else

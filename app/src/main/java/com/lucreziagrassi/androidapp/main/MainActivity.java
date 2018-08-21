@@ -1,8 +1,6 @@
 package com.lucreziagrassi.androidapp.main;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -14,33 +12,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.booklet.BookletFragment;
-import com.lucreziagrassi.androidapp.booklet.PassedExamFragment;
-import com.lucreziagrassi.androidapp.db.DatabaseManager;
-import com.lucreziagrassi.androidapp.db.FutureExam;
-import com.lucreziagrassi.androidapp.db.Lesson;
-import com.lucreziagrassi.androidapp.db.PassedExam;
-import com.lucreziagrassi.androidapp.db.Subject;
-import com.lucreziagrassi.androidapp.db.User;
-import com.lucreziagrassi.androidapp.futureExams.FutureExamFragment;
 import com.lucreziagrassi.androidapp.futureExams.FutureExamsFragment;
-import com.lucreziagrassi.androidapp.subjects.NewSubjectFragment;
 import com.lucreziagrassi.androidapp.subjects.SubjectsFragment;
-import com.lucreziagrassi.androidapp.timer.TimerFragment;
-import com.lucreziagrassi.androidapp.timetable.NewLessonFragment;
 import com.lucreziagrassi.androidapp.timetable.TimetableFragment;
-
-import java.util.List;
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private HomeFragment homeFragment = null;
-    private TimerFragment timerFragment = null;
     private BookletFragment bookletFragment = null;
     private FutureExamsFragment futureExamsFragment = null;
     private SubjectsFragment subjectsFragment = null;
@@ -173,11 +154,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (subjectsFragment == null)
                 subjectsFragment = new SubjectsFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.content, subjectsFragment).commit();
-        } else if (id == R.id.nav_timer) {
-
-            if(timerFragment == null)
-                timerFragment = new TimerFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.content, timerFragment).commit();
         }else if (id == R.id.nav_settings){
             getFragmentManager().beginTransaction()
                     .replace(R.id.content, new SettingsFragment())

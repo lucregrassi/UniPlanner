@@ -1,29 +1,20 @@
 package com.lucreziagrassi.androidapp.main;
 
 import android.app.AlertDialog;
-import android.arch.persistence.room.Database;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
-import android.preference.PreferenceScreen;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.User;
 import com.lucreziagrassi.androidapp.splash.SplashActivity;
-
-import java.util.Map;
-
 
 public class SettingsFragment extends PreferenceFragment implements
         SharedPreferences.OnSharedPreferenceChangeListener,

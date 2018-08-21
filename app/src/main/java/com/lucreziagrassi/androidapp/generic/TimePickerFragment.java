@@ -1,11 +1,11 @@
 package com.lucreziagrassi.androidapp.generic;
+
 import android.os.Bundle;
 
 import android.app.Dialog;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.app.TimePickerDialog;
-import android.text.format.DateFormat;
 import android.widget.EditText;
 import android.widget.TimePicker;
 

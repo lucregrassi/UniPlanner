@@ -1,7 +1,6 @@
 package com.lucreziagrassi.androidapp.subjects;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -12,16 +11,11 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lucreziagrassi.androidapp.R;
-import com.lucreziagrassi.androidapp.db.AppDatabase;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
-import com.lucreziagrassi.androidapp.db.FutureExam;
-import com.lucreziagrassi.androidapp.db.Lesson;
-import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.db.Subject;
 
 import yuku.ambilwarna.AmbilWarnaDialog;

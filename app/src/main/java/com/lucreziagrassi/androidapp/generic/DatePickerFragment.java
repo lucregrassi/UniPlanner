@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.lucreziagrassi.androidapp.R;
 
