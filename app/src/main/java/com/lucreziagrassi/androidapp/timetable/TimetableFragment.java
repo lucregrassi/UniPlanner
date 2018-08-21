@@ -53,6 +53,11 @@ public class TimetableFragment extends Fragment
             public void onClick(View view) {
                 newLessonFragment = new NewLessonFragment();
 
+                Bundle selectedDay = new Bundle();
+                selectedDay.putInt("selectedDay", mViewPager.getCurrentItem());
+
+                newLessonFragment.setArguments(selectedDay);
+
                 getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.content, newLessonFragment)

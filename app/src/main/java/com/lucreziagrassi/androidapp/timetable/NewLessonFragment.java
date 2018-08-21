@@ -31,8 +31,6 @@ import java.util.List;
 
 public class NewLessonFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener{
 
-    private NewLessonFragment.OnFragmentInteractionListener mListener;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,34 +88,35 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
         return view;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof NewLessonFragment.OnFragmentInteractionListener) {
-            mListener = (NewLessonFragment.OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
     public void onAddNewLessonClick() {
         // Prendo le stringhe dei textView
-        //TODO: inserire il colore relativo alla materia
-        String subject = ((Spinner) getView().findViewById(R.id.subjects_spinner)).getSelectedItem().toString();
-        String professor = "Professore";
+        String subjectName = (String)((Spinner) getView().findViewById(R.id.subjects_spinner)).getSelectedItem();
+
+        Subject subject = null;
+
+        for(Subject sub : DatabaseManager.getDatabase().getSubjectDao().getAll())
+        {
+            if(sub.getSubject().equals(subjectName))
+                subject = sub;
+        }
+
+        if(subject == null)
+        {
+            Toast.makeText(getActivity(), "Seleziona una materia", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String professor = subject.getProfessor();
+
         String location = ((EditText) getView().findViewById(R.id.location)).getText().toString();
-        Integer color = Color.RED;
+        Integer color = subject.getColor();
         String startHour = ((EditText) getView().findViewById(R.id.start_hour)).getText().toString();
         String endHour = ((EditText) getView().findViewById(R.id.end_hour)).getText().toString();
-        Integer day = 1;
+        Integer day = getArguments().getInt("selectedDay");
 
-        //TODO: non aggiunge la lezione perche gli edittext delle ore risultano vuoti perche non vengono riempiti nel modo corretto
-        if (!subject.equals("Seleziona una materia") && !professor.isEmpty() &&!location.isEmpty()
-                /*&& !startHour.isEmpty() && !endHour.isEmpty()*/) {
-            //TODO: controllare che orario di fine sia maggiore di quello di inizio
+        if (!subject.equals("Seleziona una materia") && !professor.isEmpty() &&!location.isEmpty() && !startHour.isEmpty() && !endHour.isEmpty()) {
             // Se i dati sono validi, creo l'esame
-            Lesson newLesson = new Lesson(0, subject, professor, location, color, startHour, endHour, day);
+            Lesson newLesson = new Lesson(0, subjectName, professor, location, color, startHour, endHour, day);
             DatabaseManager.getDatabase().getLessonDao().insert(newLesson);
             Toast.makeText(getActivity(), "Lezione aggiunta con successo!", Toast.LENGTH_SHORT).show();
 
@@ -127,7 +126,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
             if (currentFocusedView != null)
                 inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
-            // Ritorna al libretto
+            // Ritorna indietro
             getFragmentManager().popBackStack();
         } else Toast.makeText(getActivity(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
     }
@@ -150,17 +149,6 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
                 onAddNewLessonClick();
                 break;
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 
     @Override

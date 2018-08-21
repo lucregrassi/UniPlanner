@@ -39,7 +39,6 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         BookletFragment.OnFragmentInteractionListener,
-        NewLessonFragment.OnFragmentInteractionListener,
         NewSubjectFragment.OnFragmentInteractionListener,
         FutureExamFragment.OnFragmentInteractionListener {
 
