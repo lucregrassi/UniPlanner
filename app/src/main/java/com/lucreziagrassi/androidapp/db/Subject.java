@@ -65,4 +65,49 @@ public class Subject {
     public void setColor(int color) {
         Color = color;
     }
+
+    public static void updateSubjectReferences(Subject oldSubject, Subject newSubject)
+    {
+        AppDatabase db = DatabaseManager.getDatabase();
+
+        // Lesson check
+        for(Lesson lesson : db.getLessonDao().getAll())
+        {
+            if(lesson.getSubject().equals(oldSubject.getSubject()))
+            {
+                if(newSubject == null)
+                    db.getLessonDao().delete(lesson);
+                else {
+                    lesson.setSubject(newSubject.getSubject());
+                    db.getLessonDao().update(lesson);
+                }
+            }
+        }
+
+        // PassedExam check
+        for(PassedExam passedExam : db.getPassedExamDao().getAll())
+        {
+            if(passedExam.getSubject().equals(oldSubject.getSubject())) {
+                if (newSubject == null)
+                    db.getPassedExamDao().delete(passedExam);
+                else {
+                    passedExam.setSubject(newSubject.getSubject());
+                    db.getPassedExamDao().update(passedExam);
+                }
+            }
+        }
+
+        // FutureExam check
+        for(FutureExam futureExam : db.getFutureExamDao().getAll()) {
+
+            if (futureExam.getSubject().equals(oldSubject.getSubject())) {
+                if (newSubject == null)
+                    db.getFutureExamDao().delete(futureExam);
+                else {
+                    futureExam.setSubject(newSubject.getSubject());
+                    db.getFutureExamDao().update(futureExam);
+                }
+            }
+        }
+    }
 }

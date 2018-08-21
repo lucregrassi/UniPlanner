@@ -17,7 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lucreziagrassi.androidapp.R;
+import com.lucreziagrassi.androidapp.db.AppDatabase;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
+import com.lucreziagrassi.androidapp.db.FutureExam;
 import com.lucreziagrassi.androidapp.db.Lesson;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.db.Subject;
@@ -108,12 +110,14 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
         if (!subject.isEmpty() && !professor.isEmpty() && !cfu.isEmpty()) {
             Integer intCfu = Integer.parseInt(cfu);
             if(intCfu > 0) {
-                // Cancella un eventuale vecchia materia da modificare
-                if(currentSubject != null)
-                    DatabaseManager.getDatabase().getSubjectDao().delete(currentSubject);
-
                 // Se i dati sono validi, creo l'esame
                 Subject newSubject = new Subject(0, subject, professor, intCfu, color);
+
+                // Cancella eventuali materie da modificare e aggiorna i collegamenti
+                if(currentSubject != null) {
+                    Subject.updateSubjectReferences(currentSubject, newSubject);
+                    DatabaseManager.getDatabase().getSubjectDao().delete(currentSubject);
+                }
 
                 // Check che il nome sia univoco
                 for(Subject sub : DatabaseManager.getDatabase().getSubjectDao().getAll()) {

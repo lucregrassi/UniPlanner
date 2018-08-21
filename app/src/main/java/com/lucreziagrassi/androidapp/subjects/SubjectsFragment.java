@@ -112,6 +112,7 @@ public class SubjectsFragment extends Fragment {
 
                     case 1:
                         // Elimina
+                        Subject.updateSubjectReferences(selectedSubject, null);
                         DatabaseManager.getDatabase().getSubjectDao().delete(selectedSubject);
 
                         // Reload view
