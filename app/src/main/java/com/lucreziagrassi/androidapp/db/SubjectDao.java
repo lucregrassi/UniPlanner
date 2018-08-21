@@ -9,7 +9,7 @@ import java.util.List;
 
 @Dao
 public interface SubjectDao {
-    @Query("SELECT * FROM Subject")
+    @Query("SELECT * FROM Subject ORDER BY Subject ASC")
     List<Subject> getAll();
 
     @Query("SELECT * FROM Subject WHERE ID = :id")
