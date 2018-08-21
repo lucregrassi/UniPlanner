@@ -117,7 +117,6 @@ public class FutureExamsFragment extends Fragment implements View.OnClickListene
                         DatabaseManager.getDatabase().getFutureExamDao().delete(selectedFutureExam);
                         // Reload view
                         getFragmentManager().beginTransaction().detach(FutureExamsFragment.this).attach(FutureExamsFragment.this).commit();
-
                         break;
                 }
                 return false;

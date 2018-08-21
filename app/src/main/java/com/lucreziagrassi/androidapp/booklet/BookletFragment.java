@@ -113,7 +113,6 @@ public class BookletFragment extends Fragment {
                         DatabaseManager.getDatabase().getPassedExamDao().delete(selectedPassedExam);
                         // Reload view
                         getFragmentManager().beginTransaction().detach(BookletFragment.this).attach(BookletFragment.this).commit();
-
                         break;
                 }
                 // false : close the menu; true : not close the menu
@@ -150,7 +149,6 @@ public class BookletFragment extends Fragment {
 
                 transaction.replace(R.id.content, newFragment);
                 transaction.addToBackStack(null);
-
                 transaction.commit();
 
                 return true;
