@@ -27,8 +27,13 @@ import com.lucreziagrassi.androidapp.db.Subject;
 import com.lucreziagrassi.androidapp.generic.TimePickerFragment;
 import com.lucreziagrassi.androidapp.main.MainActivity;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class NewLessonFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener{
 
@@ -146,6 +151,21 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
         Integer day = getArguments().getInt("selectedDay");
 
         if (!subject.equals("Seleziona una materia") && !professor.isEmpty() &&!location.isEmpty() && !startHour.isEmpty() && !endHour.isEmpty()) {
+            // Check ora fine > ora inizio
+
+            try {
+                DateFormat df = new SimpleDateFormat("HH:mm", Locale.ITALY);
+                Date startDate = df.parse(startHour);
+                Date endDate = df.parse(endHour);
+
+                if(startDate.getTime() >= endDate.getTime())
+                {
+                    Toast.makeText(getActivity(), "Orario inserito non valido", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+            catch(ParseException pe) { }
+
             // Cancello la vecchia lezione in fase di modifica
             if(currentLesson != null)
                 DatabaseManager.getDatabase().getLessonDao().delete(currentLesson);
