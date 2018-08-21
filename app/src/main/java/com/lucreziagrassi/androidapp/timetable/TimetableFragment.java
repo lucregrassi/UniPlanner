@@ -1,5 +1,6 @@
 package com.lucreziagrassi.androidapp.timetable;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Parcelable;
 import android.support.design.widget.TabLayout;
@@ -11,8 +12,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -27,7 +30,7 @@ public class TimetableFragment extends Fragment
     private NewLessonFragment newLessonFragment = null;
 
     private ViewPagerAdapter adapter;
-    private ViewPager mViewPager;
+    private NonSwipeableViewPager mViewPager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -85,6 +88,8 @@ public class TimetableFragment extends Fragment
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
     class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
