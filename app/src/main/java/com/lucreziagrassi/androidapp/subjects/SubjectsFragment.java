@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +26,7 @@ import java.util.List;
 
 public class SubjectsFragment extends Fragment {
     private static final String TAG = "SubjectsFragment";
+    private List<Subject> subjectsList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,7 +37,7 @@ public class SubjectsFragment extends Fragment {
 
         SwipeMenuListView subjects = (SwipeMenuListView) view.findViewById(R.id.swipeview);
 
-        List<Subject> subjectsList = DatabaseManager.getDatabase().getSubjectDao().getAll();
+        subjectsList = DatabaseManager.getDatabase().getSubjectDao().getAll();
 
         SubjectsListAdapter adapter = new SubjectsListAdapter(getActivity(), R.layout.subjects_list_adapter, subjectsList);
         subjects.setAdapter(adapter);
@@ -86,18 +88,27 @@ public class SubjectsFragment extends Fragment {
         subjects.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                Log.d("SwipeClick", "Click at: " + position + ", " + index);
+                // Position: indice dell'elemento
+                // Index: indice del tasto su quell'elemento
+
+                // Prende l'elemento
+                Subject selectedSubject = subjectsList.get(position);
+
                 switch (index) {
                     case 0:
-                        // open
+                        // Modifica
+
                         break;
                     case 1:
-                        /*
-                        for(Subject subj : DatabaseManager.getDatabase().getSubjectDao().getAll())
-                            if(subj.getSubject().equals())
-                        */
+                        // Elimina
+                        DatabaseManager.getDatabase().getSubjectDao().delete(selectedSubject);
+
+                        // Reload view
+                        getFragmentManager().beginTransaction().detach(SubjectsFragment.this).attach(SubjectsFragment.this).commit();
                         break;
                 }
-                // false : close the menu; true : not close the menu
+
                 return false;
             }
         });
