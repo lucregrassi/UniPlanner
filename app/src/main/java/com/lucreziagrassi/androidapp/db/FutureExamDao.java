@@ -24,6 +24,9 @@ public abstract class FutureExamDao {
     @Query("SELECT * FROM FutureExam ORDER BY Date ASC")
     protected abstract List<FutureExam> get();
 
+    @Query("SELECT * FROM FutureExam WHERE ID = :ID")
+    public abstract FutureExam get(int ID);
+
     @Insert
     public abstract void insert(FutureExam futureExam);
 

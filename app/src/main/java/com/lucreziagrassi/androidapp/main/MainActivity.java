@@ -37,10 +37,7 @@ import com.lucreziagrassi.androidapp.timetable.TimetableFragment;
 import java.util.List;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
-        BookletFragment.OnFragmentInteractionListener,
-        NewSubjectFragment.OnFragmentInteractionListener,
-        FutureExamFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private HomeFragment homeFragment = null;
     private TimerFragment timerFragment = null;
@@ -191,10 +188,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    @Override
-    public void onFragmentInteraction(Uri uri){
-        //you can leave it empty
-    }
-
 }

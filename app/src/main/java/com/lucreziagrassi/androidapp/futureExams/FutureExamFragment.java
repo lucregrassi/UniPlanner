@@ -38,7 +38,7 @@ import java.util.Locale;
 
 public class FutureExamFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    private OnFragmentInteractionListener mListener;
+    private FutureExam currentFutureExam;
 
     public FutureExamFragment() {
         // Required empty public constructor
@@ -89,24 +89,39 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
+        // Set modifying subject if present
+        if(this.getArguments() != null) {
+            Integer currentFutureExamID = (Integer)this.getArguments().get("currentFutureExam");
+
+            if(currentFutureExamID != null)
+                this.currentFutureExam = DatabaseManager.getDatabase().getFutureExamDao().get(currentFutureExamID);
+        }
+
+        if(this.currentFutureExam != null) {
+            Spinner spinner2 = getView().findViewById(R.id.subjects_spinner);
+
+            for(int i = 0; i < spinner2.getCount(); i++)
+            {
+                String item = (String)spinner2.getItemAtPosition(i);
+
+                if(item.equals(currentFutureExam.getSubject()))
+                    spinner2.setSelection(i);
+            }
+
+            DateFormat df = new SimpleDateFormat("dd/MM/yy", Locale.ITALY);
+            ((EditText) getView().findViewById(R.id.exam_date)).setText(df.format(new Date(currentFutureExam.getDate())));
+
+            ((TextView)getView().findViewById(R.id.addFutureExamText)).setText(R.string.modify_button);
+            getActivity().setTitle(R.string.new_future_exam_modify_fragment_name);
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.future_exam, container, false);
-        getActivity().setTitle(R.string.new_exam_fragment_name);
+        getActivity().setTitle(R.string.new_future_exam_fragment_name);
         return view;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
     }
 
     @Override
@@ -119,17 +134,6 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.activity_home_drawer, menu);
         super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 
     public void onAddFutureExamClick() {
@@ -154,6 +158,9 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
                 timestamp = result.getTime();
             }
             catch(ParseException pe) { }
+
+            if(this.currentFutureExam != null)
+                DatabaseManager.getDatabase().getFutureExamDao().delete(currentFutureExam);
 
             // Se i dati sono validi, creo l'esame
             FutureExam newFutureExam = new FutureExam(0, subject, timestamp, cfu);
@@ -189,6 +196,7 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         String subject = adapterView.getItemAtPosition(position).toString();
+        
         if (position > 0)
             Toast.makeText(adapterView.getContext(), "Hai selezionato: " + subject, Toast.LENGTH_SHORT).show();
     }

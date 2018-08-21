@@ -47,6 +47,8 @@
 
     <!-- strings for FutureExams fragment-->
     <string name="future_exams_fragment_name">Prossimi Esami</string>
+    <string name="new_future_exam_fragment_name">Nuovo Esame</string>
+    <string name="new_future_exam_modify_fragment_name">Modifica Esame</string>
     <string name="future_exams_title">Inserisci i dati relativi al nuovo esame che dovrai sostenere</string>
     <string name="exam_location">Aula dell\'esame</string>
     <string name="data">Data:</string>
