@@ -32,6 +32,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -159,6 +160,12 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
             }
             catch(ParseException pe) { }
 
+            if(timestamp < Calendar.getInstance().getTimeInMillis() - 60 * 60 * 24 * 1000)
+            {
+                Toast.makeText(getActivity(), "Non puoi retrodatare un appello", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             if(this.currentFutureExam != null)
                 DatabaseManager.getDatabase().getFutureExamDao().delete(currentFutureExam);
 
@@ -196,7 +203,7 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         String subject = adapterView.getItemAtPosition(position).toString();
-        
+
         if (position > 0)
             Toast.makeText(adapterView.getContext(), "Hai selezionato: " + subject, Toast.LENGTH_SHORT).show();
     }
