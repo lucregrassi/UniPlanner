@@ -38,15 +38,14 @@ public class SplashActivity extends AppCompatActivity {
                     boolean userExists = DatabaseManager.getDatabase().getUserDao().getUser() != null;
 
                     // Splash activity sempre visualizzata per almeno 1 secondo
-                    while(System.currentTimeMillis() - startMillis < 1000)
+                    while (System.currentTimeMillis() - startMillis < 1000)
                         sleep(100);
 
                     // Avvia l'app
-                    if(userExists) {
+                    if (userExists) {
                         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                         startActivity(intent);
-                    }
-                    else {
+                    } else {
                         Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
                         startActivity(intent);
                     }

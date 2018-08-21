@@ -54,7 +54,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
         List<String> subjects = new ArrayList<>();
         subjects.add("Seleziona una materia");
 
-        for(Subject subject : DatabaseManager.getDatabase().getSubjectDao().getAll())
+        for (Subject subject : DatabaseManager.getDatabase().getSubjectDao().getAll())
             subjects.add(subject.getSubject());
 
         final String[] subjectsArray = subjects.toArray(new String[0]);
@@ -84,21 +84,20 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
         //spinner.setOnItemSelectedListener(this);
 
         // Set modifying lesson if present
-        if(this.getArguments() != null) {
-            Integer currentLessonID = (Integer)this.getArguments().get("currentLesson");
+        if (this.getArguments() != null) {
+            Integer currentLessonID = (Integer) this.getArguments().get("currentLesson");
 
-            if(currentLessonID != null)
+            if (currentLessonID != null)
                 this.currentLesson = DatabaseManager.getDatabase().getLessonDao().get(currentLessonID);
         }
 
-        if(this.currentLesson != null) {
+        if (this.currentLesson != null) {
             Spinner spinner2 = getView().findViewById(R.id.subjects_spinner);
 
-            for(int i = 0; i < spinner2.getCount(); i++)
-            {
-                String item = (String)spinner2.getItemAtPosition(i);
+            for (int i = 0; i < spinner2.getCount(); i++) {
+                String item = (String) spinner2.getItemAtPosition(i);
 
-                if(item.equals(currentLesson.getSubject()))
+                if (item.equals(currentLesson.getSubject()))
                     spinner2.setSelection(i);
             }
 
@@ -106,7 +105,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
             ((EditText) getView().findViewById(R.id.start_hour)).setText(currentLesson.getStartHour());
             ((EditText) getView().findViewById(R.id.end_hour)).setText(currentLesson.getEndHour());
 
-            ((TextView)getView().findViewById(R.id.addNewLessonText)).setText(R.string.modify_button);
+            ((TextView) getView().findViewById(R.id.addNewLessonText)).setText(R.string.modify_button);
             getActivity().setTitle(R.string.new_lesson_modify_fragment_name);
         }
     }
@@ -122,18 +121,16 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
 
     public void onAddNewLessonClick() {
         // Prendo le stringhe dei textView
-        String subjectName = (String)((Spinner) getView().findViewById(R.id.subjects_spinner)).getSelectedItem();
+        String subjectName = (String) ((Spinner) getView().findViewById(R.id.subjects_spinner)).getSelectedItem();
 
         Subject subject = null;
 
-        for(Subject sub : DatabaseManager.getDatabase().getSubjectDao().getAll())
-        {
-            if(sub.getSubject().equals(subjectName))
+        for (Subject sub : DatabaseManager.getDatabase().getSubjectDao().getAll()) {
+            if (sub.getSubject().equals(subjectName))
                 subject = sub;
         }
 
-        if(subject == null)
-        {
+        if (subject == null) {
             Toast.makeText(getActivity(), "Seleziona una materia", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -146,7 +143,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
         String endHour = ((EditText) getView().findViewById(R.id.end_hour)).getText().toString();
         Integer day = getArguments().getInt("selectedDay");
 
-        if (!subject.equals("Seleziona una materia") && !professor.isEmpty() &&!location.isEmpty() && !startHour.isEmpty() && !endHour.isEmpty()) {
+        if (!subject.equals("Seleziona una materia") && !professor.isEmpty() && !location.isEmpty() && !startHour.isEmpty() && !endHour.isEmpty()) {
             // Check ora fine > ora inizio
 
             try {
@@ -154,16 +151,15 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
                 Date startDate = df.parse(startHour);
                 Date endDate = df.parse(endHour);
 
-                if(startDate.getTime() >= endDate.getTime())
-                {
+                if (startDate.getTime() >= endDate.getTime()) {
                     Toast.makeText(getActivity(), "Orario inserito non valido", Toast.LENGTH_SHORT).show();
                     return;
                 }
+            } catch (ParseException pe) {
             }
-            catch(ParseException pe) { }
 
             // Cancello la vecchia lezione in fase di modifica
-            if(currentLesson != null)
+            if (currentLesson != null)
                 DatabaseManager.getDatabase().getLessonDao().delete(currentLesson);
 
             // Se i dati sono validi, creo l'esame
@@ -178,7 +174,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
                 inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
             // Aggiorna la timetable
-            ((MainActivity)getActivity()).getTimetableFragment().updateTimetableRecords();
+            ((MainActivity) getActivity()).getTimetableFragment().updateTimetableRecords();
 
             // Ritorna indietro
             getFragmentManager().popBackStack();
@@ -187,7 +183,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
+        switch (v.getId()) {
             case R.id.start_hour:
             case R.id.end_hour:
                 DialogFragment timePicker = new TimePickerFragment();

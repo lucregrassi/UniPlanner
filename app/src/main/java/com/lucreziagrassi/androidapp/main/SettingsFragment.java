@@ -89,7 +89,8 @@ public class SettingsFragment extends PreferenceFragment implements
                         // Riporta alla splash activity
                         Intent intent = new Intent(getActivity(), SplashActivity.class);
                         startActivity(intent);
-                    }})
+                    }
+                })
                 .setNegativeButton(android.R.string.no, null).show();
 
         return true;

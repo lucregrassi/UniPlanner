@@ -27,7 +27,8 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
     ImageView mImageView;
     Integer subjectColor;
 
-    public NewSubjectFragment() {}
+    public NewSubjectFragment() {
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,14 +54,14 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
         addNewSubjectButton.setOnClickListener(this);
 
         // Set modifying subject if present
-        if(this.getArguments() != null) {
-            Integer currentSubjectID = (Integer)this.getArguments().get("currentSubject");
+        if (this.getArguments() != null) {
+            Integer currentSubjectID = (Integer) this.getArguments().get("currentSubject");
 
-            if(currentSubjectID != null)
+            if (currentSubjectID != null)
                 this.currentSubject = DatabaseManager.getDatabase().getSubjectDao().get(currentSubjectID);
         }
 
-        if(this.currentSubject != null) {
+        if (this.currentSubject != null) {
             ((EditText) getView().findViewById(R.id.subject_name)).setText(currentSubject.getSubject());
             ((EditText) getView().findViewById(R.id.prof_name)).setText(currentSubject.getProfessor());
             ((EditText) getView().findViewById(R.id.exam_cfu)).setText(currentSubject.getCfu() + "");
@@ -68,7 +69,7 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
             subjectColor = currentSubject.getColor();
             mImageView.setBackgroundColor(currentSubject.getColor());
 
-            ((TextView)getView().findViewById(R.id.addNewSubjectText)).setText(R.string.modify_button);
+            ((TextView) getView().findViewById(R.id.addNewSubjectText)).setText(R.string.modify_button);
             getActivity().setTitle(R.string.new_subject_modify_fragment_name);
         }
     }
@@ -92,25 +93,25 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
     public void onAddNewSubjectClick() {
         // Prendo le stringhe dei textView
         String subject = ((EditText) getView().findViewById(R.id.subject_name)).getText().toString();
-        String professor  = ((EditText) getView().findViewById(R.id.prof_name)).getText().toString();
+        String professor = ((EditText) getView().findViewById(R.id.prof_name)).getText().toString();
         String cfu = ((EditText) getView().findViewById(R.id.exam_cfu)).getText().toString();
         Integer color = subjectColor;
 
         if (!subject.isEmpty() && !professor.isEmpty() && !cfu.isEmpty()) {
             Integer intCfu = Integer.parseInt(cfu);
-            if(intCfu > 0) {
+            if (intCfu > 0) {
                 // Se i dati sono validi, creo l'esame
                 Subject newSubject = new Subject(0, subject, professor, intCfu, color);
 
                 // Cancella eventuali materie da modificare e aggiorna i collegamenti
-                if(currentSubject != null) {
+                if (currentSubject != null) {
                     Subject.updateSubjectReferences(currentSubject, newSubject);
                     DatabaseManager.getDatabase().getSubjectDao().delete(currentSubject);
                 }
 
                 // Check che il nome sia univoco
-                for(Subject sub : DatabaseManager.getDatabase().getSubjectDao().getAll()) {
-                    if(sub.getSubject().equals(newSubject.getSubject())){
+                for (Subject sub : DatabaseManager.getDatabase().getSubjectDao().getAll()) {
+                    if (sub.getSubject().equals(newSubject.getSubject())) {
                         // Nome già usato
                         Toast.makeText(getActivity(), "Hai già inserito questa materia", Toast.LENGTH_SHORT).show();
                         return;
@@ -129,7 +130,8 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
                 // Ritorna al libretto
                 getFragmentManager().popBackStack();
 
-            } else Toast.makeText(getActivity(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
+            } else
+                Toast.makeText(getActivity(), "Il valore di CFU inserito non è valido", Toast.LENGTH_SHORT).show();
         } else Toast.makeText(getActivity(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
     }
 

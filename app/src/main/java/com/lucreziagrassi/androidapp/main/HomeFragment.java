@@ -58,8 +58,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         User user = DatabaseManager.getDatabase().getUserDao().getUser();
         ((TextView) getView().findViewById(R.id.university_name)).setText(user.getUniversity());
         ((TextView) getView().findViewById(R.id.degree_course)).setText(user.getCourse());
-        ((TextView) ((NavigationView)getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_username)).setText(user.getName() + " " + user.getSurname());
-        ((TextView) ((NavigationView)getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_badge_number)).setText(user.getBadge_number());
+        ((TextView) ((NavigationView) getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_username)).setText(user.getName() + " " + user.getSurname());
+        ((TextView) ((NavigationView) getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_badge_number)).setText(user.getBadge_number());
         ((NavigationView) getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.profile_image).setOnClickListener(this);
 
         //Calcola media, cfu e voto stimato
@@ -89,8 +89,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         // Setta il prossimo esame
         List<FutureExam> futureExams = DatabaseManager.getDatabase().getFutureExamDao().getAll();
 
-        if(futureExams.size() >= 1)
-        {
+        if (futureExams.size() >= 1) {
             FutureExam nextExam = futureExams.get(0);
 
             DateFormat df = new SimpleDateFormat("dd MMMM yyyy", Locale.ITALY);
@@ -106,7 +105,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.profile_image:
                 //in realta dovrebbe controllare se ho gia i permessi e la fa partire
-                if(ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(i, RESULT_LOAD_IMAGE);
                 }
@@ -116,34 +115,36 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void requestPermission(){
+    private void requestPermission() {
         //controllo se è necessario mostrare un Dialog per spiegare perchè servono i permessi
-        if(shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)){
+        if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)) {
             new AlertDialog.Builder(getContext()).setTitle("Richiesta di permesso")
-            .setMessage("Questa applicazione necessita il permesso di leggere la memoria per poter modificare" +
-            "l'immagine del profilo")
-            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
-                }
-            })
-            .setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            }).create().show();
-        } else requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+                    .setMessage("Questa applicazione necessita il permesso di leggere la memoria per poter modificare" +
+                            "l'immagine del profilo")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+                        }
+                    })
+                    .setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    }).create().show();
+        } else
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode == STORAGE_PERMISSION_CODE){
-            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        if (requestCode == STORAGE_PERMISSION_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
-            } else Toast.makeText(getActivity(), "Permesso di accedere allo storage negato", Toast.LENGTH_SHORT).show();
+            } else
+                Toast.makeText(getActivity(), "Permesso di accedere allo storage negato", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -151,7 +152,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //questa funzione carica l'immagine al posto dell'altra
-        if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
 

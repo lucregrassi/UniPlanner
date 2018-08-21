@@ -25,7 +25,7 @@ import com.lucreziagrassi.androidapp.db.FutureExam;
 
 import java.util.List;
 
-public class FutureExamsFragment extends Fragment implements View.OnClickListener{
+public class FutureExamsFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "FutureExamsFragment";
 
@@ -110,7 +110,7 @@ public class FutureExamsFragment extends Fragment implements View.OnClickListene
                         transaction.replace(R.id.content, newFragment);
                         transaction.addToBackStack(null);
                         transaction.commit();
-                    break;
+                        break;
                     case 1:
                         // Elimina
                         DatabaseManager.getDatabase().getFutureExamDao().delete(selectedFutureExam);

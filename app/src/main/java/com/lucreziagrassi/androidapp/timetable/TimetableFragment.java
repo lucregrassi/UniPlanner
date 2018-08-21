@@ -61,8 +61,7 @@ public class TimetableFragment extends Fragment {
         return view;
     }
 
-    public void openLessonModify(Lesson lesson)
-    {
+    public void openLessonModify(Lesson lesson) {
         Fragment newFragment = new NewLessonFragment();
 
         Bundle modifyBundle = new Bundle();
@@ -121,7 +120,7 @@ public class TimetableFragment extends Fragment {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch(position) {
+            switch (position) {
                 case 0:
                     return "LUN";
 

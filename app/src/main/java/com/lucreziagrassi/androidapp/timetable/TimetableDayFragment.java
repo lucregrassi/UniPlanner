@@ -27,10 +27,10 @@ public class TimetableDayFragment extends Fragment {
     private TimetableListAdapter adapter;
     private List<Lesson> lessonList;
 
-    public TimetableDayFragment() { }
+    public TimetableDayFragment() {
+    }
 
-    public static TimetableDayFragment newInstance(int sectionNumber)
-    {
+    public static TimetableDayFragment newInstance(int sectionNumber) {
         TimetableDayFragment fragment = new TimetableDayFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -105,13 +105,13 @@ public class TimetableDayFragment extends Fragment {
                 switch (index) {
                     case 0:
                         // Modifica
-                        ((MainActivity)getActivity()).getTimetableFragment().openLessonModify(selectedLesson);
+                        ((MainActivity) getActivity()).getTimetableFragment().openLessonModify(selectedLesson);
                         break;
                     case 1:
                         // Elimina
                         DatabaseManager.getDatabase().getLessonDao().delete(selectedLesson);
                         // Reload view
-                        ((MainActivity)getActivity()).getTimetableFragment().updateTimetableRecords();
+                        ((MainActivity) getActivity()).getTimetableFragment().updateTimetableRecords();
                         Toast.makeText(getActivity(), "Lezione eliminata con successo", Toast.LENGTH_SHORT).show();
                         break;
                 }

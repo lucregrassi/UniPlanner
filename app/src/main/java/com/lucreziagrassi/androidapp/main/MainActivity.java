@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TimetableFragment timetableFragment = null;
 
     public static Context contextOfApplication;
+
     public static Context getContextOfApplication() {
         return contextOfApplication;
     }
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DatabaseManager.getDatabase().getLessonDao().insert(i);
         */
 
-        if(homeFragment == null)
+        if (homeFragment == null)
             homeFragment = new HomeFragment();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
@@ -126,35 +127,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // int containerID = ((ViewGroup)(getView().getParent())).getId();
 
         if (id == R.id.nav_profile) {
-            if(homeFragment == null)
+            if (homeFragment == null)
                 homeFragment = new HomeFragment();
 
             getSupportFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
 
         } else if (id == R.id.nav_schedule) {
-            if(timetableFragment == null)
+            if (timetableFragment == null)
                 timetableFragment = new TimetableFragment();
 
             getSupportFragmentManager().beginTransaction().replace(R.id.content, timetableFragment).commit();
 
         } else if (id == R.id.nav_exams) {
 
-            if(futureExamsFragment == null)
+            if (futureExamsFragment == null)
                 futureExamsFragment = new FutureExamsFragment();
 
             getSupportFragmentManager().beginTransaction().replace(R.id.content, futureExamsFragment).commit();
         } else if (id == R.id.nav_votes) {
 
-            if(bookletFragment == null)
+            if (bookletFragment == null)
                 bookletFragment = new BookletFragment();
 
             getSupportFragmentManager().beginTransaction().replace(R.id.content, bookletFragment).commit();
-        }else if (id == R.id.nav_subjects) {
+        } else if (id == R.id.nav_subjects) {
 
             if (subjectsFragment == null)
                 subjectsFragment = new SubjectsFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.content, subjectsFragment).commit();
-        }else if (id == R.id.nav_settings){
+        } else if (id == R.id.nav_settings) {
             getFragmentManager().beginTransaction()
                     .replace(R.id.content, new SettingsFragment())
                     .commit();

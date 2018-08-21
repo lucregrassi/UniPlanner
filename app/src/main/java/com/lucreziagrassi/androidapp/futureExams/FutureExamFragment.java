@@ -39,7 +39,8 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
 
     private FutureExam currentFutureExam;
 
-    public FutureExamFragment() {}
+    public FutureExamFragment() {
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
         List<String> subjects = new ArrayList<>();
         subjects.add("Seleziona una materia");
 
-        for(Subject subject : DatabaseManager.getDatabase().getSubjectDao().getAll())
+        for (Subject subject : DatabaseManager.getDatabase().getSubjectDao().getAll())
             subjects.add(subject.getSubject());
 
         final String[] subjectsArray = subjects.toArray(new String[0]);
@@ -87,28 +88,27 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
         spinner.setAdapter(adapter);
 
         // Set modifying subject if present
-        if(this.getArguments() != null) {
-            Integer currentFutureExamID = (Integer)this.getArguments().get("currentFutureExam");
+        if (this.getArguments() != null) {
+            Integer currentFutureExamID = (Integer) this.getArguments().get("currentFutureExam");
 
-            if(currentFutureExamID != null)
+            if (currentFutureExamID != null)
                 this.currentFutureExam = DatabaseManager.getDatabase().getFutureExamDao().get(currentFutureExamID);
         }
 
-        if(this.currentFutureExam != null) {
+        if (this.currentFutureExam != null) {
             Spinner spinner2 = getView().findViewById(R.id.subjects_spinner);
 
-            for(int i = 0; i < spinner2.getCount(); i++)
-            {
-                String item = (String)spinner2.getItemAtPosition(i);
+            for (int i = 0; i < spinner2.getCount(); i++) {
+                String item = (String) spinner2.getItemAtPosition(i);
 
-                if(item.equals(currentFutureExam.getSubject()))
+                if (item.equals(currentFutureExam.getSubject()))
                     spinner2.setSelection(i);
             }
 
             DateFormat df = new SimpleDateFormat("dd/MM/yy", Locale.ITALY);
             ((EditText) getView().findViewById(R.id.exam_date)).setText(df.format(new Date(currentFutureExam.getDate())));
 
-            ((TextView)getView().findViewById(R.id.addFutureExamText)).setText(R.string.modify_button);
+            ((TextView) getView().findViewById(R.id.addFutureExamText)).setText(R.string.modify_button);
             getActivity().setTitle(R.string.new_future_exam_modify_fragment_name);
         }
     }
@@ -138,7 +138,7 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
         String date = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
         Integer cfu = 0;
 
-        for(Subject subj :DatabaseManager.getDatabase().getSubjectDao().getAll()) {
+        for (Subject subj : DatabaseManager.getDatabase().getSubjectDao().getAll()) {
             if (subj.getSubject().equals(subject))
                 cfu = subj.getCfu();
         }
@@ -152,15 +152,15 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
                 Date result = df.parse(date);
 
                 timestamp = result.getTime();
+            } catch (ParseException ignored) {
             }
-            catch(ParseException ignored) { }
 
-            if(timestamp < Calendar.getInstance().getTimeInMillis() - 60 * 60 * 24 * 1000) {
+            if (timestamp < Calendar.getInstance().getTimeInMillis() - 60 * 60 * 24 * 1000) {
                 Toast.makeText(getActivity(), "Non puoi retrodatare un esame futuro", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            if(this.currentFutureExam != null)
+            if (this.currentFutureExam != null)
                 DatabaseManager.getDatabase().getFutureExamDao().delete(currentFutureExam);
 
             // Se i dati sono validi, creo l'esame

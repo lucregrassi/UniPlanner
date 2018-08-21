@@ -59,24 +59,24 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         List<String> subjects = new ArrayList<>();
         subjects.add("Seleziona una materia");
 
-        for(Subject subject : DatabaseManager.getDatabase().getSubjectDao().getAll())
+        for (Subject subject : DatabaseManager.getDatabase().getSubjectDao().getAll())
             subjects.add(subject.getSubject());
 
         final String[] subjectsArray = subjects.toArray(new String[0]);
 
         Spinner spinner = (Spinner) getView().findViewById(R.id.subjects_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, subjectsArray){
-                @Override
-                public boolean isEnabled(int position) {
-                    return position != 0;
-                }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, subjectsArray) {
+            @Override
+            public boolean isEnabled(int position) {
+                return position != 0;
+            }
 
-                @Override
-                public View getDropDownView(int position, View convertView,
-                                            @NonNull ViewGroup parent) {
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView tv = (TextView) view;
-                if(position == 0) {
+                if (position == 0) {
                     tv.setTextColor(Color.GRAY);
                 } else {
                     tv.setTextColor(Color.BLACK);
@@ -89,28 +89,27 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         spinner.setAdapter(adapter);
 
         // Set modifying subject if present
-        if(this.getArguments() != null) {
-            Integer currentPassedExamID = (Integer)this.getArguments().get("currentPassedExam");
+        if (this.getArguments() != null) {
+            Integer currentPassedExamID = (Integer) this.getArguments().get("currentPassedExam");
 
-            if(currentPassedExamID != null)
+            if (currentPassedExamID != null)
                 this.currentPassedExam = DatabaseManager.getDatabase().getPassedExamDao().get(currentPassedExamID);
         }
 
-        if(this.currentPassedExam != null) {
+        if (this.currentPassedExam != null) {
             Spinner spinner2 = getView().findViewById(R.id.subjects_spinner);
 
-            for(int i = 0; i < spinner2.getCount(); i++)
-            {
-                String item = (String)spinner2.getItemAtPosition(i);
+            for (int i = 0; i < spinner2.getCount(); i++) {
+                String item = (String) spinner2.getItemAtPosition(i);
 
-                if(item.equals(currentPassedExam.getSubject()))
+                if (item.equals(currentPassedExam.getSubject()))
                     spinner2.setSelection(i);
             }
 
             ((EditText) getView().findViewById(R.id.exam_vote)).setText(currentPassedExam.getVote() + "");
             ((EditText) getView().findViewById(R.id.exam_date)).setText(currentPassedExam.getDate());
 
-            ((TextView)getView().findViewById(R.id.addPassedExamText)).setText(R.string.modify_button);
+            ((TextView) getView().findViewById(R.id.addPassedExamText)).setText(R.string.modify_button);
             getActivity().setTitle(R.string.new_exam_modify_fragment_name);
         }
     }
@@ -143,7 +142,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         String date = ((EditText) getView().findViewById(R.id.exam_date)).getText().toString();
         Integer cfu = 0;
 
-        for(Subject subj :DatabaseManager.getDatabase().getSubjectDao().getAll()) {
+        for (Subject subj : DatabaseManager.getDatabase().getSubjectDao().getAll()) {
             if (subj.getSubject().equals(subject))
                 cfu = subj.getCfu();
         }
@@ -152,7 +151,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
             Integer intVoto = Integer.parseInt(vote);
             if (intVoto > 17 && intVoto < 31) {
                 // Cancello un esame da modificare
-                if(this.currentPassedExam != null)
+                if (this.currentPassedExam != null)
                     DatabaseManager.getDatabase().getPassedExamDao().delete(currentPassedExam);
 
                 Long timestamp = 0L;
@@ -163,11 +162,10 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
                     Date result = df.parse(date);
 
                     timestamp = result.getTime();
+                } catch (ParseException ignored) {
                 }
-                catch(ParseException ignored) { }
 
-                if(timestamp > Calendar.getInstance().getTimeInMillis())
-                {
+                if (timestamp > Calendar.getInstance().getTimeInMillis()) {
                     Toast.makeText(getActivity(), "Non puoi inserire una data futura", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -176,7 +174,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
                 PassedExam newPassedExam = new PassedExam(0, subject, intVoto, date, cfu);
 
                 // Check che il nome sia univoco
-                for(PassedExam pe : DatabaseManager.getDatabase().getPassedExamDao().getAll()) {
+                for (PassedExam pe : DatabaseManager.getDatabase().getPassedExamDao().getAll()) {
                     if (pe.getSubject().equals(newPassedExam.getSubject())) {
                         // Nome già usato
                         Toast.makeText(getActivity(), "Hai già inserito questo esame", Toast.LENGTH_SHORT).show();
@@ -194,12 +192,10 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
 
                 // Ritorna al libretto
                 getFragmentManager().popBackStack();
-            }
-            else
+            } else
                 Toast.makeText(getActivity(), "Inserisci un voto tra 18 e 30", Toast.LENGTH_SHORT).show();
 
-        }
-        else
+        } else
             Toast.makeText(getActivity(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
     }
 

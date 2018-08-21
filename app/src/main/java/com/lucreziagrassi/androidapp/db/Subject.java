@@ -54,9 +54,13 @@ public class Subject {
         Professor = professor;
     }
 
-    public int getCfu() { return Cfu; }
+    public int getCfu() {
+        return Cfu;
+    }
 
-    public void setCfu(int cfu) { Cfu = cfu; }
+    public void setCfu(int cfu) {
+        Cfu = cfu;
+    }
 
     public int getColor() {
         return Color;
@@ -66,16 +70,13 @@ public class Subject {
         Color = color;
     }
 
-    public static void updateSubjectReferences(Subject oldSubject, Subject newSubject)
-    {
+    public static void updateSubjectReferences(Subject oldSubject, Subject newSubject) {
         AppDatabase db = DatabaseManager.getDatabase();
 
         // Lesson check
-        for(Lesson lesson : db.getLessonDao().getAll())
-        {
-            if(lesson.getSubject().equals(oldSubject.getSubject()))
-            {
-                if(newSubject == null)
+        for (Lesson lesson : db.getLessonDao().getAll()) {
+            if (lesson.getSubject().equals(oldSubject.getSubject())) {
+                if (newSubject == null)
                     db.getLessonDao().delete(lesson);
                 else {
                     lesson.setSubject(newSubject.getSubject());
@@ -85,9 +86,8 @@ public class Subject {
         }
 
         // PassedExam check
-        for(PassedExam passedExam : db.getPassedExamDao().getAll())
-        {
-            if(passedExam.getSubject().equals(oldSubject.getSubject())) {
+        for (PassedExam passedExam : db.getPassedExamDao().getAll()) {
+            if (passedExam.getSubject().equals(oldSubject.getSubject())) {
                 if (newSubject == null)
                     db.getPassedExamDao().delete(passedExam);
                 else {
@@ -98,7 +98,7 @@ public class Subject {
         }
 
         // FutureExam check
-        for(FutureExam futureExam : db.getFutureExamDao().getAll()) {
+        for (FutureExam futureExam : db.getFutureExamDao().getAll()) {
 
             if (futureExam.getSubject().equals(oldSubject.getSubject())) {
                 if (newSubject == null)

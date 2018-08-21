@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.Subject;
+
 import java.util.List;
 
 public class SubjectsListAdapter extends ArrayAdapter<Subject> {
@@ -32,7 +34,7 @@ public class SubjectsListAdapter extends ArrayAdapter<Subject> {
         int cfu = getItem(position).getCfu();
         int color = getItem(position).getColor();
 
-        Subject subject = new Subject(0, subject_name, prof, cfu , color);
+        Subject subject = new Subject(0, subject_name, prof, cfu, color);
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 

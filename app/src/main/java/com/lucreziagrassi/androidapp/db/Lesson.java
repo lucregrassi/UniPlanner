@@ -54,7 +54,9 @@ public class Lesson {
         return Location;
     }
 
-    public void setLocation(String location) { this.Location = location; }
+    public void setLocation(String location) {
+        this.Location = location;
+    }
 
     public String getStartHour() {
         return StartHour;
@@ -72,9 +74,13 @@ public class Lesson {
         this.EndHour = endHour;
     }
 
-    public Integer getDay() { return Day; }
+    public Integer getDay() {
+        return Day;
+    }
 
-    public void setDay(Integer Day) { this.Day = Day; }
+    public void setDay(Integer Day) {
+        this.Day = Day;
+    }
 
 }
 

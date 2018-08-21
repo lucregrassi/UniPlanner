@@ -71,31 +71,39 @@ public class User {
         this.Course = Course;
     }
 
-    public String getBadge_number() { return Badge_number; }
+    public String getBadge_number() {
+        return Badge_number;
+    }
 
-    public void setBadge_number(String badge_number) { this.Badge_number = badge_number; }
+    public void setBadge_number(String badge_number) {
+        this.Badge_number = badge_number;
+    }
 
     public Integer getCFU() {
         return CFU;
     }
 
-    public void setCFU(Integer CFU) { this.CFU = CFU; }
+    public void setCFU(Integer CFU) {
+        this.CFU = CFU;
+    }
 
-    public Integer getAvg_type() { return Avg_type; }
+    public Integer getAvg_type() {
+        return Avg_type;
+    }
 
-    public void setAvg_type(Integer Avg_type) { this.Avg_type = Avg_type; }
+    public void setAvg_type(Integer Avg_type) {
+        this.Avg_type = Avg_type;
+    }
 
-    public String getAvg_type_String()
-    {
-        if(Avg_type == 1)
+    public String getAvg_type_String() {
+        if (Avg_type == 1)
             return "Aritmetica";
         else
             return "Ponderata";
     }
 
-    public void setAvg_type_String(String avg_type_string)
-    {
-        if(avg_type_string.equals("Aritmetica"))
+    public void setAvg_type_String(String avg_type_string) {
+        if (avg_type_string.equals("Aritmetica"))
             setAvg_type(1);
         else
             setAvg_type(0);
