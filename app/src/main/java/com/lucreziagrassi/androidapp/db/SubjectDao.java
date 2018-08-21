@@ -15,6 +15,9 @@ public interface SubjectDao {
     @Query("SELECT * FROM Subject WHERE ID = :id")
     Subject get(int id);
 
+    @Query("SELECT * FROM Subject WHERE Subject = :subject")
+    Subject get(String subject);
+
     @Insert
     void insert(Subject subject);
 

@@ -171,7 +171,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
                 DatabaseManager.getDatabase().getLessonDao().delete(currentLesson);
 
             // Se i dati sono validi, creo l'esame
-            Lesson newLesson = new Lesson(0, subjectName, professor, location, color, startHour, endHour, day);
+            Lesson newLesson = new Lesson(0, subjectName, location, startHour, endHour, day);
             DatabaseManager.getDatabase().getLessonDao().insert(newLesson);
             Toast.makeText(getActivity(), "Lezione aggiunta con successo!", Toast.LENGTH_SHORT).show();
 

@@ -13,14 +13,8 @@ public class Lesson {
     @ColumnInfo(name = "Subject")
     private String Subject;
 
-    @ColumnInfo(name = "Professor")
-    private String Professor;
-
     @ColumnInfo(name = "Location")
     private String Location;
-
-    @ColumnInfo(name = "Color")
-    private Integer Color;
 
     @ColumnInfo(name = "Start")
     private String StartHour;
@@ -31,12 +25,10 @@ public class Lesson {
     @ColumnInfo(name = "Day")
     private Integer Day;
 
-    public Lesson(int ID, String Subject, String Professor, String Location, Integer Color, String StartHour, String EndHour, Integer Day) {
+    public Lesson(int ID, String Subject, String Location, String StartHour, String EndHour, Integer Day) {
         this.ID = ID;
         this.Subject = Subject;
-        this.Professor = Professor;
         this.Location = Location;
-        this.Color = Color;
         this.StartHour = StartHour;
         this.EndHour = EndHour;
         this.Day = Day;
@@ -58,23 +50,11 @@ public class Lesson {
         this.Subject = subject;
     }
 
-    public String getProfessor() {
-        return Professor;
-    }
-
-    public void setProfessor(String professor) {
-        this.Professor = professor;
-    }
-
     public String getLocation() {
         return Location;
     }
 
     public void setLocation(String location) { this.Location = location; }
-
-    public Integer getColor() { return Color; }
-
-    public void setColor(Integer color) { this.Color = color; }
 
     public String getStartHour() {
         return StartHour;
