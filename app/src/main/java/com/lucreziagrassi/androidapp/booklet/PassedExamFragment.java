@@ -27,8 +27,14 @@ import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class PassedExamFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -151,6 +157,23 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
                 // Cancello un esame da modificare
                 if(this.currentPassedExam != null)
                     DatabaseManager.getDatabase().getPassedExamDao().delete(currentPassedExam);
+
+                Long timestamp = 0L;
+
+                // Check data
+                try {
+                    DateFormat df = new SimpleDateFormat("dd/MM/yy", Locale.ITALY);
+                    Date result = df.parse(date);
+
+                    timestamp = result.getTime();
+                }
+                catch(ParseException pe) { }
+
+                if(timestamp > Calendar.getInstance().getTimeInMillis())
+                {
+                    Toast.makeText(getActivity(), "Non puoi inserire una data oltre oggi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 // Se i dati sono validi, creo l'esame
                 PassedExam newPassedExam = new PassedExam(0, subject, intVoto, date, cfu);
