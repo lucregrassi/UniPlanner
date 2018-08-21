@@ -47,6 +47,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private BookletFragment bookletFragment = null;
     private FutureExamsFragment futureExamsFragment = null;
     private SubjectsFragment subjectsFragment = null;
+
+    public TimetableFragment getTimetableFragment() {
+        return timetableFragment;
+    }
+
     private TimetableFragment timetableFragment = null;
 
     public static Context contextOfApplication;

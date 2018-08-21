@@ -1,6 +1,7 @@
 package com.lucreziagrassi.androidapp.timetable;
 
 import android.net.Uri;
+import android.os.Parcelable;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 
@@ -25,6 +26,7 @@ public class TimetableFragment extends Fragment
 {
     private NewLessonFragment newLessonFragment = null;
 
+    private ViewPagerAdapter adapter;
     private ViewPager mViewPager;
 
     @Override
@@ -35,13 +37,7 @@ public class TimetableFragment extends Fragment
         // Set up the ViewPager with the sections adapter.
         mViewPager = view.findViewById(R.id.container);
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(TimetableDayFragment.newInstance(0), "LUN");
-        adapter.addFragment(TimetableDayFragment.newInstance(1), "MAR");
-        adapter.addFragment(TimetableDayFragment.newInstance(2), "MER");
-        adapter.addFragment(TimetableDayFragment.newInstance(3), "GIO");
-        adapter.addFragment(TimetableDayFragment.newInstance(4), "VEN");
-        adapter.addFragment(TimetableDayFragment.newInstance(5), "SAB");
+        adapter = new ViewPagerAdapter(getChildFragmentManager());
         mViewPager.setAdapter(adapter);
 
         TabLayout tabLayout = view.findViewById(R.id.tabs);
@@ -69,6 +65,11 @@ public class TimetableFragment extends Fragment
         return view;
     }
 
+    public void updateTimetableRecords()
+    {
+        adapter.notifyDataSetChanged();
+    }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -85,32 +86,57 @@ public class TimetableFragment extends Fragment
         return super.onOptionsItemSelected(item);
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
+    class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
         public ViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
 
         @Override
+        public Parcelable saveState() {
+            return null;
+        }
+
+        @Override
         public Fragment getItem(int position) {
-            return mFragmentList.get(position);
+            return TimetableDayFragment.newInstance(position);
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
         }
 
         @Override
         public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
+            return 6;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
+            switch(position)
+            {
+                case 0:
+                    return "LUN";
+
+                case 1:
+                    return "MAR";
+
+                case 2:
+                    return "MER";
+
+                case 3:
+                    return "GIO";
+
+                case 4:
+                    return "VEN";
+
+                case 5:
+                    return "SAB";
+
+                default:
+                    return "";
+            }
         }
     }
 }

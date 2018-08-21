@@ -25,6 +25,7 @@ import com.lucreziagrassi.androidapp.db.Lesson;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.db.Subject;
 import com.lucreziagrassi.androidapp.generic.TimePickerFragment;
+import com.lucreziagrassi.androidapp.main.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,6 +126,9 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
             View currentFocusedView = getActivity().getCurrentFocus();
             if (currentFocusedView != null)
                 inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+            // Aggiorna la timetable
+            ((MainActivity)getActivity()).getTimetableFragment().updateTimetableRecords();
 
             // Ritorna indietro
             getFragmentManager().popBackStack();
