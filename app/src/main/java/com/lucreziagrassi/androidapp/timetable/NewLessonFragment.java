@@ -32,6 +32,8 @@ import java.util.List;
 
 public class NewLessonFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener{
 
+    private Lesson currentLesson;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

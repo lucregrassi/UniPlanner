@@ -86,16 +86,14 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         spinner.setOnItemSelectedListener(this);
 
         // Set modifying subject if present
-        if(this.getArguments() != null)
-        {
+        if(this.getArguments() != null) {
             Integer currentPassedExamID = (Integer)this.getArguments().get("currentPassedExam");
 
             if(currentPassedExamID != null)
                 this.currentPassedExam = DatabaseManager.getDatabase().getPassedExamDao().get(currentPassedExamID);
         }
 
-        if(this.currentPassedExam != null)
-        {
+        if(this.currentPassedExam != null) {
             Spinner spinner2 = getView().findViewById(R.id.subjects_spinner);
 
             for(int i = 0; i < spinner2.getCount(); i++)

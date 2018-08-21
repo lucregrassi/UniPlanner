@@ -43,7 +43,7 @@
             android:drawableStart="@drawable/ic_action_exam_name"
             android:ems="10"
             android:hint="@string/lesson_location"
-            android:inputType="textPersonName" />
+            android:inputType="textCapWords" />
 
         <EditText
             android:id="@+id/start_hour"

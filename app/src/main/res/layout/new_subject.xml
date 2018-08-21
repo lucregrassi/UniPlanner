@@ -35,7 +35,7 @@
             android:elevation="10dp"
             android:ems="10"
             android:hint="@string/subject_name"
-            android:inputType="textPersonName" />
+            android:inputType="textCapWords" />
 
         <EditText
             android:id="@+id/prof_name"
@@ -50,7 +50,7 @@
             android:elevation="10dp"
             android:ems="10"
             android:hint="@string/prof_name"
-            android:inputType="textPersonName" />
+            android:inputType="textCapWords|textPersonName" />
 
         <EditText
             android:id="@+id/exam_cfu"
