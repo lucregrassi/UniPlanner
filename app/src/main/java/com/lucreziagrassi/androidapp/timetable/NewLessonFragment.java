@@ -30,7 +30,7 @@ import com.lucreziagrassi.androidapp.main.MainActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewLessonFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener{
+public class NewLessonFragment extends Fragment implements View.OnClickListener {
 
     private Lesson currentLesson;
 
@@ -79,8 +79,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
         };
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
-
+        //spinner.setOnItemSelectedListener(this);
 
         // Set modifying lesson if present
         if(this.getArguments() != null) {
@@ -189,6 +188,7 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
         }
     }
 
+    /*
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         String subject = adapterView.getItemAtPosition(position).toString();
@@ -197,7 +197,6 @@ public class NewLessonFragment extends Fragment implements View.OnClickListener,
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
+    public void onNothingSelected(AdapterView<?> adapterView) {}
+    */
 }
