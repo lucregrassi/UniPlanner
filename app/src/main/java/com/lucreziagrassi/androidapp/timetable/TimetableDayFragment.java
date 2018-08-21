@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
@@ -114,6 +115,7 @@ public class TimetableDayFragment extends Fragment {
                         DatabaseManager.getDatabase().getLessonDao().delete(selectedLesson);
                         // Reload view
                         ((MainActivity)getActivity()).getTimetableFragment().updateTimetableRecords();
+                        Toast.makeText(getActivity(), "Lezione eliminata con successo", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 // false : close the menu; true : not close the menu

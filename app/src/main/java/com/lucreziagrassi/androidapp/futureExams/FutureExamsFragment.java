@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
@@ -117,6 +118,7 @@ public class FutureExamsFragment extends Fragment implements View.OnClickListene
                         DatabaseManager.getDatabase().getFutureExamDao().delete(selectedFutureExam);
                         // Reload view
                         getFragmentManager().beginTransaction().detach(FutureExamsFragment.this).attach(FutureExamsFragment.this).commit();
+                        Toast.makeText(getActivity(), "Esame eliminato con successo", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return false;

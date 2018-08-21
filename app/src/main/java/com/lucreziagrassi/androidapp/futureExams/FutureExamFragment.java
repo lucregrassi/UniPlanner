@@ -157,11 +157,10 @@ public class FutureExamFragment extends Fragment implements View.OnClickListener
 
                 timestamp = result.getTime();
             }
-            catch(ParseException pe) { }
+            catch(ParseException ignored) { }
 
-            if(timestamp < Calendar.getInstance().getTimeInMillis() - 60 * 60 * 24 * 1000)
-            {
-                Toast.makeText(getActivity(), "Non puoi retrodatare un appello", Toast.LENGTH_SHORT).show();
+            if(timestamp < Calendar.getInstance().getTimeInMillis() - 60 * 60 * 24 * 1000) {
+                Toast.makeText(getActivity(), "Non puoi retrodatare un esame futuro", Toast.LENGTH_SHORT).show();
                 return;
             }
 

@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
@@ -117,6 +118,7 @@ public class SubjectsFragment extends Fragment {
 
                         // Reload view
                         getFragmentManager().beginTransaction().detach(SubjectsFragment.this).attach(SubjectsFragment.this).commit();
+                        Toast.makeText(getActivity(), "Materia eliminata con successo", Toast.LENGTH_SHORT).show();
                         break;
                 }
 
