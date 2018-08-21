@@ -33,9 +33,7 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
     ImageView mImageView;
     Integer subjectColor;
 
-    public NewSubjectFragment() {
-
-    }
+    public NewSubjectFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,16 +59,14 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
         addNewSubjectButton.setOnClickListener(this);
 
         // Set modifying subject if present
-        if(this.getArguments() != null)
-        {
+        if(this.getArguments() != null) {
             Integer currentSubjectID = (Integer)this.getArguments().get("currentSubject");
 
             if(currentSubjectID != null)
                 this.currentSubject = DatabaseManager.getDatabase().getSubjectDao().get(currentSubjectID);
         }
 
-        if(this.currentSubject != null)
-        {
+        if(this.currentSubject != null) {
             ((EditText) getView().findViewById(R.id.subject_name)).setText(currentSubject.getSubject());
             ((EditText) getView().findViewById(R.id.prof_name)).setText(currentSubject.getProfessor());
             ((EditText) getView().findViewById(R.id.exam_cfu)).setText(currentSubject.getCfu() + "");
@@ -88,7 +84,6 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
         AmbilWarnaDialog colorPicker = new AmbilWarnaDialog(getActivity(), subjectColor, new AmbilWarnaDialog.OnAmbilWarnaListener() {
             @Override
             public void onCancel(AmbilWarnaDialog dialog) {
-
             }
 
             @Override
