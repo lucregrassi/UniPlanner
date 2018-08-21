@@ -21,4 +21,7 @@ public interface PassedExamDao {
 
     @Update
     void update(PassedExam passedExam);
+
+    @Query("SELECT * FROM PassedExam WHERE ID = :id")
+    PassedExam get(int id);
 }

@@ -88,7 +88,6 @@ public class BookletFragment extends Fragment {
         passedExams.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
-                Log.d("SwipeClick", "Click at: " + position + ", " + index);
                 // Position: indice dell'elemento
                 // Index: indice del tasto su quell'elemento
 

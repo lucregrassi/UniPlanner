@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lucreziagrassi.androidapp.CustomViewPager;
 import com.lucreziagrassi.androidapp.R;
 
 public class TimetableFragment extends Fragment {
@@ -88,7 +87,7 @@ public class TimetableFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            return TimetableDayFragment.newInstance(position + 1);
+            return TimetableDayFragment.newInstance(position);
         }
 
         @Override

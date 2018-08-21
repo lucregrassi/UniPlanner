@@ -32,7 +32,7 @@ import java.util.List;
 
 public class PassedExamFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    private OnFragmentInteractionListener mListener;
+    private PassedExam currentPassedExam;
 
     public PassedExamFragment() {
         // Required empty public constructor
@@ -62,27 +62,56 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
 
         Spinner spinner = (Spinner) getView().findViewById(R.id.subjects_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, subjectsArray){
-            @Override
-            public boolean isEnabled(int position) {
-                return position != 0;
-            }
+                @Override
+                public boolean isEnabled(int position) {
+                    return position != 0;
+                }
 
-            @Override
-            public View getDropDownView(int position, View convertView,
-                                        @NonNull ViewGroup parent) {
-            View view = super.getDropDownView(position, convertView, parent);
-            TextView tv = (TextView) view;
-            if(position == 0) {
-                tv.setTextColor(Color.GRAY);
-            } else {
-                tv.setTextColor(Color.BLACK);
+                @Override
+                public View getDropDownView(int position, View convertView,
+                                            @NonNull ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView tv = (TextView) view;
+                if(position == 0) {
+                    tv.setTextColor(Color.GRAY);
+                } else {
+                    tv.setTextColor(Color.BLACK);
+                }
+                return view;
             }
-            return view;
-        }
-    };
+        };
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
+        // Set modifying subject if present
+        if(this.getArguments() != null)
+        {
+            Integer currentPassedExamID = (Integer)this.getArguments().get("currentPassedExam");
+
+            if(currentPassedExamID != null)
+                this.currentPassedExam = DatabaseManager.getDatabase().getPassedExamDao().get(currentPassedExamID);
+        }
+
+        if(this.currentPassedExam != null)
+        {
+            Spinner spinner2 = getView().findViewById(R.id.subjects_spinner);
+
+            for(int i = 0; i < spinner2.getCount(); i++)
+            {
+                String item = (String)spinner2.getItemAtPosition(i);
+
+                if(item.equals(currentPassedExam.getSubject()))
+                    spinner2.setSelection(i);
+            }
+
+            ((EditText) getView().findViewById(R.id.exam_vote)).setText(currentPassedExam.getVote() + "");
+            ((EditText) getView().findViewById(R.id.exam_date)).setText(currentPassedExam.getDate());
+
+            ((TextView)getView().findViewById(R.id.addPassedExamText)).setText(R.string.modify_button);
+            getActivity().setTitle(R.string.new_exam_modify_fragment_name);
+        }
     }
 
     @Override
@@ -106,23 +135,6 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
     public void onAddPassedExamClick() {
         // Prendo le stringhe dei textView
         String subject = ((Spinner) getView().findViewById(R.id.subjects_spinner)).getSelectedItem().toString();
@@ -138,32 +150,36 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
         if (!subject.equals("Seleziona una materia") && !date.isEmpty() && !vote.isEmpty()) {
             Integer intVoto = Integer.parseInt(vote);
             if (intVoto > 0 && intVoto < 31) {
-                    // Se i dati sono validi, creo l'esame
-                    PassedExam newPassedExam = new PassedExam(0, subject, intVoto, date, cfu);
+                // Cancello un esame da modificare
+                if(this.currentPassedExam != null)
+                    DatabaseManager.getDatabase().getPassedExamDao().delete(currentPassedExam);
 
-                    // Check che il nome sia univoco
-                    for(PassedExam pe : DatabaseManager.getDatabase().getPassedExamDao().getAll()) {
-                        if (pe.getSubject().equals(newPassedExam.getSubject())) {
-                            // Nome già usato
-                            Toast.makeText(getActivity(), "Hai già inserito questo esame", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
+                // Se i dati sono validi, creo l'esame
+                PassedExam newPassedExam = new PassedExam(0, subject, intVoto, date, cfu);
+
+                // Check che il nome sia univoco
+                for(PassedExam pe : DatabaseManager.getDatabase().getPassedExamDao().getAll()) {
+                    if (pe.getSubject().equals(newPassedExam.getSubject())) {
+                        // Nome già usato
+                        Toast.makeText(getActivity(), "Hai già inserito questo esame", Toast.LENGTH_SHORT).show();
+                        return;
                     }
-                    DatabaseManager.getDatabase().getPassedExamDao().insert(newPassedExam);
-                    Toast.makeText(getActivity(), "Esame aggiunto con successo!", Toast.LENGTH_SHORT).show();
-
-                    // Chiude la tastiera
-                    InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    View currentFocusedView = getActivity().getCurrentFocus();
-                    if (currentFocusedView != null)
-                        inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
-                    // Ritorna al libretto
-                    getFragmentManager().popBackStack();
                 }
-                else {
-                Toast.makeText(getActivity(), "Inserisci un voto tra 1 e 30", Toast.LENGTH_SHORT).show();
+                DatabaseManager.getDatabase().getPassedExamDao().insert(newPassedExam);
+                Toast.makeText(getActivity(), "Esame aggiunto con successo!", Toast.LENGTH_SHORT).show();
+
+                // Chiude la tastiera
+                InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                View currentFocusedView = getActivity().getCurrentFocus();
+                if (currentFocusedView != null)
+                    inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                // Ritorna al libretto
+                getFragmentManager().popBackStack();
             }
+            else
+                Toast.makeText(getActivity(), "Inserisci un voto tra 1 e 30", Toast.LENGTH_SHORT).show();
+
         }
         else
             Toast.makeText(getActivity(), "Riempi tutti i campi", Toast.LENGTH_SHORT).show();
@@ -181,11 +197,6 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
                 datePicker.show(getFragmentManager(), "Date Picker");
                 break;
         }
-    }
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 
     @Override

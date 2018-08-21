@@ -39,7 +39,6 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         BookletFragment.OnFragmentInteractionListener,
-        PassedExamFragment.OnFragmentInteractionListener,
         NewLessonFragment.OnFragmentInteractionListener,
         NewSubjectFragment.OnFragmentInteractionListener,
         FutureExamFragment.OnFragmentInteractionListener {
@@ -151,11 +150,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.content, homeFragment).commit();
 
         } else if (id == R.id.nav_schedule) {
-
-            if(timetableFragment == null)
-                timetableFragment = new TimetableFragment();
-
-            getSupportFragmentManager().beginTransaction().replace(R.id.content, timetableFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content, new TimetableFragment()).commit();
 
         } else if (id == R.id.nav_exams) {
 

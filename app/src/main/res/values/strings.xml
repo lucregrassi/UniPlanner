@@ -56,6 +56,7 @@
     <!-- strings for PassedExam fragment-->
     <string name="passed_exam_title">Inserisci i dati relativi al nuovo esame che vuoi aggiungere al tuo libretto</string>
     <string name="new_exam_fragment_name">Nuovo Esame</string>
+    <string name="new_exam_modify_fragment_name">Modifica Esame</string>
     <string name="exam_name">Seleziona una materia</string>
     <string name="exam_cfu">CFU</string>
     <string name="exam_date">Data dell\'esame</string>
