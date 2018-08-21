@@ -179,7 +179,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:progress="30"
+                    android:max="110"
+                    android:progress="104"
                     android:progressBackgroundTint="#fff"
                     android:progressTint="@color/colorPrimaryDark" />
 
@@ -226,7 +227,7 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:max="180"
-                    android:progress="120"
+                    android:progress="30"
                     android:progressBackgroundTint="#fff"
                     android:progressTint="@color/yellow" />
 
