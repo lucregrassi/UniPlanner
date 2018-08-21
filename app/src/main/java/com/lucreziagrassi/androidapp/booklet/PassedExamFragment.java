@@ -36,7 +36,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class PassedExamFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class PassedExamFragment extends Fragment implements View.OnClickListener {
 
     private PassedExam currentPassedExam;
 
@@ -89,7 +89,6 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
 
         // Set modifying subject if present
         if(this.getArguments() != null) {
@@ -171,7 +170,7 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
 
                 if(timestamp > Calendar.getInstance().getTimeInMillis())
                 {
-                    Toast.makeText(getActivity(), "Non puoi inserire una data oltre oggi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Non puoi inserire una data futura", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -218,17 +217,5 @@ public class PassedExamFragment extends Fragment implements View.OnClickListener
                 datePicker.show(getFragmentManager(), "Date Picker");
                 break;
         }
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-        String subject = adapterView.getItemAtPosition(position).toString();
-        if(position > 0)
-            Toast.makeText(adapterView.getContext(), "Hai selezionato: "+ subject, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 }
