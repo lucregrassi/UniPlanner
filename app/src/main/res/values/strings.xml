@@ -9,6 +9,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="add_button">Aggiungi</string>
+    <string name="modify_button">Modifica</string>
+
     <!-- strings for menu -->
     <string name="profile">Home</string>
     <string name="schedule">Orario</string>
@@ -53,7 +56,6 @@
     <!-- strings for PassedExam fragment-->
     <string name="passed_exam_title">Inserisci i dati relativi al nuovo esame che vuoi aggiungere al tuo libretto</string>
     <string name="new_exam_fragment_name">Nuovo Esame</string>
-    <string name="add_exam_button">Aggiungi</string>
     <string name="exam_name">Seleziona una materia</string>
     <string name="exam_cfu">CFU</string>
     <string name="exam_date">Data dell\'esame</string>
@@ -71,6 +73,7 @@
 
     <!-- strings for New Subject fragment-->
     <string name="new_subject_fragment_name">Nuova Materia</string>
+    <string name="new_subject_modify_fragment_name">Modifica Materia</string>
     <string name="new_subject_title">Inserisci i dati relativi al nuovo insegnamento che vuoi aggiungere</string>
     <string name="subject_name">Nome della materia</string>
     <string name="prof_name">Nome del professore</string>

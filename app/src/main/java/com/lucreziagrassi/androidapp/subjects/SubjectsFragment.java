@@ -98,8 +98,18 @@ public class SubjectsFragment extends Fragment {
                 switch (index) {
                     case 0:
                         // Modifica
+                        Fragment newFragment = new NewSubjectFragment();
 
+                        Bundle modifyBundle = new Bundle();
+                        modifyBundle.putInt("currentSubject", selectedSubject.getID());
+                        newFragment.setArguments(modifyBundle);
+
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.content, newFragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
                         break;
+
                     case 1:
                         // Elimina
                         DatabaseManager.getDatabase().getSubjectDao().delete(selectedSubject);

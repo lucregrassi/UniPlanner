@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lucreziagrassi.androidapp.R;
@@ -24,6 +25,8 @@ import com.lucreziagrassi.androidapp.db.Subject;
 import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class NewSubjectFragment extends Fragment implements View.OnClickListener {
+
+    private Subject currentSubject = null;
 
     ImageView mImageView;
     Integer subjectColor;
@@ -54,6 +57,28 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
         colorPickerButton.setOnClickListener(this);
         CardView addNewSubjectButton = (CardView) getView().findViewById(R.id.addNewSubject);
         addNewSubjectButton.setOnClickListener(this);
+
+        // Set modifying subject if present
+        if(this.getArguments() != null)
+        {
+            Integer currentSubjectID = (Integer)this.getArguments().get("currentSubject");
+
+            if(currentSubjectID != null)
+                this.currentSubject = DatabaseManager.getDatabase().getSubjectDao().get(currentSubjectID);
+        }
+
+        if(this.currentSubject != null)
+        {
+            ((EditText) getView().findViewById(R.id.subject_name)).setText(currentSubject.getSubject());
+            ((EditText) getView().findViewById(R.id.prof_name)).setText(currentSubject.getProfessor());
+            ((EditText) getView().findViewById(R.id.exam_cfu)).setText(currentSubject.getCfu() + "");
+
+            subjectColor = currentSubject.getColor();
+            mImageView.setBackgroundColor(currentSubject.getColor());
+
+            ((TextView)getView().findViewById(R.id.addNewSubjectText)).setText(R.string.modify_button);
+            getActivity().setTitle(R.string.new_subject_modify_fragment_name);
+        }
     }
 
 
@@ -83,6 +108,10 @@ public class NewSubjectFragment extends Fragment implements View.OnClickListener
         if (!subject.isEmpty() && !professor.isEmpty() && !cfu.isEmpty()) {
             Integer intCfu = Integer.parseInt(cfu);
             if(intCfu > 0) {
+                // Cancella un eventuale vecchia materia da modificare
+                if(currentSubject != null)
+                    DatabaseManager.getDatabase().getSubjectDao().delete(currentSubject);
+
                 // Se i dati sono validi, creo l'esame
                 Subject newSubject = new Subject(0, subject, professor, intCfu, color);
 
