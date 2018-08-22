@@ -1,5 +1,7 @@
 package com.lucreziagrassi.androidapp.main;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.User;
+import com.lucreziagrassi.androidapp.notifications.FutureExamBroadcastReceiver;
 
 public class IntroActivity extends AppCompatActivity implements View.OnClickListener {
 

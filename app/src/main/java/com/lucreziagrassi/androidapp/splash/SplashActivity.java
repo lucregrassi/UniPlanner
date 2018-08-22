@@ -1,5 +1,7 @@
 package com.lucreziagrassi.androidapp.splash;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import com.lucreziagrassi.androidapp.main.MainActivity;
 import com.lucreziagrassi.androidapp.R;
 import com.lucreziagrassi.androidapp.db.AppDatabase;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
+import com.lucreziagrassi.androidapp.notifications.FutureExamBroadcastReceiver;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -30,9 +33,15 @@ public class SplashActivity extends AppCompatActivity {
                     long startMillis = System.currentTimeMillis();
 
                     // App Loading: inserire qui funzioni da eseguire all'apertura dell'app
-
                     // Crea o apre il db
                     DatabaseManager.initializeDatabase(getApplicationContext());
+
+                    // Gestisce le notifiche per il prossimo esame
+                    Intent notificationIntent = new Intent(SplashActivity.this, FutureExamBroadcastReceiver.class);
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(SplashActivity.this, 0, notificationIntent, 0);
+
+                    AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
+                    am.setRepeating(am.RTC_WAKEUP, System.currentTimeMillis(), 30 * 1000, pendingIntent);
 
                     // Verifica se l'utente è già stato creato
                     boolean userExists = DatabaseManager.getDatabase().getUserDao().getUser() != null;
