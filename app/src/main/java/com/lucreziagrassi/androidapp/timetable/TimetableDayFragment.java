@@ -110,8 +110,9 @@ public class TimetableDayFragment extends Fragment {
                         // Elimina
                         DatabaseManager.getDatabase().getLessonDao().delete(selectedLesson);
                         // Reload view
-                        ((MainActivity) getActivity()).getTimetableFragment().updateTimetableRecords();
                         Toast.makeText(getActivity(), "Lezione eliminata con successo", Toast.LENGTH_SHORT).show();
+
+                        ((MainActivity) getActivity()).getTimetableFragment().updateTimetableRecords();
                         break;
                 }
                 // false : close the menu; true : not close the menu
