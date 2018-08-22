@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface PassedExamDao {
 
-    @Query("SELECT * FROM PassedExam ORDER BY Date ASC")
+    @Query("SELECT * FROM PassedExam ORDER BY Date DESC")
     List<PassedExam> getAll();
 
     @Insert
