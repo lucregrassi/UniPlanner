@@ -13,6 +13,8 @@ import com.lucreziagrassi.androidapp.db.AppDatabase;
 import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.notifications.FutureExamBroadcastReceiver;
 
+import java.util.Calendar;
+
 public class SplashActivity extends AppCompatActivity {
 
     private AppDatabase appDB = null;
@@ -36,12 +38,17 @@ public class SplashActivity extends AppCompatActivity {
                     // Crea o apre il db
                     DatabaseManager.initializeDatabase(getApplicationContext());
 
+                    // Timestamp di domani alle 10
+                    Calendar tomorrow10 = Calendar.getInstance();
+                    tomorrow10.add(Calendar.DAY_OF_YEAR, 1);
+                    tomorrow10.set(Calendar.HOUR_OF_DAY, 10);
+
                     // Gestisce le notifiche per il prossimo esame
                     Intent notificationIntent = new Intent(SplashActivity.this, FutureExamBroadcastReceiver.class);
                     PendingIntent pendingIntent = PendingIntent.getBroadcast(SplashActivity.this, 0, notificationIntent, 0);
 
                     AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
-                    am.setRepeating(am.RTC_WAKEUP, System.currentTimeMillis(), am.INTERVAL_DAY, pendingIntent);
+                    am.setRepeating(am.RTC_WAKEUP, tomorrow10.getTimeInMillis(), am.INTERVAL_DAY, pendingIntent);
 
                     // Verifica se l'utente è già stato creato
                     boolean userExists = DatabaseManager.getDatabase().getUserDao().getUser() != null;
