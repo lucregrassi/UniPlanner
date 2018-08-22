@@ -5,8 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceFragmentCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +16,7 @@ import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.User;
 import com.lucreziagrassi.androidapp.splash.SplashActivity;
 
-public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener,
+public class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener,
         Preference.OnPreferenceClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,11 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 
         findPreference("delete_all").setOnPreferenceClickListener(this);
+    }
+
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+
     }
 
     @Override

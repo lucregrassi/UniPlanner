@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 subjectsFragment = new SubjectsFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.content, subjectsFragment).commit();
         } else if (id == R.id.nav_settings) {
-            getFragmentManager().beginTransaction()
+            getSupportFragmentManager().beginTransaction()
                     .replace(R.id.content, new SettingsFragment())
                     .commit();
         }
