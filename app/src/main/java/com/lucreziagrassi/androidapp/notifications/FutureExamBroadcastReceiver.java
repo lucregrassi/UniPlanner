@@ -6,7 +6,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.provider.ContactsContract;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -15,11 +15,7 @@ import com.lucreziagrassi.androidapp.db.DatabaseManager;
 import com.lucreziagrassi.androidapp.db.FutureExam;
 import com.lucreziagrassi.androidapp.splash.SplashActivity;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class FutureExamBroadcastReceiver extends BroadcastReceiver {
     @Override
@@ -52,7 +48,8 @@ public class FutureExamBroadcastReceiver extends BroadcastReceiver {
         Intent intent = new Intent(context, SplashActivity.class);
         PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.drawable.ic_action_university)
+                .setSmallIcon(R.drawable.ic_action_credits)
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_app_icon))
                 .setContentTitle("Prossimo esame")
                 .setContentText(exam.getSubject() + " fra " + deltaDays + " " + giorn);
         mBuilder.setContentIntent(pi);
