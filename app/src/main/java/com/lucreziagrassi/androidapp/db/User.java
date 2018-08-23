@@ -31,6 +31,18 @@ public class User {
     @ColumnInfo(name = "avg_type") // 0: Ponderata, 1: Aritmetica
     private Integer Avg_type;
 
+    public String getImage_Path() {
+        return Image_Path;
+    }
+
+    public void setImage_Path(String Image_Path) {
+        this.Image_Path = Image_Path;
+    }
+
+    @ColumnInfo(name = "img_path")
+    private String Image_Path;
+
+
     public int getID() {
         return ID;
     }
@@ -109,7 +121,7 @@ public class User {
             setAvg_type(0);
     }
 
-    public User(int ID, String Name, String Surname, String University, String Course, String Badge_number, Integer CFU, Integer Avg_type) {
+    public User(int ID, String Name, String Surname, String University, String Course, String Badge_number, Integer CFU, Integer Avg_type, String Image_Path) {
         this.ID = 0; // Essendoci un unico utente, può solo avere ID zero
         this.Name = Name;
         this.Surname = Surname;
@@ -118,5 +130,6 @@ public class User {
         this.Badge_number = Badge_number;
         this.CFU = CFU;
         this.Avg_type = Avg_type;
+        this.Image_Path = Image_Path;
     }
 }

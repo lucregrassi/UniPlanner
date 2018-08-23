@@ -7,8 +7,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Shader;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -99,6 +106,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             ((TextView) getView().findViewById(R.id.nextExamText)).setText(nextExam.getSubject());
             ((TextView) getView().findViewById(R.id.nextExamDate)).setText(formattedNextExamDate);
         }
+
+        // Imposta immagine profilo
+        if(user.getImage_Path() != null && user.getImage_Path() != "")
+        {
+            Bitmap profImage = BitmapFactory.decodeFile(user.getImage_Path());
+
+            ImageView profileImage = ((NavigationView) getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.profile_image);
+            profileImage.setImageBitmap(profImage);
+        }
     }
 
     @Override
@@ -119,23 +135,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private void requestPermission() {
         //controllo se è necessario mostrare un Dialog per spiegare perchè servono i permessi
-        // if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)) {
-//            new AlertDialog.Builder(getContext()).setTitle("Richiesta di permesso")
-//                    .setMessage("Questa applicazione necessita il permesso di leggere la memoria per poter modificare" +
-//                            "l'immagine del profilo")
-//                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
-//                        }
-//                    })
-//                    .setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            dialogInterface.dismiss();
-//                        }
-//                    }).create().show();
-        //} else
+         if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            new AlertDialog.Builder(getContext()).setTitle("Richiesta di permesso")
+                    .setMessage("Questa applicazione necessita il permesso di leggere la memoria per poter modificare" +
+                            "l'immagine del profilo")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+                        }
+                    })
+                    .setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    }).create().show();
+        } else
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
     }
 
@@ -167,9 +183,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
 
+            Bitmap profImage = BitmapFactory.decodeFile(picturePath);
+
             // String picturePath contains the path of selected Image
             ImageView profileImage = ((NavigationView) getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.profile_image);
-            profileImage.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+            profileImage.setImageBitmap(profImage);
+
+            User user = DatabaseManager.getDatabase().getUserDao().getUser();
+            user.setImage_Path(picturePath);
+            DatabaseManager.getDatabase().getUserDao().setUser(user);
         }
     }
 }
