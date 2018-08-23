@@ -44,6 +44,7 @@ import com.lucreziagrassi.androidapp.db.FutureExam;
 import com.lucreziagrassi.androidapp.db.PassedExam;
 import com.lucreziagrassi.androidapp.db.User;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -118,11 +119,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         // Imposta immagine profilo
         if(user.getImage_Path() != null && user.getImage_Path() != "")
         {
-            Bitmap profImage = BitmapFactory.decodeFile(user.getImage_Path());
+            if((new File(user.getImage_Path()).exists()))
+            {
+                Bitmap profImage = BitmapFactory.decodeFile(user.getImage_Path());
 
-            ImageView profileImage = ((NavigationView) getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.profile_image);
-            profileImage.setImageBitmap(getCroppedBitmap(profImage));
-            scaleImage(profileImage);
+                ImageView profileImage = ((NavigationView) getActivity().findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.profile_image);
+                profileImage.setImageBitmap(getCroppedBitmap(profImage));
+                scaleImage(profileImage);
+            }
         }
     }
 
