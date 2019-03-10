@@ -89,7 +89,7 @@ Il servizio di notifica fa sì che l’app ricordi allo studente tra quanti gior
 Verrà inviata una notifica 7 giorni prima, 3 giorni prima e il giorno prima (alle 10 di mattina).
 
 <p align="center"> 
-<img src="screenshots/notifications.png" width="200" height="350">
+<img src="screenshots/notification.png" width="200" height="350">
 </p>
 
 ## Impostazioni
