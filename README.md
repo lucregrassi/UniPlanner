@@ -1,10 +1,12 @@
 # UniPlanner
-Android application which makes smart and easy the managing of your university carreer.
-Compatible with most Android devices (API 17 and above).
-Below are explained all the features offered by this app.
+Applicazione Android che rende semplice e veloce la gestione della propria carriera universitaria.
+Compatibile con la maggior parte dei dispositivi Android (API 17 e successive).
+Nelle sezioni successive sono descritte le principali funzionalità.
 
 ## Registrazione
-Al primo avvio dell’app viene richiesto l’inserimento delle informazioni principali necessarie al funzionamento. In seguito, tali informazioni saranno modificabili tramite le impostazioni. Se viene premuto il tasto “Inizia” senza aver riempito tutti i campi viene mostrato un Toast contenente il messaggio: “Riempi tutti i campi”. Una volta completato il procedimento l’utente si ritroverà nella sua dashboard, ovvero la Home.
+Al primo avvio dell’app viene richiesto l’inserimento delle informazioni principali necessarie al funzionamento.
+In seguito, tali informazioni saranno modificabili tramite le impostazioni. Se viene premuto il tasto “Inizia” senza aver riempito tutti i campi viene mostrato un Toast contenente il messaggio: “Riempi tutti i campi”. 
+Una volta completato il procedimento l’utente si ritroverà nella sua dashboard, ovvero la Home.
 
 <p align="center"> 
 <img src="screenshots/registration.png" width="200" height="350">
@@ -18,8 +20,10 @@ La schermata Home svolge la funzione di dashboard. Nella parte superiore sono ri
 </p>
 
 ## Menu
-Il menu permette di cambiare rapidamente schermata ovunque l’utente si trovi. Le voci presenti sono quelle già anticipate.
-Cliccando sull’immagine l’utente può cambiare la propria immagine del profilo caricandone una dalla propria galleria. Per fare ciò la prima volta l’applicazione richiederà il permesso per poter leggere la memoria del dispositivo.
+Il menu permette di cambiare rapidamente schermata ovunque l’utente si trovi. 
+Le voci presenti sono quelle già anticipate.
+Cliccando sull’immagine l’utente può cambiare la propria immagine del profilo caricandone una dalla propria galleria. 
+Per fare ciò la prima volta l’applicazione richiederà il permesso per poter leggere la memoria del dispositivo.
 
 <p align="center"> 
 <img src="screenshots/menu.png" width="200" height="350">
@@ -27,7 +31,8 @@ Cliccando sull’immagine l’utente può cambiare la propria immagine del profi
 
 
 ## Le mie Materie
-In questa sezione vengono mostrati tutti i corsi seguiti dallo studente. Ogni voce contiene il nome del corso, il professore e il colore scelto per identificare rapidamente la lezione di quel corso all’interno dell’orario.
+In questa sezione vengono mostrati tutti i corsi seguiti dallo studente. 
+Ogni voce contiene il nome del corso, il professore e il colore scelto per identificare rapidamente la lezione di quel corso all’interno dell’orario.
 Cliccando sul ‘+’ in alto a destra è possibile aggiungere un nuovo insegnamento.
 Per aggiungere una nuova materia vengono richiesti il nome della materia, il professore, i CFU e il colore.
 Cliccando su “Scegli un colore” verrà aperto un Color Picker che permette allo studente di avere un’ampia scelta di colori. Una volta cliccato su “Ok” il colore scelto apparirà nel riquadro a fianco al bottone.
@@ -95,6 +100,8 @@ Verrà inviata una notifica 7 giorni prima, 3 giorni prima e il giorno prima (al
 ## Impostazioni
 Tramite la schermata delle impostazioni è possibile modificare l’Università, il corso di studi, i crediti da acquisire e il numero di matricola.
 Per fare ciò è sufficiente cliccare sulla voce che si vuole modificare e comparirà un campo di testo.
+Inoltre è possibile scegliere il tipo di media da visualizzare: aritmetica o ponderata.
+Infine è possibile eliminare tutti i dati personali. In questo modo lo studente verrà riportato alla schermata di registrazione.
 
 <p align="center"> 
 <img src="screenshots/settings.png" width="200" height="350">
