@@ -7,7 +7,7 @@ Below are explained all the features offered by this app.
 Al primo avvio dell’app viene richiesto l’inserimento delle informazioni principali necessarie al funzionamento. In seguito, tali informazioni saranno modificabili tramite le impostazioni. Se viene premuto il tasto “Inizia” senza aver riempito tutti i campi viene mostrato un Toast contenente il messaggio: “Riempi tutti i campi”. Una volta completato il procedimento l’utente si ritroverà nella sua dashboard, ovvero la Home.
 
 <p align="center"> 
-<img src="screenshots/registration.png">
+<img src="screenshots/registration.png" width="200" height="350">
 </p>
 
 ## Homepage
