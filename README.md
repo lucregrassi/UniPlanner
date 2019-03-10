@@ -14,7 +14,7 @@ Al primo avvio dell’app viene richiesto l’inserimento delle informazioni pri
 La schermata Home svolge la funzione di dashboard. Nella parte superiore sono riportati l’università e il corso di studi inseriti dallo studente. Nella parte inferiore vengono visualizzate tutte le informazioni più importanti: la media, il numero di esami superati, la proiezione del voto di laurea, i crediti acquisiti e l’appello più ravvicinato.
 
 <p align="center"> 
-<img src="home.png">
+<img src="home.png" width="150" height="150">
 </p>
 
 ## Menu
