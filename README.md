@@ -70,7 +70,6 @@ Nessun campo può essere lasciato vuoto e il voto inserito deve essere compreso 
 <p align="center"> 
 <img src="screenshots/booklet.png" width="200" height="350">
 <img src="screenshots/add_passed_exam.png" width="200" height="350">
-<img src="screenshots/booklet.png" width="200" height="350">
 </p>
 
 ## Future Exams 
