@@ -1,6 +1,6 @@
 # UniPlanner
 Android application which makes smart and easy the managing of your university carreer.
-Compatible with most Android devices (API 19 and above).
+Compatible with most Android devices (API 17 and above).
 Below are explained all the features offered by this app.
 
 ## Homepage
