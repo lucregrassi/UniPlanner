@@ -36,7 +36,8 @@ In questa sezione vengono mostrati tutti i corsi seguiti dallo studente.
 Ogni voce contiene il nome del corso, il professore e il colore scelto per identificare rapidamente la lezione di quel corso all’interno dell’orario.\
 Cliccando sul ‘+’ in alto a destra è possibile aggiungere un nuovo insegnamento.\
 Per aggiungere una nuova materia vengono richiesti il nome della materia, il professore, i CFU e il colore.
-Cliccando su “Scegli un colore” verrà aperto un Color Picker che permette allo studente di avere un’ampia scelta di colori.\ Una volta cliccato su “Ok” il colore scelto apparirà nel riquadro a fianco al bottone.\
+Cliccando su “Scegli un colore” verrà aperto un Color Picker che permette allo studente di avere un’ampia scelta di colori.\
+Una volta cliccato su “Ok” il colore scelto apparirà nel riquadro a fianco al bottone.\
 Facendo uno “swipe” verso sinistra sopra un elemento presente nella lista compariranno due pulsanti che ne permettono la modifica o l’eliminazione.\
 Eliminando una materia verranno automaticamente eliminati tutti gli esami e le lezioni ad essa collegati.
 
