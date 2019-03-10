@@ -72,7 +72,7 @@ Nessun campo può essere lasciato vuoto e il voto inserito deve essere compreso 
 <img src="screenshots/add_passed_exam.png" width="200" height="350">
 </p>
 
-## Future Exams 
+## Esami Futuri
 In questa schermata è possibile visualizzare la lista dei prossimi appelli che lo studente ha intenzione di sostenere, ordinati a partire dal più vicino. Per ogni voce vengono mostrati il nome del corso, la data e i CFU.
 L’esame più ravvicinato verrà mostrato anche nella sezione Home.
 Cliccando sul ‘+’ in alto a destra è possibile aggiungere un nuovo esame.
