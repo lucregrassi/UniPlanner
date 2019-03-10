@@ -14,7 +14,7 @@ Al primo avvio dell’app viene richiesto l’inserimento delle informazioni pri
 La schermata Home svolge la funzione di dashboard. Nella parte superiore sono riportati l’università e il corso di studi inseriti dallo studente. Nella parte inferiore vengono visualizzate tutte le informazioni più importanti: la media, il numero di esami superati, la proiezione del voto di laurea, i crediti acquisiti e l’appello più ravvicinato.
 
 <p align="center"> 
-<img src="home.png" width="150" height="150">
+<img src="screenshots/home.png" width="200" height="350">
 </p>
 
 ## Menu
@@ -22,7 +22,7 @@ Il menu permette di cambiare rapidamente schermata ovunque l’utente si trovi. 
 Cliccando sull’immagine l’utente può cambiare la propria immagine del profilo caricandone una dalla propria galleria. Per fare ciò la prima volta l’applicazione richiederà il permesso per poter leggere la memoria del dispositivo.
 
 <p align="center"> 
-<img src="menu.png">
+<img src="menu.png" width="200" height="350">
 </p>
 
 
@@ -33,7 +33,7 @@ Facendo uno “swipe” verso sinistra sopra un elemento presente nella lista co
 Eliminando una materia verranno automaticamente eliminati tutti gli esami e le lezioni ad essa collegati.
 
 <p align="center"> 
-<img src="subjects.png">
+<img src="subjects.png" width="200" height="350">
 </p>
 
 ## Orario settimanale
@@ -41,7 +41,7 @@ L’orario permette di visualizzare le materie della settimana suddivise per gio
 Posizionandosi su un giorno e cliccando sul ‘+’ si potrà aggiungere una nuova lezione al giorno stesso. Ogni voce dell’orario contiene la materia, l’aula in cui si svolge la lezione, l’ora di inizio, l’ora di fine, il professore e il colore associato a quella materia.
 
 <p align="center"> 
-<img src="week_schedule.png">
+<img src="week_schedule.png" width="200" height="350">
 </p>
 
 ## Libretto
@@ -49,7 +49,7 @@ Il libretto raccoglie tutti gli esami superati. Ogni voce mostra il nome del cor
 Anche in questo caso gli esami sono ordinati a partire dal più recente. Analogamente alla schermata degli esami futuri è possibile aggiungere un esame al libretto cliccando sul ‘+’ in alto a destra, selezionando la materia e inserendo la data e il voto.
 
 <p align="center"> 
-<img src="booklet.png">
+<img src="booklet.png" width="200" height="350">
 </p>
 
 ## Future Exams 
@@ -58,7 +58,7 @@ L’esame più ravvicinato verrà mostrato anche nella sezione Home.
 Cliccando sul ‘+’ in alto a destra è possibile aggiungere un nuovo esame.
 
 <p align="center"> 
-<img src="future_exams.png">
+<img src="future_exams.png" width="200" height="350">
 </p>
 
 ## Notifiche
@@ -66,7 +66,7 @@ Il servizio di notifica fa sì che l’app ricordi allo studente tra quanti gior
 Verrà inviata una notifica 7 giorni prima, 3 giorni prima e il giorno prima (alle 10 di mattina).
 
 <p align="center"> 
-<img src="notifications.png">
+<img src="notifications.png" width="200" height="350">
 </p>
 
 ## Impostazioni
@@ -74,7 +74,7 @@ Tramite la schermata delle impostazioni è possibile modificare l’Università,
 Per fare ciò è sufficiente cliccare sulla voce che si vuole modificare e comparirà un campo di testo.
 
 <p align="center"> 
-<img src="settings.png">
+<img src="screenshots/settings.png" width="200" height="350">
 </p>
 
 
